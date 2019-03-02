@@ -1,3 +1,4 @@
+from Direction import Direction
 
 class Car:
 
@@ -8,8 +9,9 @@ class Car:
         self.end_pos = end_pos;  # position: [i,j]
         self.isVertical = isVertical;
 
-    def move(self, direction_str, steps):
-        if direction_str == 'UP':
+    # if possible, move self in direction by steps and return 1. otherwise, return 0
+    def move_ifpossible(self, direction, steps):
+        if direction == Direction.UP:
             if not self.isVertical:
                 print("Error: can't move up with horizontal car");
                 return 0;
@@ -18,7 +20,7 @@ class Car:
                 self.end_pos[0] += 1;  # [i,j] -> [i+1,j]
                 return 1;
 
-        elif direction_str == 'DOWN':
+        elif direction is Direction.DOWN:
             if not self.isVertical:
                 print("Error: can't move down with horizontal car");
                 return 0;
@@ -27,7 +29,7 @@ class Car:
                 self.end_pos[0] -= 1;  # [i,j] -> [i-1,j]
                 return 1;
 
-        elif direction_str == 'RIGHT':
+        elif direction is Direction.RIGHT:
             if self.isVertical:
                 print("Error: cant move right with vertical car");
                 return 0;
@@ -36,7 +38,7 @@ class Car:
                 self.end_pos[1] += 1;  # [i,j] -> [i,j+1]
                 return 1;
 
-        elif direction_str == 'LEFT':
+        elif direction is Direction.LEFT:
             if self.isVertical:
                 print("Error: cant move left with vertical car");
                 return 0;

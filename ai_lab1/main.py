@@ -1,6 +1,6 @@
 import sys
 import GameState
-
+from Direction import Direction
 
 def main():
     path_to_rh = sys.argv[1];  # pathname for rh.txt
@@ -13,7 +13,15 @@ def main():
     initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
     initGameState = GameState.GameState(initstate_line);
 
-    print("initGame.printBoard():");
+    print("Board:");
+    initGameState.printBoard();
+
+    print();
+    print("first found car:", initGameState.cars[0].name);
+    print();
+
+    initGameState.moveCar_byName_ifpossible(initGameState.cars[0].name, Direction.RIGHT, 4);
+    print("Board:");
     initGameState.printBoard();
 
 

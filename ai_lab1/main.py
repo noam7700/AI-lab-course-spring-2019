@@ -1,5 +1,6 @@
 import sys
-import GameState  # only the class
+import GameState
+
 
 def main():
     path_to_rh = sys.argv[1];  # pathname for rh.txt
@@ -8,8 +9,10 @@ def main():
     # used to read all problems
     rh_file = open(path_to_rh, 'r');
 
-    initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);  # read first problem
+    # read first problem
+    initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
     initGameState = GameState.GameState(initstate_line);
+
     print("initGame.printBoard():");
     initGameState.printBoard();
 

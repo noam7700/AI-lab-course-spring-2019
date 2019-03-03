@@ -23,6 +23,7 @@ class GameState:
         else:
             arr1dim = ['.' for x in range(0, GameState.dimX * GameState.dimY)];  # default board
         self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
+
         self.cars = self.findCarsInBoard();
 
     # find all cars in self.board and returns array of Cars
@@ -64,7 +65,7 @@ class GameState:
                     if (i is GameState.dimY - 1) or (self.board[i+1][j] != self.board[i][j]):
                         searching_start_position = True;  # found one. next pixel we'll look for another
                         end_position = [i, j];
-                        cars.append(Car.Car(self.board[i][j], end_position[0] - start_position[0] + 1, start_position, end_position, False));
+                        cars.append(Car.Car(self.board[i][j], end_position[0] - start_position[0] + 1, start_position, end_position, True));
                 i += 1;
             j += 1;
 
@@ -85,9 +86,14 @@ class GameState:
                 start_hit_border = not (0 <= car.start_pos[0] < GameState.dimX and 0 <= car.start_pos[1] < GameState.dimY);
                 end_hit_border = not (0 <= car.end_pos[0] < GameState.dimX and 0 <= car.end_pos[1] < GameState.dimY);
 
+                if start_hit_border or end_hit_border:  # no need to continue checking other fails
+                    car.move_ifpossible(direction, -steps);  # we know it's possible. we moved already
+                    return 0;
+
+                # check if car didnt "hit" other cars. means start/end is sitting on other car
                 start_hit_other_car = False;
                 end_hit_other_car = False;
-                # check if car didnt "hit" other cars. means start/end is sitting on other car
+
                 if direction is Direction.RIGHT:
                     # check if there's other car between old_end_pos+1 and end_pos
                     for j in range(old_end_pos[1] + 1, car.end_pos[1] + 1):
@@ -103,19 +109,19 @@ class GameState:
                             break;
 
                 elif direction is Direction.UP:
-                    # check if there's other car between old_end_pos+1 and end_pos
-                    for i in range(old_end_pos[0] + 1, car.end_pos[0] + 1):
+                    # check if there's other car between start_pos and old_start_pos-1
+                    for i in range(car.start_pos[0], old_start_pos[0]):
                         if self.board[i][car.end_pos[1]] is not '.':  # car.end_pos[1] is constant
                             end_hit_other_car = True;
                             break;
 
                 elif direction is Direction.DOWN:
-                    # check if there's other car between start_pos and old_start_pos-1
-                    for i in range(car.start_pos[0], old_start_pos[0]):
+                    # check if there's other car between old_end_pos+1 and end_pos
+                    for i in range(old_end_pos[0] + 1, car.end_pos[0] + 1):
                         if self.board[i][car.start_pos[1]] is not '.':  # car.start_pos[1] is constant
                             start_hit_other_car = True;
 
-                if start_hit_border or start_hit_other_car or end_hit_border or end_hit_other_car:
+                if start_hit_other_car or end_hit_other_car:
                     car.move_ifpossible(direction, -steps);  # we know it's possible. we moved already
                     return 0;
 

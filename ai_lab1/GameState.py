@@ -1,5 +1,6 @@
 import Car
 from Direction import Direction
+import copy
 
 """""
 takes vector with size dimX * dimY
@@ -17,14 +18,19 @@ class GameState:
     dimX = 6;
     dimY = 6;
 
-    def __init__(self, line=None):
-        if line is not None:
-            arr1dim = list(line);
-        else:
+    def __init__(self, board=None, line=None, father=None):
+        if board is None and line is None:
             arr1dim = ['.' for x in range(0, GameState.dimX * GameState.dimY)];  # default board
-        self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
+            self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
+        elif board is None:  # but line is not..
+            arr1dim = list(line);
+            self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
+        else:
+            self.board = board;
 
-        self.cars = self.findCarsInBoard();
+        self.cars = self.findCarsInBoard();  # list of Cars
+        self.sons = [];  # list of sons (GameState objects)
+        self.father = father;
 
     # find all cars in self.board and returns array of Cars
     def findCarsInBoard(self):
@@ -139,9 +145,47 @@ class GameState:
                     for i in range(car.start_pos[0], car.start_pos[0] + car.length):
                         self.board[i][car.start_pos[1]] = car.name;
 
+                break;  # cars has unique name
 
+    def createAllPossibleSons(self):
+        # needs to do all possible car moves
+        sons = [];
+        for car in self.cars:
+            # do all possible moves with car
+            if car.isVertical:
+                # all possible UP moves
+                for steps in range(1, car.start_pos[0] + 1):  # car.start_pos is pointing UP
+                    new_son = copy.deepcopy(self);  # deep copy recursively
+                    ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.UP, steps);
+                    if ispossible is 0:
+                        break;
+                    sons.append(new_son);
 
+                # all possible DOWN moves
+                for steps in range(1, GameState.dimY-1 - car.end_pos[0] + 1):
+                    new_son = copy.deepcopy(self);  # deep copy recursively
+                    ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.DOWN, steps);
+                    if ispossible is 0:
+                        break;
+                    sons.append(new_son);
+            else:
+                # all possible LEFT moves
+                for steps in range(1, car.start_pos[0] + 1):
+                    new_son = copy.deepcopy(self);  # deep copy recursively
+                    ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.LEFT, steps);
+                    if ispossible is 0:
+                        break;
+                    sons.append(new_son);
 
+                # all possible RIGHT moves
+                for steps in range(1, GameState.dimX-1 - car.end_pos[1] + 1):
+                    new_son = copy.deepcopy(self);  # deep copy recursively
+                    ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.RIGHT, steps);
+                    if ispossible is 0:
+                        break;
+                    sons.append(new_son);
+
+        return sons;
 
     def setBoard(self, line):
         arr1dim = list(line);

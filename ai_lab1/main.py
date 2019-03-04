@@ -1,7 +1,5 @@
 import sys
 import GameState
-from Direction import Direction
-import heapq
 
 def main():
     path_to_rh = sys.argv[1];  # pathname for rh.txt
@@ -16,15 +14,7 @@ def main():
     print("DEBUG: first line:", initstate_line);
     initGameState = GameState.GameState(None, initstate_line);
 
-    print("Board:");
-    initGameState.printBoard();
-    print();
 
-    sons = initGameState.createAllPossibleSons();
-    for i in range(len(sons)):
-        print("i=",i,"'s board:", sep='');
-        sons[i].printBoard();
-        print();
 
     """ Game Loop
     while True:

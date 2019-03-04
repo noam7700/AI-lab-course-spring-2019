@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="426f9590-8f80-49c3-9611-4db8fa35203a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ai_lab1/BinaryHeap.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ai_lab1/Heap.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ai_lab1/GameState.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/GameState.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ai_lab1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/main.py" afterDir="false" />
@@ -14,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+            <state relative-caret-position="17">
+              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#612#1687#1" />
@@ -27,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ai_lab1/GameState.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+              <caret line="209" lean-forward="true" selection-start-line="209" selection-end-line="209" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#755#2981#0" />
@@ -40,6 +42,24 @@
                 <element signature="e#3717#3818#0" />
                 <element signature="e#777#940#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ai_lab1/BinaryHeap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ai_lab1/Heap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
@@ -94,8 +114,10 @@
         <option value="$PROJECT_DIR$/ai_lab1/__init__.py" />
         <option value="$PROJECT_DIR$/ai_lab1/Direction.py" />
         <option value="$PROJECT_DIR$/ai_lab1/Car.py" />
-        <option value="$PROJECT_DIR$/ai_lab1/GameState.py" />
         <option value="$PROJECT_DIR$/ai_lab1/rh_input.txt" />
+        <option value="$PROJECT_DIR$/ai_lab1/GameState.py" />
+        <option value="$PROJECT_DIR$/ai_lab1/Heap.py" />
+        <option value="$PROJECT_DIR$/ai_lab1/BinaryHeap.py" />
         <option value="$PROJECT_DIR$/ai_lab1/main.py" />
       </list>
     </option>
@@ -166,14 +188,14 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -209,21 +231,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#612#1687#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/GameState.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+          <caret line="209" lean-forward="true" selection-start-line="209" selection-end-line="209" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#755#2981#0" />
@@ -231,6 +242,31 @@
             <element signature="e#7219#9058#0" />
             <element signature="e#3717#3818#0" />
             <element signature="e#777#940#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/Heap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/BinaryHeap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#612#1687#1" />
           </folding>
         </state>
       </provider>

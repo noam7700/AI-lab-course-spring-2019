@@ -18,7 +18,7 @@ class GameState:
     dimX = 6;
     dimY = 6;
 
-    def __init__(self, board=None, line=None, father=None):
+    def __init__(self, board=None, line=None, father=None, createdMove=None):
         if board is None and line is None:
             arr1dim = ['.' for x in range(0, GameState.dimX * GameState.dimY)];  # default board
             self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
@@ -27,6 +27,9 @@ class GameState:
             self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
         else:
             self.board = board;
+
+        self.father = father;
+        self.createdMove = createdMove;
 
         self.cars = self.findCarsInBoard();  # list of Cars
         self.sons = [];  # list of sons (GameState objects)
@@ -159,6 +162,8 @@ class GameState:
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.UP, steps);
                     if ispossible is 0:
                         break;
+                    new_son.father = self;
+                    new_son.createdMove = car.name + 'U' + str(steps);
                     sons.append(new_son);
 
                 # all possible DOWN moves
@@ -167,6 +172,8 @@ class GameState:
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.DOWN, steps);
                     if ispossible is 0:
                         break;
+                    new_son.father = self;
+                    new_son.createdMove = car.name + 'D' + str(steps);
                     sons.append(new_son);
             else:
                 # all possible LEFT moves
@@ -175,6 +182,8 @@ class GameState:
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.LEFT, steps);
                     if ispossible is 0:
                         break;
+                    new_son.father = self;
+                    new_son.createdMove = car.name + 'L' + str(steps);
                     sons.append(new_son);
 
                 # all possible RIGHT moves
@@ -183,6 +192,8 @@ class GameState:
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.RIGHT, steps);
                     if ispossible is 0:
                         break;
+                    new_son.father = self;
+                    new_son.createdMove = car.name + 'R' + str(steps);
                     sons.append(new_son);
 
         return sons;
@@ -196,3 +207,17 @@ class GameState:
             for j in range(0, GameState.dimY):
                 print(self.board[i][j], end='');
             print();  # new line
+
+    def __eq__(self, other):
+        if isinstance(other, GameState):
+            return self.board == other.board;
+        else:
+            return False;
+
+    # used for Best-First-Search
+    def value(self):
+        # f = g + h, when g is amount of work done, and h is optimistic
+        return 0;
+
+
+

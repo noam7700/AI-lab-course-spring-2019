@@ -1,5 +1,7 @@
 import sys
 import GameState
+from BinaryHeap import BinaryHeap
+import random
 
 def main():
     path_to_rh = sys.argv[1];  # pathname for rh.txt
@@ -14,6 +16,11 @@ def main():
     print("DEBUG: first line:", initstate_line);
     initGameState = GameState.GameState(None, initstate_line);
 
+    myheap = BinaryHeap();
+    for i in range(12):
+        myheap.insert(random.randint(0, 30));
+    for i in range(12):
+        print(myheap.extract_min());
 
 
     """ Game Loop

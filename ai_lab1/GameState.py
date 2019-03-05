@@ -10,6 +10,10 @@ def vector_to_matrix(vector, dimX, dimY):
     mat = [vector[i:i+dimX] for i in range(0, dimX * dimY, dimX)];
     return mat;
 
+def matrix_to_vector(matrix):
+    # uses operator '+' on lists, so it concats them. (second arg so it wouldn't try to add 0 at first)
+    vector = sum(matrix, []);
+    return vector;
 
 """""
 GameState object holds some state of our game
@@ -219,5 +223,8 @@ class GameState:
         # f = g + h, when g is amount of work done, and h is optimistic
         return 0;
 
-
+    def unique_id_str(self):
+        # just return str of the board
+        arr_str = matrix_to_vector(self.board);
+        return ''.join(arr_str);  # char array to string
 

@@ -23,6 +23,7 @@ class GameState:
     dimY = 6;
 
     def __init__(self, board=None, line=None, father=None, createdMove=None):
+
         if board is None and line is None:
             arr1dim = ['.' for x in range(0, GameState.dimX * GameState.dimY)];  # default board
             self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
@@ -31,6 +32,8 @@ class GameState:
             self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
         else:
             self.board = board;
+
+        self.key = self.unique_id_str()
 
         self.father = father;
         self.createdMove = createdMove;
@@ -154,6 +157,12 @@ class GameState:
 
                 break;  # cars has unique name
 
+    def findCar_byName(self, carName):
+        for car in self.cars:
+            if car.name == carName:
+                return car;
+        return None;
+
     def createAllPossibleSons(self):
         # needs to do all possible car moves
         sons = [];
@@ -162,22 +171,26 @@ class GameState:
             if car.isVertical:
                 # all possible UP moves
                 for steps in range(1, car.start_pos[0] + 1):  # car.start_pos is pointing UP
+                    # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = copy.deepcopy(self);  # deep copy recursively
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.UP, steps);
                     if ispossible is 0:
                         break;
                     new_son.father = self;
                     new_son.createdMove = car.name + 'U' + str(steps);
+                    new_son.key = new_son.unique_id_str();
                     sons.append(new_son);
 
                 # all possible DOWN moves
                 for steps in range(1, GameState.dimY-1 - car.end_pos[0] + 1):
+                    # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = copy.deepcopy(self);  # deep copy recursively
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.DOWN, steps);
                     if ispossible is 0:
                         break;
                     new_son.father = self;
                     new_son.createdMove = car.name + 'D' + str(steps);
+                    new_son.key = new_son.unique_id_str();
                     sons.append(new_son);
             else:
                 # all possible LEFT moves
@@ -188,6 +201,7 @@ class GameState:
                         break;
                     new_son.father = self;
                     new_son.createdMove = car.name + 'L' + str(steps);
+                    new_son.key = new_son.unique_id_str();
                     sons.append(new_son);
 
                 # all possible RIGHT moves
@@ -198,9 +212,10 @@ class GameState:
                         break;
                     new_son.father = self;
                     new_son.createdMove = car.name + 'R' + str(steps);
+                    new_son.key = new_son.unique_id_str();
                     sons.append(new_son);
 
-        return sons;
+        self.sons = sons;
 
     def setBoard(self, line):
         arr1dim = list(line);
@@ -228,3 +243,5 @@ class GameState:
         arr_str = matrix_to_vector(self.board);
         return ''.join(arr_str);  # char array to string
 
+    def __lt__(self, other):
+        return True

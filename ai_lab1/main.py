@@ -1,7 +1,25 @@
 import sys
 import GameState
+from AStar import a_star
 from BinaryHeap import BinaryHeap
 import random
+
+
+def heuristic(game_state):
+    x_car = game_state.findCar_byName('X')
+    x_row = x_car.end_pos[0]
+
+    # if winning state heuristic should be 0
+    if x_car.end_pos[1] is GameState.GameState.dimX - 1:
+        return 0  # we won!
+
+    num_of_blocking_cars = 0
+    for j in range(x_car.end_pos[1]+1, GameState.GameState.dimX):
+        if game_state.board[x_row][j] is not '.':
+            num_of_blocking_cars += 1
+
+    return num_of_blocking_cars + 1
+
 
 def main():
     path_to_rh = sys.argv[1];  # pathname for rh.txt
@@ -16,12 +34,7 @@ def main():
     print("DEBUG: first line:", initstate_line);
     initGameState = GameState.GameState(None, initstate_line);
 
-    myheap = BinaryHeap();
-    for i in range(12):
-        myheap.insert(random.randint(0, 30));
-    for i in range(12):
-        print(myheap.extract_min());
-
+    solution = a_star(initGameState, heuristic)
 
     """ Game Loop
     while True:

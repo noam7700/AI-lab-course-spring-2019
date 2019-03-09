@@ -1,9 +1,8 @@
 import sys
 import GameState
-from AStar import a_star
+import AStar
 from BinaryHeap import BinaryHeap
 import random
-
 
 def heuristic(game_state):
     x_row = 2
@@ -28,19 +27,26 @@ def heuristic(game_state):
 
 
 def main():
-    path_to_rh = sys.argv[1];  # pathname for rh.txt
+    path_to_rh = sys.argv[1]  # pathname for rh.txt
     max_time_solution = sys.argv[2]  # if exceeds max_time_solution mark as failed
 
     # used to read all problems
-    rh_file = open(path_to_rh, 'r');
+    rh_file = open(path_to_rh, 'r')
 
     # read first problem
-    initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
-    rh_file.readline(1);  # read '\n'
-    print("DEBUG: first line:", initstate_line);
-    initGameState = GameState.GameState(None, None, initstate_line);
+    for i in range(3):
+        initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
+        rh_file.readline(1);  # read '\n'
 
-    solution = a_star(initGameState, heuristic)
+    print("DEBUG: first line:", initstate_line)
+    initGameState = GameState.GameState(None, None, initstate_line)
+
+    final_state = AStar.a_star(initGameState, heuristic)
+    solution_path = AStar.restore_solution_path(final_state)
+    for i in range(len(solution_path)):
+        solution_path[i].printBoard()
+        print()
+
 
     """ Game Loop
     while True:

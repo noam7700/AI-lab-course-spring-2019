@@ -43,11 +43,27 @@ def a_star(start_node, f_func):
         best_node.createAllPossibleSons()
         for son in best_node.sons:
             if son.key not in closed_list:
-                print("f is good")
+                # print("f is good")
                 curr_son_score = f_func(son)
                 open_list[son.key] = (curr_son_score, son)
+
     print("There is no solution")
     return None
+
+def restore_solution_path(final_state):
+    if final_state is None:
+        return None
+
+    solution_path = []
+    curr_state = final_state
+    # add solution_path from final_state to init_state
+    while curr_state is not None:
+        solution_path.append(curr_state)
+        curr_state = curr_state.father
+
+    solution_path.reverse()  # reverse it to be in order (from first to last)
+    return solution_path
+
 
 
 # s_node = Node("A", 3)

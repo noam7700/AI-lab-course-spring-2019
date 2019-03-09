@@ -1,6 +1,314 @@
 DEBUG: first line: AA...OP..Q.OPXXQ.OP..Q..B...CCB.RRR.
-A Star algorithm: start_node - <GameState.GameState object at 0x000000EECB9F1588>, graph - 
-         3481973 function calls (2872556 primitive calls) in 4.765 seconds
+A Star algorithm: start_node - <GameState.GameState object at 0x0000009C972716A0>, graph - 
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+f is good
+The solution was found: PAA...P.....P...XXB..Q.OBCCQ.ORRRQ.O
+         24438 function calls (24365 primitive calls) in 0.708 seconds
 
    Ordered by: standard name
 
@@ -12,7 +320,7 @@ A Star algorithm: start_node - <GameState.GameState object at 0x000000EECB9F1588
        18    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:151(__exit__)
        18    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:157(_get_module_lock)
        18    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:176(cb)
-     24/5    0.000    0.000    0.403    0.081 <frozen importlib._bootstrap>:211(_call_with_frames_removed)
+     24/5    0.000    0.000    0.490    0.098 <frozen importlib._bootstrap>:211(_call_with_frames_removed)
       166    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:222(_verbose_message)
         5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:232(_requires_builtin_wrapper)
        15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:307(__init__)
@@ -26,9 +334,9 @@ A Star algorithm: start_node - <GameState.GameState object at 0x000000EECB9F1588
        15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:424(has_location)
         5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:433(spec_from_loader)
        15    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:504(_init_module_attrs)
-       15    0.000    0.000    0.327    0.022 <frozen importlib._bootstrap>:576(module_from_spec)
+       15    0.000    0.000    0.317    0.021 <frozen importlib._bootstrap>:576(module_from_spec)
        18    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:58(__init__)
-     15/4    0.000    0.000    0.537    0.134 <frozen importlib._bootstrap>:663(_load_unlocked)
+     15/4    0.000    0.000    0.582    0.145 <frozen importlib._bootstrap>:663(_load_unlocked)
        16    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:719(find_spec)
         5    0.000    0.000    0.029    0.006 <frozen importlib._bootstrap>:740(create_module)
         5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:748(exec_module)
@@ -37,21 +345,21 @@ A Star algorithm: start_node - <GameState.GameState object at 0x000000EECB9F1588
        11    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:792(find_spec)
        38    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:855(__enter__)
        38    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:859(__exit__)
-       16    0.000    0.000    0.042    0.003 <frozen importlib._bootstrap>:882(_find_spec)
-     18/4    0.000    0.000    0.560    0.140 <frozen importlib._bootstrap>:948(_find_and_load_unlocked)
-     18/4    0.000    0.000    0.560    0.140 <frozen importlib._bootstrap>:978(_find_and_load)
+       16    0.000    0.000    0.027    0.002 <frozen importlib._bootstrap>:882(_find_spec)
+     18/4    0.000    0.000    0.585    0.146 <frozen importlib._bootstrap>:948(_find_and_load_unlocked)
+     18/4    0.000    0.000    0.585    0.146 <frozen importlib._bootstrap>:978(_find_and_load)
         1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1029(__init__)
-        1    0.000    0.000    0.297    0.297 <frozen importlib._bootstrap_external>:1040(create_module)
+        1    0.000    0.000    0.287    0.287 <frozen importlib._bootstrap_external>:1040(create_module)
         1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1048(exec_module)
-        1    0.001    0.001    0.018    0.018 <frozen importlib._bootstrap_external>:105(_write_atomic)
+        1    0.001    0.001    0.008    0.008 <frozen importlib._bootstrap_external>:105(_write_atomic)
        36    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1203(_path_importer_cache)
-       11    0.000    0.000    0.041    0.004 <frozen importlib._bootstrap_external>:1240(_get_spec)
-       11    0.000    0.000    0.041    0.004 <frozen importlib._bootstrap_external>:1272(find_spec)
+       11    0.000    0.000    0.026    0.002 <frozen importlib._bootstrap_external>:1240(_get_spec)
+       11    0.000    0.000    0.026    0.002 <frozen importlib._bootstrap_external>:1272(find_spec)
        10    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1351(_get_spec)
-       30    0.001    0.000    0.040    0.001 <frozen importlib._bootstrap_external>:1356(find_spec)
+       30    0.001    0.000    0.025    0.001 <frozen importlib._bootstrap_external>:1356(find_spec)
        18    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:271(cache_from_source)
        30    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:36(_relax_case)
-       10    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:369(_get_cached)
+       10    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:369(_get_cached)
         1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:381(_calc_mode)
         9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:401(_check_name_wrapper)
         9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:438(_classify_pyc)
@@ -59,63 +367,56 @@ A Star algorithm: start_node - <GameState.GameState object at 0x000000EECB9F1588
         9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:471(_validate_timestamp_pyc)
        26    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:51(_r_long)
         8    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:523(_compile_bytecode)
-        1    0.000    0.000    0.023    0.023 <frozen importlib._bootstrap_external>:536(_code_to_timestamp_pyc)
+        1    0.000    0.000    0.001    0.001 <frozen importlib._bootstrap_external>:536(_code_to_timestamp_pyc)
       147    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:56(_path_join)
        10    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:574(spec_from_file_location)
       147    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:58(<listcomp>)
        19    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:62(_path_split)
         9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:719(create_module)
-      9/4    0.000    0.000    0.536    0.134 <frozen importlib._bootstrap_external>:722(exec_module)
-       51    0.000    0.000    0.040    0.001 <frozen importlib._bootstrap_external>:74(_path_stat)
-        1    0.000    0.000    0.007    0.007 <frozen importlib._bootstrap_external>:785(source_to_code)
-        9    0.000    0.000    0.165    0.018 <frozen importlib._bootstrap_external>:793(get_code)
-       11    0.000    0.000    0.033    0.003 <frozen importlib._bootstrap_external>:84(_path_is_mode_type)
+      9/4    0.000    0.000    0.581    0.145 <frozen importlib._bootstrap_external>:722(exec_module)
+       51    0.000    0.000    0.025    0.000 <frozen importlib._bootstrap_external>:74(_path_stat)
+        1    0.000    0.000    0.009    0.009 <frozen importlib._bootstrap_external>:785(source_to_code)
+        9    0.000    0.000    0.138    0.015 <frozen importlib._bootstrap_external>:793(get_code)
+       11    0.000    0.000    0.018    0.002 <frozen importlib._bootstrap_external>:84(_path_is_mode_type)
         9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:884(__init__)
         9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:909(get_filename)
-       10    0.003    0.000    0.113    0.011 <frozen importlib._bootstrap_external>:914(get_data)
-       10    0.000    0.000    0.032    0.003 <frozen importlib._bootstrap_external>:93(_path_isfile)
+       10    0.024    0.002    0.115    0.012 <frozen importlib._bootstrap_external>:914(get_data)
+       10    0.000    0.000    0.018    0.002 <frozen importlib._bootstrap_external>:93(_path_isfile)
         9    0.000    0.000    0.002    0.000 <frozen importlib._bootstrap_external>:951(path_stats)
-        1    0.000    0.000    0.018    0.018 <frozen importlib._bootstrap_external>:956(_cache_bytecode)
-        1    0.000    0.000    0.018    0.018 <frozen importlib._bootstrap_external>:961(set_data)
+        1    0.000    0.000    0.009    0.009 <frozen importlib._bootstrap_external>:956(_cache_bytecode)
+        1    0.000    0.000    0.008    0.008 <frozen importlib._bootstrap_external>:961(set_data)
         1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:98(_path_isdir)
         1    0.000    0.000    0.000    0.000 AStar.py:25(<module>)
-        1    0.015    0.015    4.186    4.186 AStar.py:25(a_star)
+        1    0.016    0.016    0.115    0.115 AStar.py:25(a_star)
         1    0.000    0.000    0.000    0.000 BinaryHeap.py:11(<module>)
         1    0.000    0.000    0.000    0.000 BinaryHeap.py:13(BinaryHeap)
         1    0.000    0.000    0.003    0.003 Car.py:1(<module>)
-      157    0.001    0.000    0.001    0.000 Car.py:13(move_ifpossible)
+     1001    0.003    0.000    0.003    0.000 Car.py:24(move_ifpossible)
         1    0.000    0.000    0.000    0.000 Car.py:3(Car)
-        8    0.000    0.000    0.000    0.000 Car.py:5(__init__)
+     5368    0.020    0.000    0.020    0.000 Car.py:6(__init__)
         1    0.000    0.000    0.001    0.001 Direction.py:1(<module>)
         1    0.000    0.000    0.000    0.000 Direction.py:4(Direction)
-        1    0.000    0.000    0.039    0.039 GameState.py:1(<module>)
+        1    0.000    0.000    0.057    0.057 GameState.py:1(<module>)
         1    0.000    0.000    0.000    0.000 GameState.py:10(<listcomp>)
-       56    0.000    0.000    0.001    0.000 GameState.py:13(matrix_to_vector)
-        6    0.014    0.002    4.170    0.695 GameState.py:166(createAllPossibleSons)
+      670    0.011    0.000    0.015    0.000 GameState.py:104(moveCar_byName_ifpossible)
+      340    0.000    0.000    0.002    0.000 GameState.py:13(matrix_to_vector)
+       34    0.007    0.000    0.082    0.002 GameState.py:179(createAllPossibleSons)
         1    0.000    0.000    0.000    0.000 GameState.py:21(GameState)
-      119    0.000    0.000    0.000    0.000 GameState.py:232(__eq__)
-       56    0.000    0.000    0.001    0.000 GameState.py:243(unique_id_str)
-      119    0.000    0.000    0.000    0.000 GameState.py:248(__lt__)
-        1    0.000    0.000    0.000    0.000 GameState.py:25(__init__)
-        1    0.000    0.000    0.000    0.000 GameState.py:46(findCarsInBoard)
+     2664    0.004    0.000    0.005    0.000 GameState.py:245(__eq__)
+      671    0.006    0.000    0.057    0.000 GameState.py:25(__init__)
+      340    0.001    0.000    0.003    0.000 GameState.py:256(unique_id_str)
+     2664    0.001    0.000    0.001    0.000 GameState.py:261(__lt__)
+      670    0.009    0.000    0.021    0.000 GameState.py:29(<listcomp>)
+      670    0.010    0.000    0.030    0.000 GameState.py:37(<listcomp>)
+        1    0.000    0.000    0.000    0.000 GameState.py:59(findCarsInBoard)
         1    0.000    0.000    0.000    0.000 GameState.py:9(vector_to_matrix)
-      106    0.003    0.000    0.004    0.000 GameState.py:91(moveCar_byName_ifpossible)
         1    0.000    0.000    0.000    0.000 _bootlocale.py:11(getpreferredencoding)
         1    0.000    0.000    0.000    0.000 bisect.py:1(<module>)
         1    0.000    0.000    0.000    0.000 codecs.py:260(__init__)
         1    0.000    0.000    0.000    0.000 codecs.py:281(getstate)
-499428/107    1.914    0.000    4.151    0.039 copy.py:132(deepcopy)
-   385681    0.101    0.000    0.101    0.000 copy.py:190(_deepcopy_atomic)
-64694/1029    0.430    0.000    4.106    0.004 copy.py:210(_deepcopy_list)
-23286/107    0.319    0.000    4.145    0.039 copy.py:236(_deepcopy_dict)
-   111251    0.192    0.000    0.259    0.000 copy.py:252(_keep_alive)
-23286/107    0.258    0.000    4.149    0.039 copy.py:268(_reconstruct)
-    46572    0.039    0.000    0.152    0.000 copy.py:273(<genexpr>)
         1    0.000    0.000    0.002    0.002 copy.py:49(<module>)
         1    0.000    0.000    0.000    0.000 copy.py:55(Error)
-    23286    0.034    0.000    0.045    0.000 copyreg.py:87(__newobj__)
-        2    0.000    0.000    0.000    0.000 copyreg.py:96(_slotnames)
-        6    0.000    0.000    0.000    0.000 cp1255.py:18(encode)
+      622    0.001    0.000    0.002    0.000 cp1255.py:18(encode)
         1    0.000    0.000    0.000    0.000 cp1255.py:22(decode)
         1    0.000    0.000    0.000    0.000 enum.py:124(__prepare__)
         1    0.000    0.000    0.000    0.000 enum.py:134(__new__)
@@ -132,19 +433,19 @@ A Star algorithm: start_node - <GameState.GameState object at 0x000000EECB9F1588
         1    0.000    0.000    0.000    0.000 enum.py:63(__init__)
         8    0.000    0.000    0.000    0.000 enum.py:69(__setitem__)
        14    0.000    0.000    0.030    0.002 hashlib.py:116(__get_openssl_constructor)
-        1    0.000    0.000    0.328    0.328 hashlib.py:54(<module>)
+        1    0.000    0.000    0.318    0.318 hashlib.py:54(<module>)
         8    0.000    0.000    0.029    0.004 hashlib.py:73(__get_builtin_constructor)
-        1    0.000    0.000    4.765    4.765 main.py:1(<module>)
-        1    0.000    0.000    4.205    4.205 main.py:30(main)
-       46    0.000    0.000    0.000    0.000 main.py:8(heuristic)
-        1    0.008    0.008    0.357    0.357 random.py:38(<module>)
+        1    0.000    0.000    0.720    0.720 main.py:1(<module>)
+        1    0.000    0.000    0.134    0.134 main.py:30(main)
+      308    0.002    0.000    0.002    0.000 main.py:8(heuristic)
+        1    0.069    0.069    0.423    0.423 random.py:38(<module>)
         1    0.000    0.000    0.000    0.000 random.py:669(SystemRandom)
         1    0.000    0.000    0.000    0.000 random.py:72(Random)
         1    0.000    0.000    0.000    0.000 random.py:88(__init__)
         1    0.000    0.000    0.000    0.000 random.py:97(seed)
-    23291    0.011    0.000    0.011    0.000 {built-in method __new__ of type object at 0x00007FFEA8A09D30}
+        5    0.000    0.000    0.000    0.000 {built-in method __new__ of type object at 0x00007FFEA8A09D30}
         1    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_decode}
-        6    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_encode}
+      622    0.001    0.000    0.001    0.000 {built-in method _codecs.charmap_encode}
         1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_md5}
         1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha1}
         1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha224}
@@ -154,7 +455,7 @@ A Star algorithm: start_node - <GameState.GameState object at 0x000000EECB9F1588
         8    0.000    0.000    0.000    0.000 {built-in method _imp._fix_co_filename}
        74    0.000    0.000    0.000    0.000 {built-in method _imp.acquire_lock}
         5    0.029    0.006    0.029    0.006 {built-in method _imp.create_builtin}
-        1    0.297    0.297    0.297    0.297 {built-in method _imp.create_dynamic}
+        1    0.286    0.286    0.286    0.286 {built-in method _imp.create_dynamic}
         5    0.000    0.000    0.000    0.000 {built-in method _imp.exec_builtin}
         1    0.000    0.000    0.000    0.000 {built-in method _imp.exec_dynamic}
        16    0.000    0.000    0.000    0.000 {built-in method _imp.is_builtin}
@@ -166,47 +467,45 @@ A Star algorithm: start_node - <GameState.GameState object at 0x000000EECB9F1588
         7    0.000    0.000    0.001    0.000 {built-in method builtins.__build_class__}
       2/1    0.000    0.000    0.002    0.002 {built-in method builtins.__import__}
        15    0.000    0.000    0.000    0.000 {built-in method builtins.any}
-        1    0.007    0.007    0.007    0.007 {built-in method builtins.compile}
-     10/1    0.000    0.000    4.765    4.765 {built-in method builtins.exec}
-    46682    0.026    0.000    0.026    0.000 {built-in method builtins.getattr}
+        1    0.009    0.009    0.009    0.009 {built-in method builtins.compile}
+     10/1    0.000    0.000    0.720    0.720 {built-in method builtins.exec}
+      110    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
        14    0.000    0.000    0.000    0.000 {built-in method builtins.globals}
-    23385    0.012    0.000    0.012    0.000 {built-in method builtins.hasattr}
-   722053    0.200    0.000    0.200    0.000 {built-in method builtins.id}
-    46787    0.023    0.000    0.023    0.000 {built-in method builtins.isinstance}
-    23290    0.010    0.000    0.010    0.000 {built-in method builtins.issubclass}
-       34    0.000    0.000    0.000    0.000 {built-in method builtins.len}
-        6    0.000    0.000    0.001    0.000 {built-in method builtins.min}
-        2    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+      103    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.id}
+     2766    0.001    0.000    0.001    0.000 {built-in method builtins.isinstance}
+        4    0.000    0.000    0.000    0.000 {built-in method builtins.issubclass}
+      704    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+       35    0.006    0.000    0.011    0.000 {built-in method builtins.min}
+      310    0.002    0.000    0.004    0.000 {built-in method builtins.print}
         5    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
-       56    0.000    0.000    0.000    0.000 {built-in method builtins.sum}
+      340    0.001    0.000    0.001    0.000 {built-in method builtins.sum}
        26    0.000    0.000    0.000    0.000 {built-in method from_bytes}
         1    0.000    0.000    0.000    0.000 {built-in method io.open}
-        1    0.023    0.023    0.023    0.023 {built-in method marshal.dumps}
+        1    0.001    0.001    0.001    0.001 {built-in method marshal.dumps}
         8    0.001    0.000    0.001    0.000 {built-in method marshal.loads}
         1    0.010    0.010    0.010    0.010 {built-in method math.exp}
         2    0.000    0.000    0.000    0.000 {built-in method math.log}
-        1    0.003    0.003    0.003    0.003 {built-in method math.sqrt}
+        1    0.020    0.020    0.020    0.020 {built-in method math.sqrt}
        28    0.000    0.000    0.000    0.000 {built-in method nt.fspath}
        11    0.000    0.000    0.000    0.000 {built-in method nt.getcwd}
-        1    0.007    0.007    0.007    0.007 {built-in method nt.open}
+        1    0.002    0.002    0.002    0.002 {built-in method nt.open}
         1    0.006    0.006    0.006    0.006 {built-in method nt.replace}
-       51    0.040    0.001    0.040    0.001 {built-in method nt.stat}
-        1    0.000    0.000    0.000    0.000 {function Random.seed at 0x000000EECB9F2048}
-    23286    0.045    0.000    0.045    0.000 {method '__reduce_ex__' of 'object' objects}
-   325956    0.103    0.000    0.103    0.000 {method 'append' of 'list' objects}
+       51    0.025    0.000    0.025    0.000 {built-in method nt.stat}
+        1    0.000    0.000    0.000    0.000 {function Random.seed at 0x0000009C97274048}
+      360    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
        11    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
         4    0.000    0.000    0.000    0.000 {method 'extend' of 'bytearray' objects}
-        2    0.004    0.002    0.004    0.002 {method 'format' of 'str' objects}
-  1019708    0.385    0.000    0.385    0.000 {method 'get' of 'dict' objects}
-       11    0.000    0.000    0.000    0.000 {method 'get' of 'mappingproxy' objects}
+        2    0.000    0.000    0.000    0.000 {method 'format' of 'str' objects}
+       47    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+        9    0.000    0.000    0.000    0.000 {method 'get' of 'mappingproxy' objects}
         4    0.000    0.000    0.000    0.000 {method 'items' of 'collections.OrderedDict' objects}
-    23286    0.019    0.000    0.019    0.000 {method 'items' of 'dict' objects}
         3    0.000    0.000    0.000    0.000 {method 'items' of 'mappingproxy' objects}
-      221    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+      505    0.001    0.000    0.001    0.000 {method 'join' of 'str' objects}
         1    0.000    0.000    0.000    0.000 {method 'mro' of 'type' objects}
-        8    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
-       10    0.110    0.011    0.110    0.011 {method 'read' of '_io.FileIO' objects}
+       36    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+       10    0.091    0.009    0.091    0.009 {method 'read' of '_io.FileIO' objects}
         2    0.018    0.009    0.018    0.009 {method 'readline' of '_io.TextIOWrapper' objects}
        81    0.000    0.000    0.000    0.000 {method 'rpartition' of 'str' objects}
        19    0.000    0.000    0.000    0.000 {method 'rsplit' of 'str' objects}
@@ -214,7 +513,6 @@ A Star algorithm: start_node - <GameState.GameState object at 0x000000EECB9F1588
         1    0.000    0.000    0.000    0.000 {method 'setdefault' of 'dict' objects}
         3    0.000    0.000    0.000    0.000 {method 'to_bytes' of 'int' objects}
         1    0.000    0.000    0.000    0.000 {method 'union' of 'set' objects}
-    23280    0.031    0.000    0.031    0.000 {method 'update' of 'dict' objects}
         1    0.000    0.000    0.000    0.000 {method 'write' of '_io.FileIO' objects}
 
 

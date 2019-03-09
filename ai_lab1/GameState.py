@@ -22,25 +22,38 @@ class GameState:
     dimX = 6;
     dimY = 6;
 
-    def __init__(self, board=None, line=None, father=None, createdMove=None):
+    def __init__(self, other_gamestate=None, board=None, line=None, father=None, createdMove=None):
 
-        if board is None and line is None:
-            arr1dim = ['.' for x in range(0, GameState.dimX * GameState.dimY)];  # default board
-            self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
-        elif board is None:  # but line is not..
-            arr1dim = list(line);
-            self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
+        if other_gamestate is not None:
+            # copy boards
+            self.board = [[other_gamestate.board[i][j] for j in range(GameState.dimX)] for i in range(GameState.dimY)];
+
+            self.key = other_gamestate.key;
+            self.createdMove = createdMove;
+            self.father = father;
+            self.sons = [];
+
+            # copy 'ctor all cars
+            self.cars = [Car.Car(other_gamestate.cars[i]) for i in range(len(other_gamestate.cars))]
+
         else:
-            self.board = board;
+            if board is None and line is None:
+                arr1dim = ['.' for x in range(0, GameState.dimX * GameState.dimY)];  # default board
+                self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
+            elif board is None:  # but line is not..
+                arr1dim = list(line);
+                self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY);
+            else:
+                self.board = board;
 
-        self.key = self.unique_id_str()
+            self.key = self.unique_id_str()
 
-        self.father = father;
-        self.createdMove = createdMove;
+            self.father = father;
+            self.createdMove = createdMove;
 
-        self.cars = self.findCarsInBoard();  # list of Cars
-        self.sons = [];  # list of sons (GameState objects)
-        self.father = father;
+            self.cars = self.findCarsInBoard();  # list of Cars
+            self.sons = [];  # list of sons (GameState objects)
+            self.father = father;
 
     # find all cars in self.board and returns array of Cars
     def findCarsInBoard(self):
@@ -61,7 +74,7 @@ class GameState:
                     if (j is GameState.dimX - 1) or (self.board[i][j+1] != self.board[i][j]):
                         searching_start_position = True;  # found one. next pixel we'll look for another
                         end_position = [i, j];
-                        cars.append(Car.Car(self.board[i][j], end_position[1] - start_position[1] + 1, start_position, end_position, False));
+                        cars.append(Car.Car(None, self.board[i][j], end_position[1] - start_position[1] + 1, start_position, end_position, False));
 
                 j += 1;
             i += 1;
@@ -81,7 +94,7 @@ class GameState:
                     if (i is GameState.dimY - 1) or (self.board[i+1][j] != self.board[i][j]):
                         searching_start_position = True;  # found one. next pixel we'll look for another
                         end_position = [i, j];
-                        cars.append(Car.Car(self.board[i][j], end_position[0] - start_position[0] + 1, start_position, end_position, True));
+                        cars.append(Car.Car(None, self.board[i][j], end_position[0] - start_position[0] + 1, start_position, end_position, True));
                 i += 1;
             j += 1;
 
@@ -172,7 +185,7 @@ class GameState:
                 # all possible UP moves
                 for steps in range(1, car.start_pos[0] + 1):  # car.start_pos is pointing UP
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
-                    new_son = copy.deepcopy(self);  # deep copy recursively
+                    new_son = GameState(self);  # stupid copy 'ctor
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.UP, steps);
                     if ispossible is 0:
                         break;
@@ -184,7 +197,7 @@ class GameState:
                 # all possible DOWN moves
                 for steps in range(1, GameState.dimY-1 - car.end_pos[0] + 1):
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
-                    new_son = copy.deepcopy(self);  # deep copy recursively
+                    new_son = GameState(self);  # stupid copy 'ctor
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.DOWN, steps);
                     if ispossible is 0:
                         break;
@@ -196,7 +209,7 @@ class GameState:
                 # all possible LEFT moves
                 for steps in range(1, car.start_pos[0] + 1):
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
-                    new_son = copy.deepcopy(self);  # deep copy recursively
+                    new_son = GameState(self);  # stupid copy 'ctor
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.LEFT, steps);
                     if ispossible is 0:
                         break;
@@ -208,7 +221,7 @@ class GameState:
                 # all possible RIGHT moves
                 for steps in range(1, GameState.dimX-1 - car.end_pos[1] + 1):
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
-                    new_son = copy.deepcopy(self);  # deep copy recursively
+                    new_son = GameState(self);  # stupid copy 'ctor
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.RIGHT, steps);
                     if ispossible is 0:
                         break;

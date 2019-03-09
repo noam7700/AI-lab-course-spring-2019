@@ -38,7 +38,7 @@ def main():
     initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
     rh_file.readline(1);  # read '\n'
     print("DEBUG: first line:", initstate_line);
-    initGameState = GameState.GameState(None, initstate_line);
+    initGameState = GameState.GameState(None, None, initstate_line);
 
     solution = a_star(initGameState, heuristic)
 

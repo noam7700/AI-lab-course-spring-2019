@@ -195,6 +195,7 @@ class GameState:
             else:
                 # all possible LEFT moves
                 for steps in range(1, car.start_pos[0] + 1):
+                    # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = copy.deepcopy(self);  # deep copy recursively
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.LEFT, steps);
                     if ispossible is 0:
@@ -206,6 +207,7 @@ class GameState:
 
                 # all possible RIGHT moves
                 for steps in range(1, GameState.dimX-1 - car.end_pos[1] + 1):
+                    # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = copy.deepcopy(self);  # deep copy recursively
                     ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.RIGHT, steps);
                     if ispossible is 0:

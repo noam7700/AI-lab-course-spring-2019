@@ -6,15 +6,21 @@ import random
 
 
 def heuristic(game_state):
-    x_car = game_state.findCar_byName('X')
-    x_row = x_car.end_pos[0]
+    x_row = 2
+    x_end_column = 0;
+
+    # searching for X_car's end_pos because we are no longer keeping Car objects in game_state
+    for j in range(GameState.GameState.dimX - 1, -1, -1):  # from dimX - 1 to 0
+        if game_state.board[x_row][j] is 'X':  # found X!
+            x_end_column = j
+            break
 
     # if winning state heuristic should be 0
-    if x_car.end_pos[1] is GameState.GameState.dimX - 1:
+    if x_end_column is GameState.GameState.dimX - 1:
         return 0  # we won!
 
     num_of_blocking_cars = 0
-    for j in range(x_car.end_pos[1]+1, GameState.GameState.dimX):
+    for j in range(x_end_column + 1, GameState.GameState.dimX):
         if game_state.board[x_row][j] is not '.':
             num_of_blocking_cars += 1
 

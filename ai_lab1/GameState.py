@@ -31,10 +31,7 @@ class GameState:
             self.key = other_gamestate.key;
             self.createdMove = createdMove;
             self.father = father;
-            self.sons = [];
-
-            # copy 'ctor all cars
-            self.cars = [Car.Car(other_gamestate.cars[i]) for i in range(len(other_gamestate.cars))]
+            self.sons = [];  # list of sons (GameState objects)
 
         else:
             if board is None and line is None:
@@ -46,14 +43,10 @@ class GameState:
             else:
                 self.board = board;
 
-            self.key = self.unique_id_str()
-
-            self.father = father;
+            self.key = self.unique_id_str();
             self.createdMove = createdMove;
-
-            self.cars = self.findCarsInBoard();  # list of Cars
-            self.sons = [];  # list of sons (GameState objects)
             self.father = father;
+            self.sons = [];  # list of sons (GameState objects)
 
     # find all cars in self.board and returns array of Cars
     def findCarsInBoard(self):
@@ -101,92 +94,83 @@ class GameState:
         return cars;
 
     # example: self.moveCar_byName('X', 'RIGHT', 3);
-    def moveCar_byName_ifpossible(self, carName, direction, steps):
-        for car in self.cars:
-            if carName == car.name:
-                old_start_pos = [car.start_pos[0], car.start_pos[1]];  # deep copy
-                old_end_pos = [car.end_pos[0], car.end_pos[1]];  # deep copy
+    def moveCar_ifpossible(self, car, direction, steps):
+        old_start_pos = [car.start_pos[0], car.start_pos[1]];  # deep copy
+        old_end_pos = [car.end_pos[0], car.end_pos[1]];  # deep copy
 
-                car_can_move_in_direction = car.move_ifpossible(direction, steps);
-                if car_can_move_in_direction is 0:
-                    return 0;
+        car_can_move_in_direction = car.move_ifpossible(direction, steps);  # fails if cant move in this direction
+        if car_can_move_in_direction is 0:
+            return 0;
 
-                # check if car didn't "hit" borders. means start/end is outside of range
-                start_hit_border = not (0 <= car.start_pos[0] < GameState.dimX and 0 <= car.start_pos[1] < GameState.dimY);
-                end_hit_border = not (0 <= car.end_pos[0] < GameState.dimX and 0 <= car.end_pos[1] < GameState.dimY);
+        # check if car didn't "hit" borders. means start/end is outside of range
+        start_hit_border = not (0 <= car.start_pos[0] < GameState.dimX and 0 <= car.start_pos[1] < GameState.dimY);
+        end_hit_border = not (0 <= car.end_pos[0] < GameState.dimX and 0 <= car.end_pos[1] < GameState.dimY);
 
-                if start_hit_border or end_hit_border:  # no need to continue checking other fails
-                    car.move_ifpossible(direction, -steps);  # we know it's possible. we moved already
-                    return 0;
+        if start_hit_border or end_hit_border:  # no need to continue checking other fails
+            car.move_ifpossible(direction, -steps);  # we know it's possible. we moved already
+            return 0;
 
-                # check if car didnt "hit" other cars. means start/end is sitting on other car
-                start_hit_other_car = False;
-                end_hit_other_car = False;
+        # check if car didnt "hit" other cars. means start/end is sitting on other car
+        start_hit_other_car = False;
+        end_hit_other_car = False;
+        if direction is Direction.RIGHT:
+            # check if there's other car between old_end_pos+1 and end_pos
+            for j in range(old_end_pos[1] + 1, car.end_pos[1] + 1):
+                if self.board[car.end_pos[0]][j] is not '.':  # car.end_pos[0] is constant
+                    end_hit_other_car = True;
+                    break;
+        elif direction is Direction.LEFT:
+            # check if there's other car between start_pos and old_start_pos-1
+            for j in range(car.start_pos[1], old_start_pos[1]):
+                if self.board[car.start_pos[0]][j] is not '.':  # car.end_pos[0] is constant
+                    start_hit_other_car = True;
+                    break;
 
-                if direction is Direction.RIGHT:
-                    # check if there's other car between old_end_pos+1 and end_pos
-                    for j in range(old_end_pos[1] + 1, car.end_pos[1] + 1):
-                        if self.board[car.end_pos[0]][j] is not '.':  # car.end_pos[0] is constant
-                            end_hit_other_car = True;
-                            break;
+        elif direction is Direction.UP:
+            # check if there's other car between start_pos and old_start_pos-1
+            for i in range(car.start_pos[0], old_start_pos[0]):
+                if self.board[i][car.end_pos[1]] is not '.':  # car.end_pos[1] is constant
+                    end_hit_other_car = True;
+                    break;
 
-                elif direction is Direction.LEFT:
-                    # check if there's other car between start_pos and old_start_pos-1
-                    for j in range(car.start_pos[1], old_start_pos[1]):
-                        if self.board[car.start_pos[0]][j] is not '.':  # car.end_pos[0] is constant
-                            start_hit_other_car = True;
-                            break;
+        elif direction is Direction.DOWN:
+            # check if there's other car between old_end_pos+1 and end_pos
+            for i in range(old_end_pos[0] + 1, car.end_pos[0] + 1):
+                if self.board[i][car.start_pos[1]] is not '.':  # car.start_pos[1] is constant
+                    start_hit_other_car = True;
+                    break;
 
-                elif direction is Direction.UP:
-                    # check if there's other car between start_pos and old_start_pos-1
-                    for i in range(car.start_pos[0], old_start_pos[0]):
-                        if self.board[i][car.end_pos[1]] is not '.':  # car.end_pos[1] is constant
-                            end_hit_other_car = True;
-                            break;
+        if start_hit_other_car or end_hit_other_car:
+            car.move_ifpossible(direction, -steps);  # we know it's possible. we moved already
+            return 0;
 
-                elif direction is Direction.DOWN:
-                    # check if there's other car between old_end_pos+1 and end_pos
-                    for i in range(old_end_pos[0] + 1, car.end_pos[0] + 1):
-                        if self.board[i][car.start_pos[1]] is not '.':  # car.start_pos[1] is constant
-                            start_hit_other_car = True;
+        # it's possible, just update the board!
+        # delete old car (replace with '.') and insert new car (insert his name)
+        if car.isVertical is False:
+            for j in range(old_start_pos[1], old_start_pos[1] + car.length):
+                self.board[old_start_pos[0]][j] = '.';
+            for j in range(car.start_pos[1], car.start_pos[1] + car.length):
+                self.board[car.start_pos[0]][j] = car.name;
 
-                if start_hit_other_car or end_hit_other_car:
-                    car.move_ifpossible(direction, -steps);  # we know it's possible. we moved already
-                    return 0;
-
-                # it's possible, just update the board!
-                # delete old car (replace with '.') and insert new car (insert his name)
-                if car.isVertical is False:
-                    for j in range(old_start_pos[1], old_start_pos[1] + car.length):
-                        self.board[old_start_pos[0]][j] = '.';
-                    for j in range(car.start_pos[1], car.start_pos[1] + car.length):
-                        self.board[car.start_pos[0]][j] = car.name;
-
-                elif car.isVertical is True:
-                    for i in range(old_start_pos[0], old_start_pos[0] + car.length):
-                        self.board[i][old_start_pos[1]] = '.';
-                    for i in range(car.start_pos[0], car.start_pos[0] + car.length):
-                        self.board[i][car.start_pos[1]] = car.name;
-
-                break;  # cars has unique name
-
-    def findCar_byName(self, carName):
-        for car in self.cars:
-            if car.name == carName:
-                return car;
-        return None;
+        elif car.isVertical is True:  # no need for really checking this condition
+            for i in range(old_start_pos[0], old_start_pos[0] + car.length):
+                self.board[i][old_start_pos[1]] = '.';
+            for i in range(car.start_pos[0], car.start_pos[0] + car.length):
+                self.board[i][car.start_pos[1]] = car.name;
 
     def createAllPossibleSons(self):
         # needs to do all possible car moves
         sons = [];
-        for car in self.cars:
+        cars = self.findCarsInBoard();  # cars only used once in this function
+        for car in cars:
             # do all possible moves with car
             if car.isVertical:
                 # all possible UP moves
                 for steps in range(1, car.start_pos[0] + 1):  # car.start_pos is pointing UP
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = GameState(self);  # stupid copy 'ctor
-                    ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.UP, steps);
+                    disposable_car = Car.Car(car);  # moveCar_ifpossible ruins car object, and we will need it for other moves
+                    ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.UP, steps);
                     if ispossible is 0:
                         break;
                     new_son.father = self;
@@ -198,7 +182,8 @@ class GameState:
                 for steps in range(1, GameState.dimY-1 - car.end_pos[0] + 1):
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = GameState(self);  # stupid copy 'ctor
-                    ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.DOWN, steps);
+                    disposable_car = Car.Car(car);  # moveCar_ifpossible ruins car object, and we will need it for other moves
+                    ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.DOWN, steps);
                     if ispossible is 0:
                         break;
                     new_son.father = self;
@@ -210,7 +195,8 @@ class GameState:
                 for steps in range(1, car.start_pos[0] + 1):
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = GameState(self);  # stupid copy 'ctor
-                    ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.LEFT, steps);
+                    disposable_car = Car.Car(car);  # moveCar_ifpossible ruins car object, and we will need it for other moves
+                    ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.LEFT, steps);
                     if ispossible is 0:
                         break;
                     new_son.father = self;
@@ -222,7 +208,8 @@ class GameState:
                 for steps in range(1, GameState.dimX-1 - car.end_pos[1] + 1):
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = GameState(self);  # stupid copy 'ctor
-                    ispossible = new_son.moveCar_byName_ifpossible(car.name, Direction.RIGHT, steps);
+                    disposable_car = Car.Car(car);  # moveCar_ifpossible ruins car object, and we will need it for other moves
+                    ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.RIGHT, steps);
                     if ispossible is 0:
                         break;
                     new_son.father = self;

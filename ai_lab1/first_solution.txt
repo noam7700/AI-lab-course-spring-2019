@@ -1,535 +1,194 @@
 DEBUG: first line: .............XXO...AAO.P.B.O.P.BCC.P
-A Star algorithm: start_node - <GameState.GameState object at 0x00000049E7040358>, graph - 
+A Star algorithm: start_node - <GameState.GameState object at 0x000000ECCB27AF60>, graph - 
 The solution was found: .B.....B........XX.AAO.P...O.PCC.O.P
-......
-......
-.XXO..
-.AAO.P
-.B.O.P
-.BCC.P
+         86737 function calls (86664 primitive calls) in 0.291 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1009(_handle_fromlist)
+       18    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:103(release)
+       18    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:143(__init__)
+       18    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:147(__enter__)
+       18    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:151(__exit__)
+       18    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:157(_get_module_lock)
+       18    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:176(cb)
+     23/4    0.000    0.000    0.024    0.006 <frozen importlib._bootstrap>:211(_call_with_frames_removed)
+      164    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:222(_verbose_message)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:232(_requires_builtin_wrapper)
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:307(__init__)
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:311(__enter__)
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:318(__exit__)
+       60    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:321(<genexpr>)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:35(_new_module)
+       16    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:369(__init__)
+       19    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:403(cached)
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:416(parent)
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:424(has_location)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:433(spec_from_loader)
+       15    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:504(_init_module_attrs)
+       15    0.000    0.000    0.011    0.001 <frozen importlib._bootstrap>:576(module_from_spec)
+       18    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:58(__init__)
+     15/4    0.000    0.000    0.028    0.007 <frozen importlib._bootstrap>:663(_load_unlocked)
+       16    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:719(find_spec)
+        5    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:740(create_module)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:748(exec_module)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:765(is_package)
+       18    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:78(acquire)
+       11    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:792(find_spec)
+       38    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:855(__enter__)
+       38    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:859(__exit__)
+       16    0.000    0.000    0.010    0.001 <frozen importlib._bootstrap>:882(_find_spec)
+     18/4    0.000    0.000    0.031    0.008 <frozen importlib._bootstrap>:948(_find_and_load_unlocked)
+     18/4    0.000    0.000    0.031    0.008 <frozen importlib._bootstrap>:978(_find_and_load)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1029(__init__)
+        1    0.000    0.000    0.008    0.008 <frozen importlib._bootstrap_external>:1040(create_module)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1048(exec_module)
+       36    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1203(_path_importer_cache)
+       11    0.000    0.000    0.009    0.001 <frozen importlib._bootstrap_external>:1240(_get_spec)
+       11    0.000    0.000    0.009    0.001 <frozen importlib._bootstrap_external>:1272(find_spec)
+       10    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1351(_get_spec)
+       30    0.001    0.000    0.009    0.000 <frozen importlib._bootstrap_external>:1356(find_spec)
+       18    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:271(cache_from_source)
+       30    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:36(_relax_case)
+       10    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:369(_get_cached)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:401(_check_name_wrapper)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:438(_classify_pyc)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:471(_validate_timestamp_pyc)
+       27    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:51(_r_long)
+        9    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:523(_compile_bytecode)
+      147    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:56(_path_join)
+       10    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:574(spec_from_file_location)
+      147    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:58(<listcomp>)
+       18    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:62(_path_split)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:719(create_module)
+      9/4    0.000    0.000    0.027    0.007 <frozen importlib._bootstrap_external>:722(exec_module)
+       49    0.000    0.000    0.008    0.000 <frozen importlib._bootstrap_external>:74(_path_stat)
+        9    0.000    0.000    0.006    0.001 <frozen importlib._bootstrap_external>:793(get_code)
+       10    0.000    0.000    0.002    0.000 <frozen importlib._bootstrap_external>:84(_path_is_mode_type)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:884(__init__)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:909(get_filename)
+        9    0.002    0.000    0.002    0.000 <frozen importlib._bootstrap_external>:914(get_data)
+       10    0.000    0.000    0.002    0.000 <frozen importlib._bootstrap_external>:93(_path_isfile)
+        9    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:951(path_stats)
+        1    0.000    0.000    0.000    0.000 AStar.py:25(<module>)
+        1    0.004    0.004    0.301    0.301 AStar.py:25(a_star)
+        1    0.000    0.000    0.000    0.000 BinaryHeap.py:11(<module>)
+        1    0.000    0.000    0.000    0.000 BinaryHeap.py:13(BinaryHeap)
+        1    0.000    0.000    0.002    0.002 Car.py:1(<module>)
+     3280    0.012    0.000    0.012    0.000 Car.py:24(move_ifpossible)
+        1    0.000    0.000    0.000    0.000 Car.py:3(Car)
+     3097    0.010    0.000    0.010    0.000 Car.py:6(__init__)
+        1    0.000    0.000    0.001    0.001 Direction.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 Direction.py:4(Direction)
+        1    0.000    0.000    0.007    0.007 GameState.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 GameState.py:10(<listcomp>)
+     1151    0.001    0.000    0.009    0.000 GameState.py:13(matrix_to_vector)
+      147    0.028    0.000    0.200    0.001 GameState.py:161(createAllPossibleSons)
+        1    0.000    0.000    0.000    0.000 GameState.py:21(GameState)
+    20883    0.034    0.000    0.039    0.000 GameState.py:232(__eq__)
+     1151    0.003    0.000    0.014    0.000 GameState.py:243(unique_id_str)
+    20883    0.005    0.000    0.005    0.000 GameState.py:248(__lt__)
+     2216    0.011    0.000    0.085    0.000 GameState.py:25(__init__)
+     2215    0.033    0.000    0.074    0.000 GameState.py:29(<listcomp>)
+      147    0.019    0.000    0.021    0.000 GameState.py:52(findCarsInBoard)
+        1    0.000    0.000    0.000    0.000 GameState.py:9(vector_to_matrix)
+     2215    0.032    0.000    0.044    0.000 GameState.py:97(moveCar_ifpossible)
+        1    0.000    0.000    0.000    0.000 _bootlocale.py:11(getpreferredencoding)
+        1    0.000    0.000    0.000    0.000 bisect.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 codecs.py:260(__init__)
+        1    0.000    0.000    0.000    0.000 codecs.py:281(getstate)
+        1    0.000    0.000    0.002    0.002 copy.py:49(<module>)
+        1    0.000    0.000    0.000    0.000 copy.py:55(Error)
+        8    0.000    0.000    0.000    0.000 cp1255.py:18(encode)
+        1    0.000    0.000    0.000    0.000 cp1255.py:22(decode)
+        1    0.000    0.000    0.000    0.000 enum.py:124(__prepare__)
+        1    0.000    0.000    0.000    0.000 enum.py:134(__new__)
+        1    0.000    0.000    0.000    0.000 enum.py:151(<dictcomp>)
+        1    0.000    0.000    0.000    0.000 enum.py:176(<setcomp>)
+        4    0.000    0.000    0.000    0.000 enum.py:18(_is_descriptor)
+        8    0.000    0.000    0.000    0.000 enum.py:26(_is_dunder)
+        1    0.000    0.000    0.000    0.000 enum.py:334(__getattr__)
+        8    0.000    0.000    0.000    0.000 enum.py:34(_is_sunder)
+        9    0.000    0.000    0.000    0.000 enum.py:375(__setattr__)
+        2    0.000    0.000    0.000    0.000 enum.py:441(_get_mixins_)
+        2    0.000    0.000    0.000    0.000 enum.py:452(_find_data_type)
+        1    0.000    0.000    0.000    0.000 enum.py:473(_find_new_)
+        1    0.000    0.000    0.000    0.000 enum.py:63(__init__)
+        8    0.000    0.000    0.000    0.000 enum.py:69(__setitem__)
+       14    0.000    0.000    0.001    0.000 hashlib.py:116(__get_openssl_constructor)
+        1    0.000    0.000    0.011    0.011 hashlib.py:54(<module>)
+        8    0.000    0.000    0.001    0.000 hashlib.py:73(__get_builtin_constructor)
+        1    0.000    0.000    0.333    0.333 main.py:1(<module>)
+        1    0.000    0.000    0.302    0.302 main.py:29(main)
+      798    0.007    0.000    0.007    0.000 main.py:7(heuristic)
+        1    0.000    0.000    0.017    0.017 random.py:38(<module>)
+        1    0.000    0.000    0.000    0.000 random.py:669(SystemRandom)
+        1    0.000    0.000    0.000    0.000 random.py:72(Random)
+        1    0.000    0.000    0.000    0.000 random.py:88(__init__)
+        1    0.000    0.000    0.000    0.000 random.py:97(seed)
+        5    0.000    0.000    0.000    0.000 {built-in method __new__ of type object at 0x00007FFEA8A09D30}
+        1    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_decode}
+        8    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_encode}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_md5}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha1}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha224}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha256}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha384}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha512}
+        9    0.000    0.000    0.000    0.000 {built-in method _imp._fix_co_filename}
+       74    0.000    0.000    0.000    0.000 {built-in method _imp.acquire_lock}
+        5    0.001    0.000    0.001    0.000 {built-in method _imp.create_builtin}
+        1    0.008    0.008    0.008    0.008 {built-in method _imp.create_dynamic}
+        5    0.000    0.000    0.000    0.000 {built-in method _imp.exec_builtin}
+        1    0.000    0.000    0.000    0.000 {built-in method _imp.exec_dynamic}
+       16    0.000    0.000    0.000    0.000 {built-in method _imp.is_builtin}
+       11    0.000    0.000    0.000    0.000 {built-in method _imp.is_frozen}
+       74    0.000    0.000    0.000    0.000 {built-in method _imp.release_lock}
+        1    0.000    0.000    0.000    0.000 {built-in method _locale._getdefaultlocale}
+       36    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+       36    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+        7    0.000    0.000    0.001    0.000 {built-in method builtins.__build_class__}
+      2/1    0.000    0.000    0.002    0.002 {built-in method builtins.__import__}
+       15    0.000    0.000    0.000    0.000 {built-in method builtins.any}
+     10/1    0.000    0.000    0.333    0.333 {built-in method builtins.exec}
+      110    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
+       14    0.000    0.000    0.000    0.000 {built-in method builtins.globals}
+      102    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+    20986    0.005    0.000    0.005    0.000 {built-in method builtins.isinstance}
+        4    0.000    0.000    0.000    0.000 {built-in method builtins.issubclass}
+       32    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      148    0.045    0.000    0.089    0.001 {built-in method builtins.min}
+        3    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        5    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+     1151    0.008    0.000    0.008    0.000 {built-in method builtins.sum}
+       27    0.000    0.000    0.000    0.000 {built-in method from_bytes}
+        1    0.000    0.000    0.000    0.000 {built-in method io.open}
+        9    0.001    0.000    0.001    0.000 {built-in method marshal.loads}
+        1    0.000    0.000    0.000    0.000 {built-in method math.exp}
+        2    0.000    0.000    0.000    0.000 {built-in method math.log}
+        1    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+       28    0.000    0.000    0.000    0.000 {built-in method nt.fspath}
+       11    0.000    0.000    0.000    0.000 {built-in method nt.getcwd}
+       49    0.008    0.000    0.008    0.000 {built-in method nt.stat}
+        1    0.000    0.000    0.000    0.000 {function Random.seed at 0x000000ECCB283048}
+     2045    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+       11    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'format' of 'str' objects}
+       47    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+        9    0.000    0.000    0.000    0.000 {method 'get' of 'mappingproxy' objects}
+        4    0.000    0.000    0.000    0.000 {method 'items' of 'collections.OrderedDict' objects}
+        3    0.000    0.000    0.000    0.000 {method 'items' of 'mappingproxy' objects}
+     1316    0.002    0.000    0.002    0.000 {method 'join' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'mro' of 'type' objects}
+      149    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+        9    0.001    0.000    0.001    0.000 {method 'read' of '_io.FileIO' objects}
+        6    0.000    0.000    0.000    0.000 {method 'readline' of '_io.TextIOWrapper' objects}
+       81    0.000    0.000    0.000    0.000 {method 'rpartition' of 'str' objects}
+       18    0.000    0.000    0.000    0.000 {method 'rsplit' of 'str' objects}
+      312    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'setdefault' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {method 'union' of 'set' objects}
 
-...O..
-...O..
-.XXO..
-.AA..P
-.B...P
-.BCC.P
-
-...O..
-...O..
-.XXO..
-.AA..P
-.B...P
-.B.CCP
-
-......
-...O..
-.XXO..
-.AAO.P
-.B...P
-.B.CCP
-
-......
-...O..
-.XXO..
-AA.O.P
-.B...P
-.B.CCP
-
-......
-......
-.XXO..
-AA.O.P
-.B.O.P
-.B.CCP
-
-......
-......
-XX.O..
-AA.O.P
-.B.O.P
-.B.CCP
-
-...O..
-...O..
-XX.O..
-AA...P
-.B...P
-.B.CCP
-
-...O..
-...O..
-XX.O..
-AA...P
-.B...P
-.BCC.P
-
-......
-...O..
-XX.O..
-AA.O.P
-.B...P
-.BCC.P
-
-......
-...O..
-XX.O..
-AA.O.P
-.B...P
-.B.CCP
-
-......
-...O..
-XX.O..
-.AAO.P
-.B...P
-.B.CCP
-
-...O..
-...O..
-XX.O..
-.AA..P
-.B...P
-.B.CCP
-
-...O..
-...O..
-XX.O..
-.AA..P
-.B...P
-.BCC.P
-
-......
-......
-XX.O..
-.AAO.P
-.B.O.P
-.BCC.P
-
-.....P
-.....P
-XX.O.P
-.AAO..
-.B.O..
-.BCC..
-
-.....P
-.....P
-XX.O.P
-.AAO..
-.B.O..
-.B..CC
-
-.....P
-.....P
-XX...P
-.AAO..
-.B.O..
-.B.OCC
-
-......
-......
-XX...P
-.AAO.P
-.B.O.P
-.B.OCC
-
-......
-......
-XX...P
-AA.O.P
-.B.O.P
-.B.OCC
-
-......
-.....P
-XX...P
-AA.O.P
-.B.O..
-.B.OCC
-
-......
-.....P
-...XXP
-AA.O.P
-.B.O..
-.B.OCC
-
-.....P
-.....P
-...XXP
-AA.O..
-.B.O..
-.B.OCC
-
-......
-......
-...XXP
-AA.O.P
-.B.O.P
-.B.OCC
-
-......
-......
-...XXP
-.AAO.P
-.B.O.P
-.B.OCC
-
-.....P
-.....P
-...XXP
-.AAO..
-.B.O..
-.B.OCC
-
-.....P
-.....P
-..XX.P
-.AAO..
-.B.O..
-.B.OCC
-
-.....P
-.....P
-.XX..P
-.AAO..
-.B.O..
-.B.OCC
-
-...O.P
-...O.P
-.XXO.P
-.AA...
-.B....
-.B..CC
-
-...O.P
-...O.P
-.XXO.P
-....AA
-.B....
-.B..CC
-
-.....P
-.....P
-.XX..P
-...OAA
-.B.O..
-.B.OCC
-
-.....P
-.....P
-.XX..P
-.B.OAA
-.B.O..
-...OCC
-
-.....P
-.....P
-...XXP
-.B.OAA
-.B.O..
-...OCC
-
-.B...P
-.B...P
-...XXP
-...OAA
-...O..
-...OCC
-
-.B...P
-.B...P
-.XX..P
-...OAA
-...O..
-...OCC
-
-.B...P
-.B...P
-XX...P
-...OAA
-...O..
-...OCC
-
-.B...P
-.B...P
-..XX.P
-...OAA
-...O..
-...OCC
-
-.....P
-.....P
-.BXX.P
-.B.OAA
-...O..
-...OCC
-
-.....P
-.B...P
-.BXX.P
-...OAA
-...O..
-...OCC
-
-.....P
-.B...P
-.B.XXP
-...OAA
-...O..
-...OCC
-
-.....P
-.....P
-.B.XXP
-.B.OAA
-...O..
-...OCC
-
-.....P
-.....P
-...XXP
-...OAA
-.B.O..
-.B.OCC
-
-.....P
-.....P
-..XX.P
-...OAA
-.B.O..
-.B.OCC
-
-.....P
-.....P
-XX...P
-...OAA
-.B.O..
-.B.OCC
-
-.....P
-...O.P
-XX.O.P
-...OAA
-.B....
-.B..CC
-
-.....P
-...O.P
-XX.O.P
-...OAA
-.B....
-.BCC..
-
-.....P
-.....P
-XX.O.P
-...OAA
-.B.O..
-.BCC..
-
-.....P
-.....P
-XX.O.P
-.B.OAA
-.B.O..
-..CC..
-
-...O.P
-...O.P
-XX.O.P
-.B..AA
-.B....
-..CC..
-
-...O.P
-...O.P
-XX.O.P
-.B..AA
-.B....
-...CC.
-
-.....P
-...O.P
-XX.O.P
-.B.OAA
-.B....
-...CC.
-
-.....P
-...O.P
-XX.O.P
-.B.OAA
-.B....
-CC....
-
-.....P
-.....P
-XX...P
-.B.OAA
-.B.O..
-CC.O..
-
-.....P
-.....P
-XX...P
-.B.OAA
-.B.O..
-.CCO..
-
-.....P
-.....P
-...XXP
-.B.OAA
-.B.O..
-.CCO..
-
-.B...P
-.B...P
-...XXP
-...OAA
-...O..
-.CCO..
-
-.B...P
-.B...P
-...XXP
-...OAA
-...O..
-CC.O..
-
-.B...P
-.B...P
-.XX..P
-...OAA
-...O..
-CC.O..
-
-.B...P
-.B...P
-XX...P
-...OAA
-...O..
-CC.O..
-
-.B...P
-.B...P
-XX...P
-...OAA
-...O..
-.CCO..
-
-.B...P
-.B...P
-.XX..P
-...OAA
-...O..
-.CCO..
-
-.B.O.P
-.B.O.P
-.XXO.P
-....AA
-......
-.CC...
-
-.B.O.P
-.B.O.P
-.XXO.P
-....AA
-......
-...CC.
-
-.B...P
-.B...P
-.XXO.P
-...OAA
-...O..
-...CC.
-
-.B...P
-.B...P
-.XXO.P
-...OAA
-...O..
-..CC..
-
-.B...P
-.B.O.P
-.XXO.P
-...OAA
-......
-..CC..
-
-.B...P
-.B.O.P
-XX.O.P
-...OAA
-......
-..CC..
-
-.B.O.P
-.B.O.P
-XX.O.P
-....AA
-......
-..CC..
-
-.B.O.P
-.B.O.P
-XX.O.P
-.AA...
-......
-..CC..
-
-.B.O..
-.B.O..
-XX.O..
-.AA..P
-.....P
-..CC.P
-
-.B....
-.B....
-XX.O..
-.AAO.P
-...O.P
-..CC.P
-
-.B....
-.B....
-XX.O..
-.AAO.P
-...O.P
-...CCP
-
-.B....
-.B.O..
-XX.O..
-.AAO.P
-.....P
-...CCP
-
-.B....
-.B.O..
-XX.O..
-.AAO.P
-.....P
-CC...P
-
-.B....
-.B....
-XX....
-.AAO.P
-...O.P
-CC.O.P
-
-.B....
-.B....
-....XX
-.AAO.P
-...O.P
-CC.O.P
 

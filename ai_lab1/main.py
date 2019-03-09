@@ -42,10 +42,12 @@ def main():
     initGameState = GameState.GameState(None, None, initstate_line)
 
     final_state = AStar.a_star(initGameState, heuristic)
-    solution_path = AStar.restore_solution_path(final_state)
-    for i in range(len(solution_path)):
-        solution_path[i].printBoard()
-        print()
+    if final_state is not None and False:
+        solution_path = AStar.restore_solution_path(final_state)
+
+        for i in range(len(solution_path)):
+            solution_path[i].printBoard()
+            print()
 
 
     """ Game Loop

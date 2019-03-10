@@ -4,28 +4,6 @@ import AStar
 from BinaryHeap import BinaryHeap
 import random
 
-def heuristic(game_state):
-    x_row = 2
-    x_end_column = 0;
-
-    # searching for X_car's end_pos because we are no longer keeping Car objects in game_state
-    for j in range(GameState.GameState.dimX - 1, -1, -1):  # from dimX - 1 to 0
-        if game_state.board[x_row][j] is 'X':  # found X!
-            x_end_column = j
-            break
-
-    # if winning state heuristic should be 0
-    if x_end_column is GameState.GameState.dimX - 1:
-        return 0  # we won!
-
-    num_of_blocking_cars = 0
-    for j in range(x_end_column + 1, GameState.GameState.dimX):
-        if game_state.board[x_row][j] is not '.':
-            num_of_blocking_cars += 1
-
-    return num_of_blocking_cars + 1
-
-
 def main():
     path_to_rh = sys.argv[1]  # pathname for rh.txt
     max_time_solution = sys.argv[2]  # if exceeds max_time_solution mark as failed
@@ -34,21 +12,16 @@ def main():
     rh_file = open(path_to_rh, 'r')
 
     # read first problem
-    for i in range(3):
-        initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
-        rh_file.readline(1);  # read '\n'
+    initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
+    rh_file.readline(1);  # read '\n'
 
-    print("DEBUG: first line:", initstate_line)
     initGameState = GameState.GameState(None, None, initstate_line)
 
-    final_state = AStar.a_star(initGameState, heuristic)
-    if final_state is not None and False:
-        solution_path = AStar.restore_solution_path(final_state)
-
-        for i in range(len(solution_path)):
-            solution_path[i].printBoard()
-            print()
-
+    final_state = AStar.a_star(initGameState, AStar.heuristic, AStar.cost_to_root)
+    if final_state is not None:
+        solution_moves = AStar.restore_solution_moves(final_state)
+        for move in solution_moves:
+            print(move, end=' ')
 
     """ Game Loop
     while True:

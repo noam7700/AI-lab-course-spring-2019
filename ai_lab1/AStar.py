@@ -1,4 +1,5 @@
 import GameState
+from FibonacciHeap import FibonacciHeap
 
 #
 # class Node(object):
@@ -23,13 +24,37 @@ import GameState
 
 class Node:
 
-    def __init__(self, game_state, father_node, createdMove):
+    def __init__(self, game_state, father_node, createdMove, key):
         self.game_state = game_state
         self.father_node = father_node
         self.createdMove = createdMove
+        self.key = key
         self.cost_to_root = 0  # will be set later, depends on g_func (user defines cost function)
+        self.score = 0  # will be set later, depends on f_func (user defines cost function & heuristic)
     def __lt__(self, other):
-        return True  # doesn't really matter..
+        return self.score < other.score
+
+
+class FibonacciHeap_with_HashTable:
+    def __init__(self):
+        self.fibonacciHeap = FibonacciHeap()
+        self.hashTable = {}
+
+    def insert(self, value):
+        self.fibonacciHeap.insert(value)
+        self.hashTable[value.key] = value
+
+    def extract_min(self):
+        value = self.fibonacciHeap.extract_min()
+        if value is not None:
+            self.hashTable[value.key] = None
+        return value
+
+    def __contains__(self, key):
+        return key in self.hashTable
+
+    def isEmpty(self):
+        return self.fibonacciHeap.size == 0
 
 def a_star(start_game_state, h_func, g_func):
     if not bool(start_game_state):
@@ -37,40 +62,40 @@ def a_star(start_game_state, h_func, g_func):
 
     print("A Star algorithm: start_node - " + str(start_game_state) + ", graph - ")
 
-    start_node = Node(start_game_state, None, None)
+    start_node = Node(start_game_state, None, None, start_game_state.unique_id_str())
 
     # open list contain for each cell x: key=x.key, value=(h(x)+g(x), x)
     start_g = g_func(start_node)
     start_h = h_func(start_node)
     start_node.cost_to_root = start_g
-    open_list = {start_node.game_state.key: (start_h + start_g, start_node)}
+    start_node.score = start_g + start_h
+
+    open_list = FibonacciHeap_with_HashTable()
+    open_list.insert(start_node)
     closed_list = {}
-    while bool(open_list):
-        best_key = min(open_list, key=open_list.get)
-        best_score_pair = open_list[best_key]
-
+    while not open_list.isEmpty():
+        best = open_list.extract_min()
+        print("DEBUG: best's score:", best.score)
         # X reached to the right of the board, we won!
-        if best_score_pair[1].game_state.board[2][GameState.GameState.dimX - 1] is 'X':
-            print("The solution was found: " + best_key + ".",  "Score:", best_score_pair[0])
-            return best_score_pair[1]
+        if best.game_state.board[2][GameState.GameState.dimX - 1] is 'X':
+            print("The solution was found: " + best.key + ".",  "Score:", best.score)
+            return best
 
-        # remove best from open_list, and add all his sons
-        open_list.pop(best_key)
-        best_node = best_score_pair[1]
-        closed_list[best_node.game_state.key] = best_score_pair
-        [sons_gamestates, sons_createdMove] = best_node.game_state.createAllPossibleSons()
+        # add best to close_list, and add all best's sons to open_list
+        closed_list[best.key] = best
+        [sons_gamestates, sons_createdMove] = best.game_state.createAllPossibleSons()
         for i in range(len(sons_gamestates)):
             # if he is in one of them, then we found longer path, dont re-add it!
             # **needs to check if he's in open_list as well.
-            if sons_gamestates[i].key not in closed_list and sons_gamestates[i].key not in open_list:
+            son_key = sons_gamestates[i].unique_id_str()
+            if son_key not in closed_list and son_key not in open_list:
                 # print("f is good")
-                son_node = Node(sons_gamestates[i], best_node, sons_createdMove[i])
+                son_node = Node(sons_gamestates[i], best, sons_createdMove[i], son_key)
                 son_h = h_func(son_node)
                 son_g = g_func(son_node)
                 son_node.cost_to_root = son_g
-
-                curr_son_score = son_h + son_g
-                open_list[son_node.game_state.key] = (curr_son_score, son_node)  # add to open_list
+                son_node.score = son_h + son_g
+                open_list.insert(son_node)  # add to open_list
 
     print("There is no solution")
     return None

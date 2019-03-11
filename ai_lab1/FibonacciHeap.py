@@ -72,13 +72,13 @@ class FibonacciHeap:
             self.min_node = new_node
 
     def extract_min(self):
-
         if self.min_node is None:
             return
         # self.min_node is the only node in the heap
-        if self.min_node.leftSon is None and self.min_node.leftBro is None and self.min_node is None:
+        if self.min_node.leftSon is None and self.min_node.leftBro is None and self.min_node.rightBro is None:
             min_node_value = self.min_node.value
             self.min_node = None
+            self.size -= 1
             return min_node_value
 
         # 1. extract min_node, and insert his sons to root-list

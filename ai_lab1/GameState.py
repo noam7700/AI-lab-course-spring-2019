@@ -22,13 +22,11 @@ class GameState:
     dimX = 6
     dimY = 6
 
-    def __init__(self, other_gamestate=None, board=None, line=None, father=None, createdMove=None):
+    def __init__(self, other_gamestate=None, board=None, line=None):
 
         if other_gamestate is not None:
             # copy boards
             self.board = [[other_gamestate.board[i][j] for j in range(GameState.dimX)] for i in range(GameState.dimY)]
-
-            self.key = other_gamestate.key
 
         else:
             if board is None and line is None:
@@ -39,8 +37,6 @@ class GameState:
                 self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY)
             else:
                 self.board = board
-
-            self.key = self.unique_id_str()
 
     # find all cars in self.board and returns array of Cars
     def findCarsInBoard(self):
@@ -169,7 +165,6 @@ class GameState:
                     ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.UP, steps)
                     if ispossible is 0:
                         break
-                    new_son.key = new_son.unique_id_str()
 
                     createdMove = car.name + 'U' + str(steps)
                     sons_gamestates.append(new_son)
@@ -183,7 +178,6 @@ class GameState:
                     ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.DOWN, steps)
                     if ispossible is 0:
                         break
-                    new_son.key = new_son.unique_id_str()
 
                     createdMove = car.name + 'D' + str(steps)
                     sons_gamestates.append(new_son)
@@ -197,7 +191,6 @@ class GameState:
                     ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.LEFT, steps)
                     if ispossible is 0:
                         break
-                    new_son.key = new_son.unique_id_str()
 
                     createdMove = car.name + 'L' + str(steps)
                     sons_gamestates.append(new_son)
@@ -211,7 +204,6 @@ class GameState:
                     ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.RIGHT, steps)
                     if ispossible is 0:
                         break
-                    new_son.key = new_son.unique_id_str()
 
                     createdMove = car.name + 'R' + str(steps)
                     sons_gamestates.append(new_son)

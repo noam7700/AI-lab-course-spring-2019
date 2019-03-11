@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="426f9590-8f80-49c3-9611-4db8fa35203a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ai_lab1/FibonacciHeap.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/AStar.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/AStar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/FibonacciHeap.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/FibonacciHeap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/GameState.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/GameState.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/first_solution.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/first_solution.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ai_lab1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,17 +20,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ai_lab1/FibonacciHeap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="193" column="59" lean-forward="true" selection-start-line="193" selection-start-column="59" selection-end-line="193" selection-end-column="59" />
+            <state relative-caret-position="1224">
+              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ai_lab1/GameState.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3740">
+              <caret line="222" selection-start-line="222" selection-end-line="222" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="509">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
+              <folding>
+                <element signature="e#1#17#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+            <state relative-caret-position="153">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -36,10 +63,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+        <entry file="file://$PROJECT_DIR$/ai_lab1/rh_input.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="102">
+              <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -55,17 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>DEBUG</find>
-      <find>sift</find>
-      <find>(index - 1</find>
-      <find>sift_down</find>
-      <find>printB</find>
-      <find>h</find>
-      <find>GameState</find>
-      <find>createA</find>
-      <find>__init</find>
-      <find>print</find>
-      <find>createAll</find>
       <find>moveCar</find>
       <find>cars</find>
       <find>findCar_byName</find>
@@ -74,14 +90,28 @@
       <find>Node</find>
       <find>g_func</find>
       <find>;</find>
-      <find>extract</find>
       <find>only son</find>
       <find>.left</find>
-      <find>insert</find>
       <find>return</find>
       <find>tempo</find>
       <find>==</find>
+      <find>__hash</find>
+      <find>.key</find>
+      <find>class n</find>
+      <find>class Node</find>
+      <find>Node(</find>
+      <find>createAll</find>
       <find>.rightBro =</find>
+      <find>extract_min</find>
+      <find>wot</find>
+      <find>self.size</find>
+      <find>insert</find>
+      <find>__</find>
+      <find>1.</find>
+      <find>__contain</find>
+      <find>deb</find>
+      <find>extract</find>
+      <find>bool</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -94,14 +124,14 @@
         <option value="$PROJECT_DIR$/ai_lab1/rh_input.txt" />
         <option value="$PROJECT_DIR$/ai_lab1/Heap.py" />
         <option value="$PROJECT_DIR$/ai_lab1/HashTable.py" />
-        <option value="$PROJECT_DIR$/ai_lab1/AStar.py" />
-        <option value="$PROJECT_DIR$/ai_lab1/GameState.py" />
         <option value="$PROJECT_DIR$/ai_lab1/Direction.py" />
         <option value="$PROJECT_DIR$/ai_lab1/Car.py" />
         <option value="$PROJECT_DIR$/ai_lab1/BinaryHeap.py" />
         <option value="$PROJECT_DIR$/ai_lab1/LinkedList.py" />
+        <option value="$PROJECT_DIR$/ai_lab1/GameState.py" />
         <option value="$PROJECT_DIR$/ai_lab1/FibonacciHeap.py" />
         <option value="$PROJECT_DIR$/ai_lab1/main.py" />
+        <option value="$PROJECT_DIR$/ai_lab1/AStar.py" />
       </list>
     </option>
   </component>
@@ -206,7 +236,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.2054054" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23895253" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.45826513" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.23731588" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -225,23 +255,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/ai_lab1/AStar.py</url>
-          <line>47</line>
+          <line>75</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/ai_lab1/GameState.py</url>
-          <line>162</line>
+          <line>158</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ai_lab1/main.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ai_lab1/main.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -250,30 +270,6 @@
     <entry file="file://$PROJECT_DIR$/ai_lab1/__init__.py" />
     <entry file="file://$PROJECT_DIR$/ai_lab1/Heap.py" />
     <entry file="file://$PROJECT_DIR$/ai_lab1/HashTable.py" />
-    <entry file="file://$PROJECT_DIR$/ai_lab1/rh_input.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/GameState.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="232" column="25" selection-start-line="232" selection-start-column="25" selection-end-line="232" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="116" column="16" selection-start-line="116" selection-start-column="10" selection-end-line="116" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/Direction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -295,9 +291,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/LinkedList.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/LinkedList.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -307,17 +301,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/FibonacciHeap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="193" column="59" lean-forward="true" selection-start-line="193" selection-start-column="59" selection-end-line="193" selection-end-column="59" />
+        <state relative-caret-position="1224">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/GameState.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3740">
+          <caret line="222" selection-start-line="222" selection-end-line="222" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+        <state relative-caret-position="153">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/rh_input.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="e#1#17#0" expanded="true" />
           </folding>
         </state>
       </provider>

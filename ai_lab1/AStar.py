@@ -75,7 +75,7 @@ def a_star(start_game_state, h_func, g_func):
     closed_list = {}
     while not open_list.isEmpty():
         best = open_list.extract_min()
-        print("DEBUG: best's score:", best.score)
+
         # X reached to the right of the board, we won!
         if best.game_state.board[2][GameState.GameState.dimX - 1] is 'X':
             print("The solution was found: " + best.key + ".",  "Score:", best.score)
@@ -100,12 +100,12 @@ def a_star(start_game_state, h_func, g_func):
     print("There is no solution")
     return None
 
-def restore_solution_path(final_state):
-    if final_state is None:
+def restore_solution_path(final_node):
+    if final_node is None:
         return None
 
     solution_path = []
-    curr_state = final_state
+    curr_state = final_node
     # add solution_path from final_state to init_state
     while curr_state is not None:
         solution_path.append(curr_state)
@@ -114,8 +114,8 @@ def restore_solution_path(final_state):
     solution_path.reverse()  # reverse it to be in order (from first to last)
     return solution_path
 
-def restore_solution_moves(final_state):
-    solution_path = restore_solution_path(final_state)
+def restore_solution_moves(final_node):
+    solution_path = restore_solution_path(final_node)
     moves = []  # list of moves (strings)
     for i in range(1, len(solution_path)):
         moves.append(solution_path[i].createdMove)

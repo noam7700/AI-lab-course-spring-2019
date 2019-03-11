@@ -184,7 +184,7 @@ class GameState:
                     sons_createdMove.append(createdMove)
             else:
                 # all possible LEFT moves
-                for steps in range(1, car.start_pos[0] + 1):
+                for steps in range(1, car.start_pos[1] + 1):
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = GameState(self)  # stupid copy 'ctor
                     disposable_car = Car.Car(car)  # moveCar_ifpossible ruins car object, and we will need it for other moves

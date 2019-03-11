@@ -1,12 +1,28 @@
 import sys
 import GameState
 import AStar
+from FibonacciHeap import FibonacciHeap
 from BinaryHeap import BinaryHeap
 import random
 
 def main():
     path_to_rh = sys.argv[1]  # pathname for rh.txt
     max_time_solution = sys.argv[2]  # if exceeds max_time_solution mark as failed
+
+    if True:
+        myfib = FibonacciHeap()
+        for debug in range(1):  # find someone who will be stuck
+            size = 20;
+            for i in range(size):
+                myfib.insert(random.randint(0, 200))
+            for i in range(size - 10):
+                print(myfib.extract_min())
+
+            for i in range(size):
+                myfib.insert(random.randint(0, 200))
+            for i in range(size + 10):
+                print(myfib.extract_min())
+        return 0
 
     # used to read all problems
     rh_file = open(path_to_rh, 'r')

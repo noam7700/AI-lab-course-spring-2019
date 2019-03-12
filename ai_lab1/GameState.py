@@ -39,7 +39,7 @@ class GameState:
                 self.board = board
 
     # find all cars in self.board and returns array of Cars
-    def findCarsInBoard(self):
+    def find_cars_in_board(self):
         cars = []
         # find horizontal cars
         i, j = 0, 0
@@ -84,11 +84,11 @@ class GameState:
         return cars
 
     # example: self.moveCar_byName('X', 'RIGHT', 3)
-    def moveCar_ifpossible(self, car, direction, steps):
+    def move_car_if_possible(self, car, direction, steps):
         old_start_pos = [car.start_pos[0], car.start_pos[1]]  # deep copy
         old_end_pos = [car.end_pos[0], car.end_pos[1]]  # deep copy
 
-        car_can_move_in_direction = car.move_ifpossible(direction, steps)  # fails if cant move in this direction
+        car_can_move_in_direction = car.move_if_possible(direction, steps)  # fails if cant move in this direction
         if car_can_move_in_direction is 0:
             return 0
 
@@ -97,7 +97,7 @@ class GameState:
         end_hit_border = not (0 <= car.end_pos[0] < GameState.dimX and 0 <= car.end_pos[1] < GameState.dimY)
 
         if start_hit_border or end_hit_border:  # no need to continue checking other fails
-            car.move_ifpossible(direction, -steps)  # we know it's possible. we moved already
+            car.move_if_possible(direction, -steps)  # we know it's possible. we moved already
             return 0
 
         # check if car didnt "hit" other cars. means start/end is sitting on other car
@@ -131,7 +131,7 @@ class GameState:
                     break
 
         if start_hit_other_car or end_hit_other_car:
-            car.move_ifpossible(direction, -steps)  # we know it's possible. we moved already
+            car.move_if_possible(direction, -steps)  # we know it's possible. we moved already
             return 0
 
         # it's possible, just update the board!
@@ -148,12 +148,12 @@ class GameState:
             for i in range(car.start_pos[0], car.start_pos[0] + car.length):
                 self.board[i][car.start_pos[1]] = car.name
 
-    def createAllPossibleSons(self):
+    def create_all_possible_sons(self):
         # needs to do all possible car moves
-        sons_gamestates = []
-        sons_createdMove = []
+        sons_game_states = []
+        sons_created_move = []
 
-        cars = self.findCarsInBoard()  # cars only used once in this function
+        cars = self.find_cars_in_board()  # cars only used once in this function
         for car in cars:
             # do all possible moves with car
             if car.isVertical:
@@ -162,60 +162,60 @@ class GameState:
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = GameState(self)  # stupid copy 'ctor
                     disposable_car = Car.Car(car)  # moveCar_ifpossible ruins car object, and we will need it for other moves
-                    ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.UP, steps)
-                    if ispossible is 0:
+                    is_possible = new_son.move_car_if_possible(disposable_car, Direction.UP, steps)
+                    if is_possible is 0:
                         break
 
-                    createdMove = car.name + 'U' + str(steps)
-                    sons_gamestates.append(new_son)
-                    sons_createdMove.append(createdMove)
+                    created_move = car.name + 'U' + str(steps)
+                    sons_game_states.append(new_son)
+                    sons_created_move.append(created_move)
 
                 # all possible DOWN moves
                 for steps in range(1, GameState.dimY-1 - car.end_pos[0] + 1):
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = GameState(self)  # stupid copy 'ctor
                     disposable_car = Car.Car(car)  # moveCar_ifpossible ruins car object, and we will need it for other moves
-                    ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.DOWN, steps)
-                    if ispossible is 0:
+                    is_possible = new_son.move_car_if_possible(disposable_car, Direction.DOWN, steps)
+                    if is_possible is 0:
                         break
 
-                    createdMove = car.name + 'D' + str(steps)
-                    sons_gamestates.append(new_son)
-                    sons_createdMove.append(createdMove)
+                    created_move = car.name + 'D' + str(steps)
+                    sons_game_states.append(new_son)
+                    sons_created_move.append(created_move)
             else:
                 # all possible LEFT moves
                 for steps in range(1, car.start_pos[1] + 1):
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = GameState(self)  # stupid copy 'ctor
                     disposable_car = Car.Car(car)  # moveCar_ifpossible ruins car object, and we will need it for other moves
-                    ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.LEFT, steps)
-                    if ispossible is 0:
+                    is_possible = new_son.move_car_if_possible(disposable_car, Direction.LEFT, steps)
+                    if is_possible is 0:
                         break
 
-                    createdMove = car.name + 'L' + str(steps)
-                    sons_gamestates.append(new_son)
-                    sons_createdMove.append(createdMove)
+                    created_move = car.name + 'L' + str(steps)
+                    sons_game_states.append(new_son)
+                    sons_created_move.append(created_move)
 
                 # all possible RIGHT moves
                 for steps in range(1, GameState.dimX-1 - car.end_pos[1] + 1):
                     # create new son by copying all attri's, and changing the attri's that were changed by the move
                     new_son = GameState(self)  # stupid copy 'ctor
                     disposable_car = Car.Car(car)  # moveCar_ifpossible ruins car object, and we will need it for other moves
-                    ispossible = new_son.moveCar_ifpossible(disposable_car, Direction.RIGHT, steps)
-                    if ispossible is 0:
+                    is_possible = new_son.move_car_if_possible(disposable_car, Direction.RIGHT, steps)
+                    if is_possible is 0:
                         break
 
-                    createdMove = car.name + 'R' + str(steps)
-                    sons_gamestates.append(new_son)
-                    sons_createdMove.append(createdMove)
+                    created_move = car.name + 'R' + str(steps)
+                    sons_game_states.append(new_son)
+                    sons_created_move.append(created_move)
 
-        return [sons_gamestates, sons_createdMove]
+        return [sons_game_states, sons_created_move]
 
-    def setBoard(self, line):
+    def set_board(self, line):
         arr1dim = list(line)
         self.board = vector_to_matrix(arr1dim, GameState.dimX, GameState.dimY)
 
-    def printBoard(self):
+    def print_board(self):
         for i in range(0, GameState.dimY):
             for j in range(0, GameState.dimY):
                 print(self.board[i][j], end='')

@@ -6,10 +6,10 @@ from FibonacciHeap import FibonacciHeap
 
 class Node:
 
-    def __init__(self, game_state, father_node, createdMove, key):
+    def __init__(self, game_state, father_node, created_move, key):
         self.game_state = game_state
         self.father_node = father_node
-        self.createdMove = createdMove
+        self.createdMove = created_move
         self.key = key
         self.cost_to_root = 0  # will be set later, depends on g_func (user defines cost function)
         self.score = 0  # will be set later, depends on f_func (user defines cost function & heuristic)
@@ -18,7 +18,7 @@ class Node:
         return self.score < other.score
 
 
-class FibonacciHeap_with_HashTable:
+class FibonacciHeapWithHashTable:
     def __init__(self):
         self.fibonacciHeap = FibonacciHeap()
         self.hashTable = {}
@@ -74,7 +74,7 @@ def a_star(start_game_state, h_func, g_func):
     start_node.score = start_g + start_h
     sum_h = start_h
     sum_branches = 0
-    open_list = FibonacciHeap_with_HashTable()
+    open_list = FibonacciHeapWithHashTable()
     open_list.insert(start_node)
     closed_list = {}
 
@@ -112,13 +112,13 @@ def a_star(start_game_state, h_func, g_func):
 
         # add best to close_list, and add all best's sons to open_list
         closed_list[best.key] = best
-        [sons_gamestates, sons_createdMove] = best.game_state.createAllPossibleSons()
-        for i in range(len(sons_gamestates)):
+        [sons_game_states, sons_created_move] = best.game_state.create_all_possible_sons()
+        for i in range(len(sons_game_states)):
             # if he is in one of them, then we found longer path, dont re-add it!
             # **needs to check if he's in open_list as well.
-            son_key = sons_gamestates[i].unique_id_str()
+            son_key = sons_game_states[i].unique_id_str()
             if son_key not in closed_list and son_key not in open_list:
-                son_node = Node(sons_gamestates[i], best, sons_createdMove[i], son_key)
+                son_node = Node(sons_game_states[i], best, sons_created_move[i], son_key)
                 son_h = h_func(son_node)
                 son_g = g_func(son_node)
                 son_node.cost_to_root = son_g
@@ -127,7 +127,7 @@ def a_star(start_game_state, h_func, g_func):
 
                 N = N + 1
                 sum_h = sum_h + son_h
-                sum_branches = sum_branches + len(sons_gamestates)
+                sum_branches = sum_branches + len(sons_game_states)
 
                 max_depth = max(max_depth, son_node.cost_to_root)
                 sum_depth = sum_depth + son_node.cost_to_root

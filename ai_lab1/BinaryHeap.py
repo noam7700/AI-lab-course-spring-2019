@@ -10,6 +10,7 @@ parent: (i-1)/2
 i is leaf iff 2*i+1 > n-1
 """
 
+
 class BinaryHeap:
 
     def __init__(self):
@@ -88,7 +89,7 @@ class BinaryHeap:
 
     def extract_min(self):
         # swap between root & last element
-        min = self.extract_byIndex(0)
+        min = self.extract_by_index(0)
 
         return min
 
@@ -98,7 +99,7 @@ class BinaryHeap:
                 result = index
         return result
 
-    def extract_byIndex(self, index):
+    def extract_by_index(self, index):
         result = self.data[index]
         self.data[index] = self.data[len(self.data) - 1]
         self.data[len(self.data) - 1] = result

@@ -1,5 +1,6 @@
 from Direction import Direction
 
+
 class Car:
 
     # if copy constructor only set other_car. otherwise, set other attributes
@@ -21,7 +22,7 @@ class Car:
             self.isVertical = isVertical
 
     # if possible, move self in direction by steps and return 1. otherwise, return 0
-    def move_ifpossible(self, direction, steps):
+    def move_if_possible(self, direction, steps):
         if direction == Direction.UP:
             if not self.isVertical:
                 print("Error: can't move up with horizontal car")

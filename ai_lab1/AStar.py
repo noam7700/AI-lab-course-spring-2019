@@ -41,8 +41,8 @@ class FibonacciHeap_with_HashTable:
         self.hashTable = {}
 
     def insert(self, value):
-        self.fibonacciHeap.insert(value)
-        self.hashTable[value.key] = value
+        inserted_node = self.fibonacciHeap.insert(value)
+        self.hashTable[value.key] = inserted_node
 
     def extract_min(self):
         value = self.fibonacciHeap.extract_min()

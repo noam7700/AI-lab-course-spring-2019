@@ -12,7 +12,7 @@ circular doubly linked for all brothers in binomial tree
 
 we're only going to implement this queries:
 
-insert: O(1)
+insert: O(1) real & amortized
 just add it to roots-list as a new tree
 
 extract_min: O(logn) amortized
@@ -24,12 +24,21 @@ extract_min: O(logn) amortized
 create pointer array (with size logn) that at index i points to a tree of degree i
 start setting this pointer array and when new tree wants to point to existing cell, squash this two trees together
 
+decreaseValue: O(1) amortized
+1. improve key
+2. iterative cutoff:
+cutoff node
+cutoff father if he's marked (and then unmark him)
+if we cut the father, cutoff father of father if he's unmarked
+and so on... until some parent is unmarked, then mark him and finish
 """
 
 
 class BinaryTreeNode:
     def __init__(self, value):
         self.value = value
+        self.marked = False
+        self.father = None  # we need parent reference, for "decreaseValue( )" function
         self.leftBro = None  # can be used as a circular linked list, but for root-list it's not!
         self.rightBro = None  # can be used as a circular linked list, but for root-list it's not!
         self.leftSon = None  # leftest son
@@ -44,6 +53,7 @@ class FibonacciHeap:
         self.min_node = None  # empty linked list
         self.size = 0
 
+    # insert this value, and return his node (we need his pointer)
     def insert(self, value):
         self.size += 1
 
@@ -51,7 +61,7 @@ class FibonacciHeap:
 
         if self.min_node is None:
             self.min_node = new_node
-            return 1
+            return new_node  # return created node
 
         # insert new_node between min_node and his leftBro
         # ... <--> |_left_to_min_| <--> |_min_| <--> ...
@@ -71,9 +81,12 @@ class FibonacciHeap:
         if value < self.min_node.value:
             self.min_node = new_node
 
+        return new_node  # return created node
+
+    # extract the min node, and return only his value
     def extract_min(self):
         if self.min_node is None:
-            return
+            return None
         # self.min_node is the only node in the heap
         if self.min_node.leftSon is None and self.min_node.leftBro is None and self.min_node.rightBro is None:
             min_node_value = self.min_node.value
@@ -166,10 +179,12 @@ class FibonacciHeap:
                 # add bigger_tree to smaller_tree's sons
                 if smaller_tree.leftSon is None:  # he'll be only son
                     smaller_tree.leftSon = bigger_tree
+                    bigger_tree.father = smaller_tree
                     bigger_tree.rightBro = bigger_tree  # circular
                     bigger_tree.leftBro = bigger_tree  # circular
                 else:
                     smallers_leftson = smaller_tree.leftSon
+                    bigger_tree.father = smaller_tree
                     # push bigger between smallers_leftson and his lefty
                     smallers_leftson.leftBro.rightBro = bigger_tree
                     bigger_tree.leftBro = smallers_leftson.leftBro
@@ -215,3 +230,77 @@ class FibonacciHeap:
 
         self.size -= 1
         return min_node_value
+
+    # we need reference to this old value (to his node)
+    def decreaseValue(self, node, new_value):
+        if node is None:
+            return None
+
+        if not new_value < node.value:
+            return None
+
+        node.value = new_value
+        self.iterative_cutoff(node)
+
+        # update self.min_node if needed
+        if node.value < self.min_node.value:
+            self.min_node = node
+
+    def iterative_cutoff(self, node):  # I dont want it to be recursively, because of memory..
+
+        if node.father is None:  # means he is already a root
+            return
+        # first, always curoff node.
+        # thus, push node to the left of min_node
+        father = node.father
+
+        # delete node from father's sons
+        if node.rightBro is node:  # means he's only child
+            father.leftSon = None
+        else:  # he has a brother
+            node.rightBro.leftBro = node.leftBro
+            node.leftBro.rightBro = node.rightBro  # it's circular, no worries about a leftBro as well
+            father.leftSon = node.rightBro
+        father.degree -= 1
+
+        node.father = None  # node is now a root
+        node.rightBro = self.min_node
+        node.leftBro = self.min_node.leftBro
+        if self.min_node.leftBro is not None:
+            self.min_node.leftBro.rightBro = node
+        self.min_node.leftBro = node
+
+        # now start cutting off parents if they're marked
+        current = father
+        while current.marked is True and current.father is not None:
+
+            father = current.father
+            current.father = None
+
+            # delete current from father's sons-list
+            if current.rightBro is current:  # means he's only child
+                father.leftSon = None
+            else:
+                current.rightBro.leftBro = current.leftBro
+                current.leftBro.rightBro = current.rightBro
+                father.leftSon = current.rightBro
+
+            father.degree -= 1
+
+            current.rightBro = self.min_node
+            current.leftBro = self.min_node.leftBro
+            if self.min_node.leftBro is not None:
+                self.min_node.leftBro.rightBro = current
+            self.min_node.leftBro = current
+
+            current.marked = False  # unmark him
+
+            current = father  # goto next father
+
+        if current.marked is True:  # then we stopped him because he was a root. but his mark did his work
+            current.marked = False
+        else:
+            current.marked = True
+
+
+

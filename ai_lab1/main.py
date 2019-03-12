@@ -11,51 +11,22 @@ def main():
 
 
     # used to read all problems
-    rh_file = open(path_to_rh, 'r')
+    rh_input_file = open(path_to_rh, 'r')
+    solutions_file = open("./solutions.txt", 'w')
 
     # read first problem
-    for i in range(30):
-        initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
-        rh_file.readline(1);  # read '\n'
-    for i in range(1):
-        initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
-        rh_file.readline(1);  # read '\n'
+    for i in range(40):
+        initstate_line = rh_input_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
+        rh_input_file.readline(1);  # read '\n'
 
         initGameState = GameState.GameState(None, None, initstate_line)
 
         final_node = AStar.a_star(initGameState, AStar.heuristic, AStar.cost_to_root)
-        if final_node is not None:
-            print("problem " + str(i+31) + " score:", final_node.score)
-
-    """ Game Loop
-    while True:
-        car_name = input("car name(insert 'xxx' for next question): ");
-        if car_name == "xxx":
-            initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
-            rh_file.readline(1);  # read '\n'
-            initGameState = GameState.GameState(initstate_line);
-            initGameState.printBoard();
-            
-        else:  # continue...
-            direction = input("direction: ");
-            steps = input("steps: ");
-
-            steps = int(float(steps));
-
-            if direction == "LEFT":
-                direction = Direction.LEFT;
-            elif direction == 'RIGHT':
-                direction = Direction.RIGHT;
-            elif direction == 'UP':
-                direction = Direction.UP;
-            elif direction == 'DOWN':
-                direction = Direction.DOWN;
-
-            if initGameState.moveCar_byName_ifpossible(car_name, direction, steps) is 0:
-                print("DEBUG: cant move that far");
-            else:
-                initGameState.printBoard();
-    """
+        if final_node is None:
+            solutions_file.write("FAILED")
+        else:
+            moves = AStar.restore_solution_moves(final_node)
+            solutions_file.write(' '.join(moves) + "\n")
 
 if __name__ == '__main__':
     main();

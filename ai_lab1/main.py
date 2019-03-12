@@ -28,5 +28,6 @@ def main():
             moves = AStar.restore_solution_moves(final_node)
             solutions_file.write(' '.join(moves) + "\n")
 
+
 if __name__ == '__main__':
     main();

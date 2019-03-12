@@ -1,26 +1,8 @@
 import GameState
+from time import time
+from collections import namedtuple
 from FibonacciHeap import FibonacciHeap
 
-#
-# class Node(object):
-#     def __init__(self, key, board):
-#         self.key = key
-#         self.board = board
-#         self.predecessor = None
-#         self.sons = []
-#
-#     def __str__(self):
-#         return str(self.key)
-#
-#     def __eq__(self, another):
-#         return hasattr(another, 'board') and self.board == another.board
-#
-#     def __hash__(self):
-#         return self.key
-#
-#
-# def zero_f(board):
-#     return board
 
 class Node:
 
@@ -31,6 +13,7 @@ class Node:
         self.key = key
         self.cost_to_root = 0  # will be set later, depends on g_func (user defines cost function)
         self.score = 0  # will be set later, depends on f_func (user defines cost function & heuristic)
+
     def __lt__(self, other):
         return self.score < other.score
 
@@ -56,9 +39,17 @@ class FibonacciHeap_with_HashTable:
     def isEmpty(self):
         return self.fibonacciHeap.size == 0
 
+"""
+Description: Searches an optimal solution using A-Star alrorithm
+Parameters: start_game_state - start node 
+            h_func - an admissible hueristic function
+            g_func - cost function
+"""
 def a_star(start_game_state, h_func, g_func):
     if not bool(start_game_state):
-        return False
+        return None
+
+    start_time = time()
 
     start_node = Node(start_game_state, None, None, start_game_state.unique_id_str())
 
@@ -67,16 +58,21 @@ def a_star(start_game_state, h_func, g_func):
     start_h = h_func(start_node)
     start_node.cost_to_root = start_g
     start_node.score = start_g + start_h
-
+    sum_h = start_h
+    sum_branches = 0
     open_list = FibonacciHeap_with_HashTable()
     open_list.insert(start_node)
     closed_list = {}
+
+    N = 1
     while not open_list.isEmpty():
         best = open_list.extract_min()
 
         # X reached to the right of the board, we won!
         if best.game_state.board[2][GameState.GameState.dimX - 1] is 'X':
-            return best
+            exec_time = time() - start_time
+            Solution = namedtuple("Solution", ["solution", "permit", "exec_time", "avg_h", "EBF"])
+            return Solution(best, best.father_node.cost_to_root/N, exec_time, sum_h/N, sum_branches/N)
 
         # add best to close_list, and add all best's sons to open_list
         closed_list[best.key] = best
@@ -92,9 +88,11 @@ def a_star(start_game_state, h_func, g_func):
                 son_node.cost_to_root = son_g
                 son_node.score = son_h + son_g
                 open_list.insert(son_node)  # add to open_list
-
-    print("There is no solution")
+                N = N + 1
+                sum_h = sum_h + son_h
+                sum_branches = sum_branches + len(sons_gamestates)
     return None
+
 
 def restore_solution_path(final_node):
     if final_node is None:
@@ -135,17 +133,9 @@ def heuristic(node):
 
     return num_of_blocking_cars
 
+
 # used as g_func
 def cost_to_root(node):
     if node.father_node is None:  # means we're the root
         return 0
     return node.father_node.cost_to_root + 1
-
-
-
-# s_node = Node("A", 3)
-# node1 = Node("B", 2)
-# node2 = Node("C", 0)
-# s_node.sons = {node1.key, node2.key}
-# test_graph = {s_node.key: s_node, node1.key: node1, node2.key: node2}
-# a_star(s_node, test_graph, zero_f, zero_f)

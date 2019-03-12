@@ -39,15 +39,29 @@ class FibonacciHeap_with_HashTable:
     def isEmpty(self):
         return self.fibonacciHeap.size == 0
 
+
 """
-Description: Searches an optimal solution using A-Star alrorithm
+Description: Searches an optimal solution using A-Star algorithm
 Parameters: start_game_state - start node 
-            h_func - an admissible hueristic function
+            h_func - an admissible heuristic function
             g_func - cost function
+Returns: a tuple of form   (solution node, 
+                            depth/nodes fetched, 
+                            searching time, 
+                            Avg. heuristic score, 
+                            Effective Branching Factor,
+                            minimum depth, 
+                            maximum depth, 
+                            average depth)
 """
+
+
 def a_star(start_game_state, h_func, g_func):
+
+    Solution = namedtuple("Solution", ["solution_node", "permit", "exec_time", "avg_h", "ebf", "min_d", "max_d", "avg_d"])
+
     if not bool(start_game_state):
-        return None
+        return Solution(None, 0, 0, 0, 0, 0, 0, 0)
 
     start_time = time()
 
@@ -64,15 +78,37 @@ def a_star(start_game_state, h_func, g_func):
     open_list.insert(start_node)
     closed_list = {}
 
+    min_depth = float('inf')
+    max_depth = 0
+    sum_depth = 0
+
     N = 1
+    prev_best = start_node
+    prev_depth = 0
     while not open_list.isEmpty():
         best = open_list.extract_min()
 
+        if prev_best is not start_node and best.father_node is not prev_best:
+            min_depth = min(min_depth, prev_depth)
+            max_depth = max(max_depth, prev_depth)
+            sum_depth = sum_depth + prev_depth
+            prev_depth = best.cost_to_root
+        else:
+            prev_depth = prev_best.cost_to_root + 1
+        prev_best = best
+
         # X reached to the right of the board, we won!
         if best.game_state.board[2][GameState.GameState.dimX - 1] is 'X':
-            exec_time = time() - start_time
-            Solution = namedtuple("Solution", ["solution", "permit", "exec_time", "avg_h", "EBF"])
-            return Solution(best, best.father_node.cost_to_root/N, exec_time, sum_h/N, sum_branches/N)
+            search_time = time() - start_time
+
+            return Solution(best,
+                            best.father_node.cost_to_root/N,
+                            search_time,
+                            sum_h/N,
+                            sum_branches/N,
+                            min_depth,
+                            max_depth,
+                            sum_depth/N)
 
         # add best to close_list, and add all best's sons to open_list
         closed_list[best.key] = best
@@ -88,10 +124,23 @@ def a_star(start_game_state, h_func, g_func):
                 son_node.cost_to_root = son_g
                 son_node.score = son_h + son_g
                 open_list.insert(son_node)  # add to open_list
+
                 N = N + 1
                 sum_h = sum_h + son_h
                 sum_branches = sum_branches + len(sons_gamestates)
-    return None
+
+                max_depth = max(max_depth, son_node.cost_to_root)
+                sum_depth = sum_depth + son_node.cost_to_root
+
+    search_time = time() - start_time
+    return Solution(None,
+                    0,
+                    search_time,
+                    sum_h/N,
+                    sum_branches/N,
+                    min_depth,
+                    max_depth,
+                    sum_depth/N)
 
 
 def restore_solution_path(final_node):
@@ -108,12 +157,14 @@ def restore_solution_path(final_node):
     solution_path.reverse()  # reverse it to be in order (from first to last)
     return solution_path
 
+
 def restore_solution_moves(final_node):
     solution_path = restore_solution_path(final_node)
     moves = []  # list of moves (strings)
     for i in range(1, len(solution_path)):
         moves.append(solution_path[i].createdMove)
     return moves
+
 
 # used as h_func
 def heuristic(node):
@@ -132,6 +183,35 @@ def heuristic(node):
             num_of_blocking_cars += 1
 
     return num_of_blocking_cars
+
+
+# used as h_func
+def heuristic2(node):
+    x_row = 2
+    x_end_column = 0
+
+    # searching for X_car's end_pos because we are no longer keeping Car objects in game_state
+    for j in range(GameState.GameState.dimX - 1, -1, -1):  # from dimX - 1 to 0
+        if node.game_state.board[x_row][j] is 'X':  # found X!
+            x_end_column = j
+            break
+
+    num_of_blocking_cars = 0
+    for j in range(x_end_column + 1, GameState.GameState.dimX):
+        if node.game_state.board[x_row][j] is not '.':
+            num_of_blocking_cars += 1
+
+    # Adds Manhattan's distance between X and right border,
+    # divided by m > 3, thus it preserves admissibility
+
+    m = (5 - x_end_column)/4
+
+    return num_of_blocking_cars + m
+
+
+# used as h_func
+def heuristic3(node):
+    return 0
 
 
 # used as g_func

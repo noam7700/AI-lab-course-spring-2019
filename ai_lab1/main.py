@@ -14,17 +14,18 @@ def main():
     rh_file = open(path_to_rh, 'r')
 
     # read first problem
-    for i in range(10):
+    for i in range(30):
+        initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
+        rh_file.readline(1);  # read '\n'
+    for i in range(1):
         initstate_line = rh_file.readline(GameState.GameState.dimX * GameState.GameState.dimY);
         rh_file.readline(1);  # read '\n'
 
-    initGameState = GameState.GameState(None, None, initstate_line)
+        initGameState = GameState.GameState(None, None, initstate_line)
 
-    final_state = AStar.a_star(initGameState, AStar.heuristic, AStar.cost_to_root)
-    if final_state is not None:
-        solution_moves = AStar.restore_solution_moves(final_state)
-        for move in solution_moves:
-            print(move, end=' ')
+        final_node = AStar.a_star(initGameState, AStar.heuristic, AStar.cost_to_root)
+        if final_node is not None:
+            print("problem " + str(i+31) + " score:", final_node.score)
 
     """ Game Loop
     while True:

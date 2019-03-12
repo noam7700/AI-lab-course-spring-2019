@@ -60,8 +60,6 @@ def a_star(start_game_state, h_func, g_func):
     if not bool(start_game_state):
         return False
 
-    print("A Star algorithm: start_node - " + str(start_game_state) + ", graph - ")
-
     start_node = Node(start_game_state, None, None, start_game_state.unique_id_str())
 
     # open list contain for each cell x: key=x.key, value=(h(x)+g(x), x)
@@ -78,7 +76,6 @@ def a_star(start_game_state, h_func, g_func):
 
         # X reached to the right of the board, we won!
         if best.game_state.board[2][GameState.GameState.dimX - 1] is 'X':
-            print("The solution was found: " + best.key + ".",  "Score:", best.score)
             return best
 
         # add best to close_list, and add all best's sons to open_list
@@ -89,7 +86,6 @@ def a_star(start_game_state, h_func, g_func):
             # **needs to check if he's in open_list as well.
             son_key = sons_gamestates[i].unique_id_str()
             if son_key not in closed_list and son_key not in open_list:
-                # print("f is good")
                 son_node = Node(sons_gamestates[i], best, sons_createdMove[i], son_key)
                 son_h = h_func(son_node)
                 son_g = g_func(son_node)

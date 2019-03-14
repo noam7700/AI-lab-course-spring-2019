@@ -16,7 +16,7 @@ def main():
 
     # read first problem
     for i in range(40):
-        solutions_file.write("----------------------------- Board " + str(i) + ": ----------------------------------\n")
+        solutions_file.write("----------------------------- Board " + str(i+1) + ": ----------------------------------\n")
         init_state_line = rh_input_file.readline(GameState.GameState.dimX * GameState.GameState.dimY)
         rh_input_file.readline(1)  # read '\n'
 

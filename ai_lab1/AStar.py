@@ -24,8 +24,15 @@ class FibonacciHeapWithHashTable:
         self.hashTable = {}
 
     def insert(self, value):
-        inserted_node = self.fibonacciHeap.insert(value)
-        self.hashTable[value.key] = inserted_node
+        if value.key not in self:  # normal case. just add him
+            inserted_node = self.fibonacciHeap.insert(value)
+            self.hashTable[value.key] = inserted_node
+
+        elif value < self.hashTable[value.key].value:  # value is already in open_list, check if we can improve him
+            self.fibonacciHeap.decreaseValue(self.hashTable[value.key], value)  # decrease value of old value
+            # no need to update hashTable..
+
+
 
     def extract_min(self):
         value = self.fibonacciHeap.extract_min()
@@ -117,7 +124,7 @@ def a_star(start_game_state, h_func, g_func):
             # if he is in one of them, then we found longer path, dont re-add it!
             # **needs to check if he's in open_list as well.
             son_key = sons_game_states[i].unique_id_str()
-            if son_key not in closed_list and son_key not in open_list:
+            if son_key not in closed_list:
                 son_node = Node(sons_game_states[i], best, sons_created_move[i], son_key)
                 son_h = h_func(son_node)
                 son_g = g_func(son_node)

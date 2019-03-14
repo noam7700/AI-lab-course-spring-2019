@@ -106,6 +106,14 @@ class FibonacciHeap:
         left_of_min_node = self.min_node.leftBro
         right_of_min_node = self.min_node.rightBro
 
+        # update sons' father to be None (they're now roots!)
+        if most_left_sons_list is not None:  # there's at least one son
+            son = most_left_sons_list
+            while son is not most_right_sons_list:
+                son.father = None
+                son = son.rightBro
+            son.father = None  # also update for most_right_son
+
         # insert sons-list to root list between left_of_min & right_of_min
         if most_left_sons_list is not None: # sons-list is not empty
             most_left_sons_list.leftBro = left_of_min_node
@@ -131,7 +139,7 @@ class FibonacciHeap:
             self.min_node = most_left_sons_list
 
         # 2. now squash roots-list
-        array_pointers = [None] * (int(math.log2(self.size)) + 1)  # logn is enough, but just to make sure
+        array_pointers = [None] * (2*int(math.log2(self.size)))  # logn is enough, but just to make sure
 
         current_root = self.min_node
         while current_root.leftBro is not None:  # current_root should start as the most lefty
@@ -301,6 +309,49 @@ class FibonacciHeap:
             current.marked = False
         else:
             current.marked = True
+
+
+
+    def checkforbugs(self):
+        if self.min_node is None:
+            return True
+        current_root = self.min_node
+        while current_root.leftBro is not None:
+            current_root = current_root.leftBro
+
+        while current_root is not None:
+            if current_root.rightBro is not None:
+                if current_root.rightBro.leftBro is not current_root:
+                    print("DEBUG: heap is weird. roots bros are not good")
+                    return False
+            lson = current_root.leftSon
+
+            if lson is not None:
+                if lson.father is not current_root:
+                    print("DEBUG: heap is weird. sons' father is not good")
+                    return False
+                if lson.rightBro.leftBro is not lson:
+                    print("DEBUG: heap is weird. sons' bros are not good")
+                    return False
+
+                cson = lson.rightBro
+                while cson is not lson:
+                    if cson is None:
+                        print("DEBUG: not circular")
+                    if cson.father is not current_root:
+                        print("DEBUG: heap is weird. sons' father is not good")
+                        return False
+                    if cson.rightBro.leftBro is not cson:
+                        print("DEBUG: heap is weird. sons' bros are not good")
+                        return False
+                    cson = cson.rightBro
+
+            current_root = current_root.rightBro
+
+        return True
+
+
+
 
 
 

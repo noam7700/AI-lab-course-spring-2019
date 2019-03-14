@@ -22,7 +22,7 @@ def main():
 
         init_game_state = GameState.GameState(None, None, init_state_line)
 
-        result2 = AStar.a_star(init_game_state, AStar.heuristic2, AStar.cost_to_root)
+        result2 = AStar.a_star(init_game_state, AStar.heuristic2, AStar.cost_to_root, float(max_time_solution))
 
         if result2.solution_node is None:
             solutions_file.write("Heuristic - " + "\n" +
@@ -31,6 +31,7 @@ def main():
                                  "Solution - " + "\n   " +
                                  "  FAILED" + "\n" +
                                  "Statistics - " + "\n" +
+                                 "  Number of searched nodes: " + str("%.4f" % result2.num_searched) + "\n" +
                                  "  Permittivity: " + str("%.4f" % result2.permit) + "\n" +
                                  "  Searching Time: " + str("%.4f" % result2.exec_time) + "\n" +
                                  "  Average heuristic score: " + str("%.4f" % result2.avg_h) + "\n" +
@@ -48,6 +49,7 @@ def main():
                                  "Solution - " + "\n    " +
                                  ' '.join(moves) + "\n" +
                                  "Statistics - " + "\n" +
+                                 "  Number of searched nodes: " + str("%.4f" % result2.num_searched) + "\n" +
                                  "  Permittivity: " + str("%.4f" % result2.permit) + "\n" +
                                  "  Searching Time: " + str("%.4f" % result2.exec_time) + "\n" +
                                  "  Average heuristic score: " + str("%.4f" % result2.avg_h) + "\n" +

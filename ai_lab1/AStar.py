@@ -23,16 +23,22 @@ class FibonacciHeapWithHashTable:
         self.fibonacciHeap = FibonacciHeap()
         self.hashTable = {}
 
+    # returns [whatChanged, old_value]
+    # whatChanged -
+    # 1: added as new node. 0: updated existing node (decreased value). -1: didn't do anything
     def insert(self, value):
         if value.key not in self:  # normal case. just add him
             inserted_node = self.fibonacciHeap.insert(value)
             self.hashTable[value.key] = inserted_node
+            return [1, None]
 
         elif value < self.hashTable[value.key].value:  # value is already in open_list, check if we can improve him
+            old_value = self.hashTable[value.key].value
             self.fibonacciHeap.decreaseValue(self.hashTable[value.key], value)  # decrease value of old value
+            return [0, old_value]
             # no need to update hashTable..
 
-
+        return [-1, None]
 
     def extract_min(self):
         value = self.fibonacciHeap.extract_min()
@@ -63,12 +69,12 @@ Returns: a tuple of form   (solution node,
 """
 
 
-def a_star(start_game_state, h_func, g_func):
+def a_star(start_game_state, h_func, g_func, max_time_solution):
 
-    Solution = namedtuple("Solution", ["solution_node", "permit", "exec_time", "avg_h", "ebf", "min_d", "max_d", "avg_d"])
+    Solution = namedtuple("Solution", ["solution_node", "num_searched", "permit", "exec_time", "avg_h", "ebf", "min_d", "max_d", "avg_d"])
 
     if not bool(start_game_state):
-        return Solution(None, 0, 0, 0, 0, 0, 0, 0)
+        return Solution(None, 0, 0, 0, 0, 0, 0, 0, 0)
 
     start_time = time()
 
@@ -80,7 +86,7 @@ def a_star(start_game_state, h_func, g_func):
     start_node.cost_to_root = start_g
     start_node.score = start_g + start_h
     sum_h = start_h
-    sum_branches = 0
+
     open_list = FibonacciHeapWithHashTable()
     open_list.insert(start_node)
     closed_list = {}
@@ -88,18 +94,25 @@ def a_star(start_game_state, h_func, g_func):
     min_depth = float('inf')
     max_depth = 0
     sum_depth = 0
-
+    num_cutoffs = 0
     N = 1
     prev_best = start_node
     prev_depth = 0
     while not open_list.isEmpty():
         best = open_list.extract_min()
 
-        if prev_best is not start_node and best.father_node is not prev_best:
+        search_time = time() - start_time
+        if search_time >= max_time_solution:
+            break
+
+        if prev_best is not start_node and best.father_node is not prev_best:  # it's a cutoff!
             min_depth = min(min_depth, prev_depth)
             max_depth = max(max_depth, prev_depth)
             sum_depth = sum_depth + prev_depth
             prev_depth = best.cost_to_root
+
+            num_cutoffs += 1
+
         else:
             prev_depth = prev_best.cost_to_root + 1
         prev_best = best
@@ -109,13 +122,14 @@ def a_star(start_game_state, h_func, g_func):
             search_time = time() - start_time
 
             return Solution(best,
-                            best.father_node.cost_to_root/N,
+                            N,
+                            best.cost_to_root/N,
                             search_time,
                             sum_h/N,
-                            sum_branches/N,
+                            pow(N, (1/float(best.cost_to_root))),  # N^(1/d)
                             min_depth,
                             max_depth,
-                            sum_depth/N)
+                            sum_depth/num_cutoffs)
 
         # add best to close_list, and add all best's sons to open_list
         closed_list[best.key] = best
@@ -130,24 +144,26 @@ def a_star(start_game_state, h_func, g_func):
                 son_g = g_func(son_node)
                 son_node.cost_to_root = son_g
                 son_node.score = son_h + son_g
-                open_list.insert(son_node)  # add to open_list
+                [whatChanged, old_value] = open_list.insert(son_node)
 
-                N = N + 1
-                sum_h = sum_h + son_h
-                sum_branches = sum_branches + len(sons_game_states)
+                if whatChanged is 1:  # inserted as new node
+                    N = N + 1
+                    sum_h = sum_h + son_h
+                elif whatChanged is 0:  # updated existing node (decreased value)
+                    sum_h = sum_h - (old_value.score - float(old_value.cost_to_root)) + son_h  # sum_h - (old_h) + son_h
 
-                max_depth = max(max_depth, son_node.cost_to_root)
-                sum_depth = sum_depth + son_node.cost_to_root
+
 
     search_time = time() - start_time
     return Solution(None,
-                    0,
+                    N,
+                    best.cost_to_root/N,  # d will be last best's depth
                     search_time,
                     sum_h/N,
-                    sum_branches/N,
+                    pow(N, (1/float(best.cost_to_root))),  # N^(1/d)
                     min_depth,
                     max_depth,
-                    sum_depth/N)
+                    sum_depth/num_cutoffs)
 
 
 def restore_solution_path(final_node):

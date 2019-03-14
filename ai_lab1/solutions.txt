@@ -5,13 +5,14 @@ Heuristic -
 Solution - 
     CL3 OD3 AR1 PU1 BU1 RL2 QD2 XR3
 Statistics - 
-  Permittivity: 0.0015
-  Searching Time: 1.2830
-  Average heuristic score: 2.5772
-  EBF: 11.3830
+  Number of searched nodes: 1003.0000
+  Permittivity: 0.0080
+  Searching Time: 1.1861
+  Average heuristic score: 2.4993
+  EBF: 2.3723
   Minimum depth: 1.0000
-  Maximum depth: 8.0000
-  Average depth: 5.6759
+  Maximum depth: 7.0000
+  Average depth: 4.1359
 
 ----------------------------- Board 2: ----------------------------------
 Heuristic - 
@@ -20,13 +21,14 @@ Heuristic -
 Solution - 
     XR1 AD1 OL3 BU1 EL1 PD2 CU2 XR3
 Statistics - 
-  Permittivity: 0.0019
-  Searching Time: 1.0386
-  Average heuristic score: 3.1504
-  EBF: 10.1708
+  Number of searched nodes: 1159.0000
+  Permittivity: 0.0069
+  Searching Time: 1.0161
+  Average heuristic score: 3.0283
+  EBF: 2.4155
   Minimum depth: 1.0000
-  Maximum depth: 8.0000
-  Average depth: 5.6312
+  Maximum depth: 7.0000
+  Average depth: 4.0604
 
 ----------------------------- Board 3: ----------------------------------
 Heuristic - 
@@ -35,13 +37,14 @@ Heuristic -
 Solution - 
     OU2 PU3 AR3 BU1 CL2 OD3 XR2 BU3 XL2 OU3 AL4 OD3 PD3 XR3
 Statistics - 
-  Permittivity: 0.0055
-  Searching Time: 0.5480
-  Average heuristic score: 2.5913
-  EBF: 9.8434
+  Number of searched nodes: 640.0000
+  Permittivity: 0.0219
+  Searching Time: 0.5618
+  Average heuristic score: 2.4066
+  EBF: 1.5865
   Minimum depth: 1.0000
-  Maximum depth: 14.0000
-  Average depth: 8.3971
+  Maximum depth: 13.0000
+  Average depth: 5.9206
 
 ----------------------------- Board 4: ----------------------------------
 Heuristic - 
@@ -50,13 +53,14 @@ Heuristic -
 Solution - 
     OD3 XL1 AU3 XR1 OU3 RL2 QL3 PD3 XR3
 Statistics - 
-  Permittivity: 0.0112
-  Searching Time: 0.1563
-  Average heuristic score: 2.2022
-  EBF: 9.9129
+  Number of searched nodes: 265.0000
+  Permittivity: 0.0340
+  Searching Time: 0.1570
+  Average heuristic score: 2.2000
+  EBF: 1.8589
   Minimum depth: 1.0000
-  Maximum depth: 9.0000
-  Average depth: 7.7331
+  Maximum depth: 8.0000
+  Average depth: 5.5259
 
 ----------------------------- Board 5: ----------------------------------
 Heuristic - 
@@ -65,13 +69,14 @@ Heuristic -
 Solution - 
     FL3 EL3 QD2 AR1 PU1 RL1 OD3 GD2 XR3
 Statistics - 
-  Permittivity: 0.0016
-  Searching Time: 1.4430
-  Average heuristic score: 3.2257
-  EBF: 11.1474
+  Number of searched nodes: 1409.0000
+  Permittivity: 0.0064
+  Searching Time: 1.4693
+  Average heuristic score: 3.1847
+  EBF: 2.2381
   Minimum depth: 1.0000
-  Maximum depth: 9.0000
-  Average depth: 6.4482
+  Maximum depth: 8.0000
+  Average depth: 4.7053
 
 ----------------------------- Board 6: ----------------------------------
 Heuristic - 
@@ -80,13 +85,14 @@ Heuristic -
 Solution - 
     XL1 EU3 DR1 FU1 RL3 PD2 OD2 QD1 XR4
 Statistics - 
-  Permittivity: 0.0019
-  Searching Time: 1.2534
-  Average heuristic score: 3.9526
-  EBF: 10.7022
+  Number of searched nodes: 1050.0000
+  Permittivity: 0.0086
+  Searching Time: 1.2010
+  Average heuristic score: 3.8726
+  EBF: 2.1661
   Minimum depth: 1.0000
-  Maximum depth: 9.0000
-  Average depth: 5.6136
+  Maximum depth: 8.0000
+  Average depth: 4.0766
 
 ----------------------------- Board 7: ----------------------------------
 Heuristic - 
@@ -95,13 +101,14 @@ Heuristic -
 Solution - 
     FD2 CD3 DD1 BR2 EU1 XR2 AD4 XL2 ED1 BL4 EU1 DU1 XR3
 Statistics - 
-  Permittivity: 0.0010
-  Searching Time: 3.3230
-  Average heuristic score: 2.7733
-  EBF: 11.7601
+  Number of searched nodes: 3009.0000
+  Permittivity: 0.0043
+  Searching Time: 3.3369
+  Average heuristic score: 2.5968
+  EBF: 1.8517
   Minimum depth: 1.0000
-  Maximum depth: 13.0000
-  Average depth: 8.7874
+  Maximum depth: 12.0000
+  Average depth: 6.5505
 
 ----------------------------- Board 8: ----------------------------------
 Heuristic - 
@@ -110,13 +117,14 @@ Heuristic -
 Solution - 
     BL2 AL3 EU2 CU1 DU2 XR3 IU2 PL1 GL1 QL1 OD3 XR1
 Statistics - 
-  Permittivity: 0.0038
-  Searching Time: 1.2513
-  Average heuristic score: 3.6145
-  EBF: 7.8053
+  Number of searched nodes: 894.0000
+  Permittivity: 0.0134
+  Searching Time: 1.1488
+  Average heuristic score: 3.5313
+  EBF: 1.7618
   Minimum depth: 1.0000
-  Maximum depth: 12.0000
-  Average depth: 8.6906
+  Maximum depth: 11.0000
+  Average depth: 6.3172
 
 ----------------------------- Board 9: ----------------------------------
 Heuristic - 
@@ -125,13 +133,14 @@ Heuristic -
 Solution - 
     OD1 XR1 PU3 QL1 DD3 XR2 AD1 BL1 CL1 EL1 FU2 XR1
 Statistics - 
-  Permittivity: 0.0053
-  Searching Time: 0.7415
-  Average heuristic score: 1.9530
-  EBF: 8.8126
+  Number of searched nodes: 639.0000
+  Permittivity: 0.0188
+  Searching Time: 0.7537
+  Average heuristic score: 1.9155
+  EBF: 1.7131
   Minimum depth: 1.0000
-  Maximum depth: 12.0000
-  Average depth: 10.9952
+  Maximum depth: 11.0000
+  Average depth: 8.1848
 
 ----------------------------- Board 10: ----------------------------------
 Heuristic - 
@@ -140,13 +149,14 @@ Heuristic -
 Solution - 
     XR2 CL1 OU1 QR2 BD4 DR1 AR1 PU2 QL3 XL2 EU2 FL1 HL1 OD3 CR1 EU2 XR3
 Statistics - 
-  Permittivity: 0.0024
-  Searching Time: 2.6035
-  Average heuristic score: 1.6517
-  EBF: 9.0228
+  Number of searched nodes: 1661.0000
+  Permittivity: 0.0102
+  Searching Time: 2.5564
+  Average heuristic score: 1.6921
+  EBF: 1.5468
   Minimum depth: 1.0000
-  Maximum depth: 17.0000
-  Average depth: 12.7357
+  Maximum depth: 16.0000
+  Average depth: 9.7100
 
 ----------------------------- Board 11: ----------------------------------
 Heuristic - 
@@ -155,13 +165,14 @@ Heuristic -
 Solution - 
     OD3 XL1 BU2 QL2 EU3 RR1 QR2 BD3 XR1 OU3 QL3 PD1 AR3 PU1 QR3 OD3 XL1 BU4 XR1 OU3 RL3 QL3 PD3 ED2 XR3
 Statistics - 
-  Permittivity: 0.0079
-  Searching Time: 0.9716
-  Average heuristic score: 2.5422
-  EBF: 8.6654
+  Number of searched nodes: 783.0000
+  Permittivity: 0.0319
+  Searching Time: 0.6771
+  Average heuristic score: 2.4371
+  EBF: 1.3054
   Minimum depth: 1.0000
-  Maximum depth: 25.0000
-  Average depth: 16.8028
+  Maximum depth: 24.0000
+  Average depth: 12.5847
 
 ----------------------------- Board 12: ----------------------------------
 Heuristic - 
@@ -170,43 +181,46 @@ Heuristic -
 Solution - 
     BR2 PU1 QL3 CU3 QR3 RR3 PD3 BL1 CU1 XR3 AD4 BL2 PU3 RL2 QL1 OD3 XR1
 Statistics - 
-  Permittivity: 0.0050
-  Searching Time: 0.8964
-  Average heuristic score: 2.5236
-  EBF: 9.4004
+  Number of searched nodes: 866.0000
+  Permittivity: 0.0196
+  Searching Time: 0.6594
+  Average heuristic score: 2.5052
+  EBF: 1.4887
   Minimum depth: 1.0000
-  Maximum depth: 17.0000
-  Average depth: 13.0016
+  Maximum depth: 16.0000
+  Average depth: 9.8101
 
 ----------------------------- Board 13: ----------------------------------
 Heuristic - 
   Number of cars block the path to exit + 
   Normalized Manhattan's distance (Admissible)
 Solution - 
-    OU1 DD2 ED1 FR1 XL3 DU2 GU3 HL2 KL1 FL2 OD3 CD3 BR2 GU1 DU1 XR4
+     FAILED
 Statistics - 
-  Permittivity: 0.0008
-  Searching Time: 7.1122
-  Average heuristic score: 3.0460
-  EBF: 9.0768
+  Number of searched nodes: 3494.0000
+  Permittivity: 0.0034
+  Searching Time: 5.0147
+  Average heuristic score: 2.8183
+  EBF: 1.9737
   Minimum depth: 1.0000
-  Maximum depth: 16.0000
-  Average depth: 12.1554
+  Maximum depth: 12.0000
+  Average depth: 8.3177
 
 ----------------------------- Board 14: ----------------------------------
 Heuristic - 
   Number of cars block the path to exit + 
   Normalized Manhattan's distance (Admissible)
 Solution - 
-    EU1 DU1 HL2 IU1 KR4 ID1 HR2 DD3 ED3 HL2 XL2 BD2 CL4 FU2 GU2 BU2 XR4
+     FAILED
 Statistics - 
-  Permittivity: 0.0007
-  Searching Time: 6.9110
-  Average heuristic score: 2.4161
-  EBF: 10.9862
+  Number of searched nodes: 3846.0000
+  Permittivity: 0.0034
+  Searching Time: 5.0085
+  Average heuristic score: 2.3662
+  EBF: 1.8870
   Minimum depth: 1.0000
-  Maximum depth: 17.0000
-  Average depth: 14.6377
+  Maximum depth: 14.0000
+  Average depth: 10.7886
 
 ----------------------------- Board 15: ----------------------------------
 Heuristic - 
@@ -215,13 +229,14 @@ Heuristic -
 Solution - 
     IR1 HR1 QD1 RD1 XL2 FU1 EU1 GL2 AL1 PD1 OD1 DR2 EU2 BR1 FU2 XR2 RU1 QU1 HL2 IL2 PD1 OD1 XR2
 Statistics - 
-  Permittivity: 0.0139
-  Searching Time: 0.9138
-  Average heuristic score: 3.6348
-  EBF: 6.5261
+  Number of searched nodes: 523.0000
+  Permittivity: 0.0440
+  Searching Time: 0.9153
+  Average heuristic score: 3.5497
+  EBF: 1.3128
   Minimum depth: 1.0000
-  Maximum depth: 23.0000
-  Average depth: 11.5816
+  Maximum depth: 22.0000
+  Average depth: 8.5000
 
 ----------------------------- Board 16: ----------------------------------
 Heuristic - 
@@ -230,13 +245,14 @@ Heuristic -
 Solution - 
     GR4 PD1 DD2 EL2 FD2 XL3 CD1 BR1 PU3 QL2 GL2 CD3 QR2 FU1 GL2 PD3 XR3 PU3 QL1 OD3 XR1
 Statistics - 
-  Permittivity: 0.0022
-  Searching Time: 3.1537
-  Average heuristic score: 2.5578
-  EBF: 9.6938
+  Number of searched nodes: 2110.0000
+  Permittivity: 0.0100
+  Searching Time: 3.1256
+  Average heuristic score: 2.4870
+  EBF: 1.4398
   Minimum depth: 1.0000
-  Maximum depth: 21.0000
-  Average depth: 11.5958
+  Maximum depth: 20.0000
+  Average depth: 8.9357
 
 ----------------------------- Board 17: ----------------------------------
 Heuristic - 
@@ -245,13 +261,14 @@ Heuristic -
 Solution - 
     BL1 PU2 GU2 FU2 RR3 QR3 DD2 XR1 ER1 AD4 EL1 BL1 OR2 XL1 DU4 XR1 ER1 AU2 RL3 QL3 GD2 PD2 FD2 XR3
 Statistics - 
-  Permittivity: 0.0026
-  Searching Time: 3.2836
-  Average heuristic score: 3.8223
-  EBF: 9.6390
+  Number of searched nodes: 2033.0000
+  Permittivity: 0.0118
+  Searching Time: 2.9061
+  Average heuristic score: 3.6762
+  EBF: 1.3735
   Minimum depth: 1.0000
-  Maximum depth: 24.0000
-  Average depth: 16.7501
+  Maximum depth: 23.0000
+  Average depth: 13.1691
 
 ----------------------------- Board 18: ----------------------------------
 Heuristic - 
@@ -260,13 +277,14 @@ Heuristic -
 Solution - 
     RR3 PD1 DR3 QR2 XL1 BD4 XR1 AR1 CR1 PU3 QL3 OD2 CR3 AR3 OU2 QR3 PD3 XL1 BU4 XR1 PU3 RL3 QL3 OD3 XR3
 Statistics - 
-  Permittivity: 0.0039
-  Searching Time: 1.8442
-  Average heuristic score: 2.0880
-  EBF: 9.0737
+  Number of searched nodes: 1549.0000
+  Permittivity: 0.0161
+  Searching Time: 1.7385
+  Average heuristic score: 2.0473
+  EBF: 1.3415
   Minimum depth: 1.0000
-  Maximum depth: 25.0000
-  Average depth: 20.7222
+  Maximum depth: 24.0000
+  Average depth: 15.8101
 
 ----------------------------- Board 19: ----------------------------------
 Heuristic - 
@@ -275,13 +293,14 @@ Heuristic -
 Solution - 
     DU2 EL2 XL2 AD2 BL1 JU1 FU1 OR2 AD2 XR2 ER2 DD4 BL2 EL2 XL2 AU4 XR2 ER2 DU2 OL2 FD2 XR2
 Statistics - 
-  Permittivity: 0.0117
-  Searching Time: 0.5814
-  Average heuristic score: 2.0772
-  EBF: 8.0117
+  Number of searched nodes: 526.0000
+  Permittivity: 0.0418
+  Searching Time: 0.6056
+  Average heuristic score: 1.9415
+  EBF: 1.3295
   Minimum depth: 1.0000
-  Maximum depth: 22.0000
-  Average depth: 10.7168
+  Maximum depth: 21.0000
+  Average depth: 8.1797
 
 ----------------------------- Board 20: ----------------------------------
 Heuristic - 
@@ -290,13 +309,14 @@ Heuristic -
 Solution - 
     CD1 BR2 DU2 EU2 FL3 CD1 ED1 QL3 PD1 XR4
 Statistics - 
-  Permittivity: 0.0038
-  Searching Time: 0.7436
-  Average heuristic score: 2.7068
-  EBF: 9.1436
+  Number of searched nodes: 918.0000
+  Permittivity: 0.0109
+  Searching Time: 0.7052
+  Average heuristic score: 2.6160
+  EBF: 1.9783
   Minimum depth: 1.0000
-  Maximum depth: 10.0000
-  Average depth: 8.3653
+  Maximum depth: 9.0000
+  Average depth: 6.0322
 
 ----------------------------- Board 21: ----------------------------------
 Heuristic - 
@@ -305,13 +325,14 @@ Heuristic -
 Solution - 
     PD2 QR2 XL1 BD4 XR1 AR1 PU3 QL3 OD2 AR3 OU2 QR3 PD3 XL1 BU4 XR1 PU3 RL3 QL3 OD3 XR3
 Statistics - 
-  Permittivity: 0.0248
-  Searching Time: 0.2723
-  Average heuristic score: 1.9736
-  EBF: 6.8944
+  Number of searched nodes: 253.0000
+  Permittivity: 0.0830
+  Searching Time: 0.2533
+  Average heuristic score: 1.9377
+  EBF: 1.3015
   Minimum depth: 1.0000
-  Maximum depth: 21.0000
-  Average depth: 14.3354
+  Maximum depth: 20.0000
+  Average depth: 10.2301
 
 ----------------------------- Board 22: ----------------------------------
 Heuristic - 
@@ -320,13 +341,14 @@ Heuristic -
 Solution - 
     GR1 BU1 XL1 AD3 XR1 BD1 OL3 PU1 EL1 HU2 QR2 AD1 DD1 GR1 EL2 PD2 CL3 HU2 PU2 FU1 ER3 AU1 DU1 QL3 PD3 XR3
 Statistics - 
-  Permittivity: 0.0021
-  Searching Time: 4.3756
-  Average heuristic score: 2.5178
-  EBF: 9.2293
+  Number of searched nodes: 3095.0000
+  Permittivity: 0.0084
+  Searching Time: 4.2131
+  Average heuristic score: 2.4558
+  EBF: 1.3622
   Minimum depth: 1.0000
-  Maximum depth: 26.0000
-  Average depth: 24.8489
+  Maximum depth: 25.0000
+  Average depth: 19.2993
 
 ----------------------------- Board 23: ----------------------------------
 Heuristic - 
@@ -335,58 +357,62 @@ Heuristic -
 Solution - 
     QL2 DD1 EL1 PD1 OR1 AU1 XL3 AD1 OL3 PU1 ER1 DU1 QR3 CD1 AD1 BL3 DU2 EL1 PD1 OR3 AU2 EL3 CU2 FL4 CD1 QL3 PD2 DD2 XR4
 Statistics - 
-  Permittivity: 0.0048
-  Searching Time: 1.8957
-  Average heuristic score: 3.3944
-  EBF: 8.7089
+  Number of searched nodes: 1663.0000
+  Permittivity: 0.0174
+  Searching Time: 1.9910
+  Average heuristic score: 3.1618
+  EBF: 1.2914
   Minimum depth: 1.0000
-  Maximum depth: 29.0000
-  Average depth: 27.3651
+  Maximum depth: 28.0000
+  Average depth: 21.0623
 
 ----------------------------- Board 24: ----------------------------------
 Heuristic - 
   Number of cars block the path to exit + 
   Normalized Manhattan's distance (Admissible)
 Solution - 
-    CU1 DU2 XL2 AD1 BL1 EU2 GU2 HR3 FL1 OR3 AD3 XR2 FR2 DD4 CD4 FL2 BL2 XL2 AU4 XR2 FR2 CU3 OL2 GD1 XR2
+     FAILED
 Statistics - 
-  Permittivity: 0.0011
-  Searching Time: 6.8421
-  Average heuristic score: 1.9218
-  EBF: 11.2435
+  Number of searched nodes: 3180.0000
+  Permittivity: 0.0038
+  Searching Time: 5.0105
+  Average heuristic score: 1.9524
+  EBF: 1.9583
   Minimum depth: 1.0000
-  Maximum depth: 25.0000
-  Average depth: 11.3188
+  Maximum depth: 13.0000
+  Average depth: 6.6717
 
 ----------------------------- Board 25: ----------------------------------
 Heuristic - 
   Number of cars block the path to exit + 
   Normalized Manhattan's distance (Admissible)
 Solution - 
-    CL1 OU1 EU1 QR2 PD1 XL1 BD4 XR1 DR1 AR1 PU3 QL3 GU3 QR3 PD3 AL1 DL1 XL1 BU4 HL2 IL2 QL2 OD3 ED3 CR1 GU1 XR4
+     FAILED
 Statistics - 
-  Permittivity: 0.0008
-  Searching Time: 11.9588
-  Average heuristic score: 3.1828
-  EBF: 9.9230
+  Number of searched nodes: 3265.0000
+  Permittivity: 0.0058
+  Searching Time: 5.0007
+  Average heuristic score: 2.7972
+  EBF: 1.5309
   Minimum depth: 1.0000
-  Maximum depth: 27.0000
-  Average depth: 21.7974
+  Maximum depth: 20.0000
+  Average depth: 12.9425
 
 ----------------------------- Board 26: ----------------------------------
 Heuristic - 
   Number of cars block the path to exit + 
   Normalized Manhattan's distance (Admissible)
 Solution - 
-    OL1 DU2 ED1 RL1 GU1 HR1 CD3 XR1 AD1 OL2 PU1 RR2 AD3 RL2 XL1 CU4 XR1 HL1 GD1 RR3 FU1 AU3 EU1 HL3 FD1 RL2 PD3 XR2
+     FAILED
 Statistics - 
-  Permittivity: 0.0016
-  Searching Time: 5.7852
-  Average heuristic score: 2.9624
-  EBF: 9.0802
+  Number of searched nodes: 3693.0000
+  Permittivity: 0.0057
+  Searching Time: 5.0004
+  Average heuristic score: 2.8297
+  EBF: 1.4787
   Minimum depth: 1.0000
-  Maximum depth: 28.0000
-  Average depth: 21.0359
+  Maximum depth: 23.0000
+  Average depth: 15.6212
 
 ----------------------------- Board 27: ----------------------------------
 Heuristic - 
@@ -395,13 +421,14 @@ Heuristic -
 Solution - 
     PU2 ER1 OD2 CR2 BR2 DU2 XR1 AD4 XL1 DD2 BL3 CL3 DU2 OU2 EL4 OD2 DD2 CR3 DU2 XR1 ER1 AU3 EL1 FU1 RL3 OD1 PD3 XR3
 Statistics - 
-  Permittivity: 0.0030
-  Searching Time: 3.2438
-  Average heuristic score: 3.3818
-  EBF: 8.3728
+  Number of searched nodes: 2382.0000
+  Permittivity: 0.0118
+  Searching Time: 3.2667
+  Average heuristic score: 3.2706
+  EBF: 1.3201
   Minimum depth: 1.0000
-  Maximum depth: 28.0000
-  Average depth: 24.3154
+  Maximum depth: 27.0000
+  Average depth: 18.7345
 
 ----------------------------- Board 28: ----------------------------------
 Heuristic - 
@@ -410,28 +437,30 @@ Heuristic -
 Solution - 
     AD1 OR3 PU1 QU1 GR2 FR2 CD1 DD1 EL3 AD1 BL1 QU1 RR1 PD2 BL3 PU2 AU1 ER3 DU1 CU1 FL2 PD3 OL3 AU1 XR3 PU2 GL1 RL1 QD2 XR1
 Statistics - 
-  Permittivity: 0.0051
-  Searching Time: 2.1953
-  Average heuristic score: 3.2855
-  EBF: 8.3799
+  Number of searched nodes: 1662.0000
+  Permittivity: 0.0181
+  Searching Time: 2.1783
+  Average heuristic score: 3.1763
+  EBF: 1.2804
   Minimum depth: 1.0000
-  Maximum depth: 30.0000
-  Average depth: 28.8765
+  Maximum depth: 29.0000
+  Average depth: 21.9906
 
 ----------------------------- Board 29: ----------------------------------
 Heuristic - 
   Number of cars block the path to exit + 
   Normalized Manhattan's distance (Admissible)
 Solution - 
-    BU1 ER1 GU3 EL1 HU1 RR3 CD1 FR2 DL1 AD3 XR1 DR1 OR1 CU4 DL1 XL1 AU3 RL3 FL3 HD1 ER1 GD3 EL2 PD3 OR2 AU1 XR3 AD1 OL1 BU1 XR1
+     FAILED
 Statistics - 
-  Permittivity: 0.0016
-  Searching Time: 7.3818
-  Average heuristic score: 4.1087
-  EBF: 9.4810
+  Number of searched nodes: 3329.0000
+  Permittivity: 0.0069
+  Searching Time: 5.0112
+  Average heuristic score: 4.0000
+  EBF: 1.4228
   Minimum depth: 1.0000
-  Maximum depth: 31.0000
-  Average depth: 19.8464
+  Maximum depth: 24.0000
+  Average depth: 11.8884
 
 ----------------------------- Board 30: ----------------------------------
 Heuristic - 
@@ -440,28 +469,30 @@ Heuristic -
 Solution - 
     QU2 FR2 DR1 ER1 CR1 OD3 XL1 AD1 PL1 QU1 DR1 BD3 DL1 QD1 PR1 AU1 XR3 OU3 EL1 CL1 AD4 CR1 OD1 PL3 QU1 DR1 XL2 BU4 FL1 DL1 QD3 XR3
 Statistics - 
-  Permittivity: 0.0077
-  Searching Time: 1.3843
-  Average heuristic score: 1.9326
-  EBF: 7.7774
+  Number of searched nodes: 1139.0000
+  Permittivity: 0.0281
+  Searching Time: 1.5848
+  Average heuristic score: 1.9381
+  EBF: 1.2460
   Minimum depth: 1.0000
-  Maximum depth: 32.0000
-  Average depth: 28.5967
+  Maximum depth: 31.0000
+  Average depth: 21.5313
 
 ----------------------------- Board 31: ----------------------------------
 Heuristic - 
   Number of cars block the path to exit + 
   Normalized Manhattan's distance (Admissible)
 Solution - 
-    AR1 DU2 XL1 QU2 FR3 QD2 XR1 DD4 AL1 XL1 QU3 EL3 QD3 BD1 CL1 PU1 FR1 BD1 XR3 QU3 ER1 DU3 EL1 QD3 AR1 DU1 XL3 BU1 QU2 FL4 BD1 QD2 XR3 QU2 RL3 PD2 XR1
+     FAILED
 Statistics - 
-  Permittivity: 0.0023
-  Searching Time: 6.0056
-  Average heuristic score: 3.2426
-  EBF: 8.8196
+  Number of searched nodes: 3261.0000
+  Permittivity: 0.0086
+  Searching Time: 5.0008
+  Average heuristic score: 3.1631
+  EBF: 1.3350
   Minimum depth: 1.0000
-  Maximum depth: 37.0000
-  Average depth: 27.1334
+  Maximum depth: 28.0000
+  Average depth: 19.7599
 
 ----------------------------- Board 32: ----------------------------------
 Heuristic - 
@@ -470,13 +501,14 @@ Heuristic -
 Solution - 
     BD1 CL1 PU3 FR1 KU1 HR4 DD1 EL1 OD3 KD1 FL1 PD1 CR1 BU1 XR3 OU3 ER1 DU3 EL1 OD3 AR1 DU1 XL3 BD1 CL1 PU1 FR1 KU1 OU2 HL4 KD1 FL1 PD3 CR1 BU1 OD2 XR4
 Statistics - 
-  Permittivity: 0.0248
-  Searching Time: 0.7039
-  Average heuristic score: 3.2671
-  EBF: 6.2595
+  Number of searched nodes: 543.0000
+  Permittivity: 0.0681
+  Searching Time: 0.6874
+  Average heuristic score: 3.1349
+  EBF: 1.1855
   Minimum depth: 1.0000
-  Maximum depth: 37.0000
-  Average depth: 21.3333
+  Maximum depth: 36.0000
+  Average depth: 15.3300
 
 ----------------------------- Board 33: ----------------------------------
 Heuristic - 
@@ -485,43 +517,46 @@ Heuristic -
 Solution - 
     BL1 PU3 ER1 GU3 QR1 ID1 DL1 EL2 HU3 ER2 FR3 GD2 QR2 RD3 BL1 HU1 XR3 AD1 BL2 RU3 DR1 IU3 DL1 RD3 BR2 IU1 AU1 XL3 RU2 GU1 FL4 GD1 RD2 XR3 RU1 QL3 GD1 EL1 PD3 XR1
 Statistics - 
-  Permittivity: 0.0034
-  Searching Time: 4.2568
-  Average heuristic score: 4.1637
-  EBF: 9.4683
+  Number of searched nodes: 2981.0000
+  Permittivity: 0.0134
+  Searching Time: 4.1911
+  Average heuristic score: 3.9269
+  EBF: 1.2214
   Minimum depth: 1.0000
-  Maximum depth: 40.0000
-  Average depth: 28.4179
+  Maximum depth: 39.0000
+  Average depth: 21.9465
 
 ----------------------------- Board 34: ----------------------------------
 Heuristic - 
   Number of cars block the path to exit + 
   Normalized Manhattan's distance (Admissible)
 Solution - 
-    XR1 AD1 RL3 BU1 HR1 DD1 PU1 CU1 QR3 EU1 IR1 AD3 XL1 EU2 QL3 DU2 FL3 DD2 PD2 BD1 RR3 EU1 XR1 QR2 AU4 XL1 ED1 RL1 PU2 FL1 QR1 IL1 ED3 XR1 AD1 RL2 BU1 QL3 CD2 DU1 HL1 PD3 XR3
+     FAILED
 Statistics - 
-  Permittivity: 0.0023
-  Searching Time: 6.9688
-  Average heuristic score: 3.8248
-  EBF: 9.0315
+  Number of searched nodes: 3228.0000
+  Permittivity: 0.0096
+  Searching Time: 5.0009
+  Average heuristic score: 3.8937
+  EBF: 1.2978
   Minimum depth: 1.0000
-  Maximum depth: 43.0000
-  Average depth: 31.7517
+  Maximum depth: 33.0000
+  Average depth: 19.3664
 
 ----------------------------- Board 35: ----------------------------------
 Heuristic - 
   Number of cars block the path to exit + 
   Normalized Manhattan's distance (Admissible)
 Solution - 
-    PD1 AR1 BU1 GR1 KD1 QL1 EU2 FU3 DR3 ED2 BD1 AL1 PU1 QR3 KU1 GL1 OD3 XR1 KU3 XL1 OU3 QL3 PD1 AR1 BU1 EU2 DL4 ED2 BD1 AL1 PU1 QR3 OD3 AL2 FU1 BU1 XR3 KD2 AL1 OU3 QL1 PD3 XR1
+     FAILED
 Statistics - 
-  Permittivity: 0.0025
-  Searching Time: 5.8993
-  Average heuristic score: 3.9443
-  EBF: 9.4539
+  Number of searched nodes: 3511.0000
+  Permittivity: 0.0091
+  Searching Time: 5.0070
+  Average heuristic score: 3.9395
+  EBF: 1.2906
   Minimum depth: 1.0000
-  Maximum depth: 43.0000
-  Average depth: 25.8890
+  Maximum depth: 35.0000
+  Average depth: 18.0473
 
 ----------------------------- Board 36: ----------------------------------
 Heuristic - 
@@ -530,13 +565,14 @@ Heuristic -
 Solution - 
     XR1 DD1 RR1 OD1 PL1 AL1 QU1 RR2 CR1 EU3 RL1 QD1 AR1 PR1 OU1 RL2 DU1 GR4 DD1 RR2 OD1 PL1 AL1 QU1 RR1 ED3 BD3 RL2 CL2 QD1 AR1 PR1 OU1 RL1 XL2 DU3 RR1 OD2 PL1 DU1 GL1 FL1 QD2 XR3
 Statistics - 
-  Permittivity: 0.0045
-  Searching Time: 3.6683
-  Average heuristic score: 1.6512
-  EBF: 9.4111
+  Number of searched nodes: 2434.0000
+  Permittivity: 0.0181
+  Searching Time: 3.3701
+  Average heuristic score: 1.6850
+  EBF: 1.1939
   Minimum depth: 1.0000
-  Maximum depth: 44.0000
-  Average depth: 34.0223
+  Maximum depth: 43.0000
+  Average depth: 26.1924
 
 ----------------------------- Board 37: ----------------------------------
 Heuristic - 
@@ -545,13 +581,14 @@ Heuristic -
 Solution - 
     GR1 QD1 XL1 BD1 CL2 PU1 OU1 RR2 BD2 XR1 DR1 QU2 GL1 BD1 RL2 OD1 CR1 AR1 QU1 RL1 EU3 RR1 QD1 AL1 CL1 OU1 RR2 BU1 GR1 QD2 DL1 XL1 BU2 FL2 HL1 RL2 PD3 OD1 CR2 BU1 EU1 XR2 QU1 GL1 HL1 OD2 XR2
 Statistics - 
-  Permittivity: 0.0060
-  Searching Time: 3.5090
-  Average heuristic score: 3.6138
-  EBF: 8.1494
+  Number of searched nodes: 1945.0000
+  Permittivity: 0.0242
+  Searching Time: 3.5051
+  Average heuristic score: 3.5271
+  EBF: 1.1748
   Minimum depth: 1.0000
-  Maximum depth: 47.0000
-  Average depth: 43.5598
+  Maximum depth: 46.0000
+  Average depth: 33.1008
 
 ----------------------------- Board 38: ----------------------------------
 Heuristic - 
@@ -560,28 +597,30 @@ Heuristic -
 Solution - 
     OL1 RU2 ER1 GR1 CD2 BR2 DU1 FU1 QL3 CD1 EL1 RD1 OR1 DU1 XR3 AD3 XL3 DD1 OL2 RU1 ER1 CU1 QR3 FD1 DD1 AD1 BL3 DU1 CU2 EL4 DD1 CD1 BR3 RD1 OR2 DU2 XR1 ER1 AU4 EL1 XL1 FU2 GL4 CD1 QL3 RD2 FD1 XR4
 Statistics - 
-  Permittivity: 0.0040
-  Searching Time: 4.7303
-  Average heuristic score: 3.1679
-  EBF: 8.1236
+  Number of searched nodes: 3231.0000
+  Permittivity: 0.0149
+  Searching Time: 4.7725
+  Average heuristic score: 3.0432
+  EBF: 1.1833
   Minimum depth: 1.0000
-  Maximum depth: 48.0000
-  Average depth: 43.3830
+  Maximum depth: 47.0000
+  Average depth: 33.8985
 
 ----------------------------- Board 39: ----------------------------------
 Heuristic - 
   Number of cars block the path to exit + 
   Normalized Manhattan's distance (Admissible)
 Solution - 
-    HR1 IR2 CD2 AD1 OL3 RU2 HR1 ER1 BD3 EL1 RD1 OR3 AU1 XR3 AD1 OL1 RU1 ER1 DR2 GU4 FU4 DL2 EL1 RD1 OR1 AU1 XL3 AD2 OL1 RU1 ER1 BU3 EL1 RD1 OR1 AU2 CU2 HL4 CD1 AD1 OL1 RU1 IL3 ER1 BD3 EL1 RD3 OR1 AU1 XR4
+     FAILED
 Statistics - 
-  Permittivity: 0.0040
-  Searching Time: 5.4901
-  Average heuristic score: 2.8266
-  EBF: 7.5347
+  Number of searched nodes: 3326.0000
+  Permittivity: 0.0126
+  Searching Time: 5.0020
+  Average heuristic score: 2.7210
+  EBF: 1.2130
   Minimum depth: 1.0000
-  Maximum depth: 50.0000
-  Average depth: 30.9235
+  Maximum depth: 43.0000
+  Average depth: 22.2049
 
 ----------------------------- Board 40: ----------------------------------
 Heuristic - 
@@ -590,12 +629,13 @@ Heuristic -
 Solution - 
     PU1 IR1 ED1 QR3 FU1 HR1 OD3 AL1 DU1 CD2 XL3 BD1 DD1 AR3 DU1 XR2 OU3 HL1 FD1 CU3 QL3 PD1 AR1 XL1 EU4 XR1 QR2 CD3 XL1 ED1 AL1 PU1 QR1 FU1 HR1 OD3 XL1 DD1 AL3 BU1 EU1 DU1 XR3 OU2 HL1 FD1 GL1 QL1 IL1 PD3 XR1
 Statistics - 
-  Permittivity: 0.0044
-  Searching Time: 4.7171
-  Average heuristic score: 2.2119
-  EBF: 8.5689
+  Number of searched nodes: 3014.0000
+  Permittivity: 0.0169
+  Searching Time: 4.8046
+  Average heuristic score: 2.2639
+  EBF: 1.1701
   Minimum depth: 1.0000
-  Maximum depth: 51.0000
-  Average depth: 45.0950
+  Maximum depth: 50.0000
+  Average depth: 34.4124
 
 -------------------------------------------------------------------------------

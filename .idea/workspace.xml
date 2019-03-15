@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="426f9590-8f80-49c3-9611-4db8fa35203a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/IDDFS.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/IDDFS.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ai_lab1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/solutions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/solutions.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="149" column="29" lean-forward="true" selection-start-line="149" selection-start-column="29" selection-end-line="149" selection-end-column="29" />
+            <state relative-caret-position="154">
+              <caret line="183" column="4" selection-start-line="183" selection-start-column="4" selection-end-line="183" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -25,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ai_lab1/IDDFS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="94" column="90" selection-start-line="94" selection-start-column="90" selection-end-line="94" selection-end-column="90" />
+            <state relative-caret-position="101">
+              <caret line="91" column="41" selection-start-line="91" selection-start-column="41" selection-end-line="91" selection-end-column="41" />
               <folding>
                 <element signature="e#368#391#0" expanded="true" />
               </folding>
@@ -37,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ai_lab1/Stack.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="229">
+              <caret line="36" column="72" selection-start-line="36" selection-start-column="72" selection-end-line="36" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -46,11 +48,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+            <state relative-caret-position="301">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="117">
+              <caret line="1134" selection-start-line="1134" selection-end-line="1134" />
             </state>
           </provider>
         </entry>
@@ -66,11 +86,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>createAll</find>
-      <find>return</find>
-      <find>only</find>
-      <find>Node</find>
-      <find>not in</find>
       <find>is not</find>
       <find>decrease</find>
       <find>in</find>
@@ -95,7 +110,12 @@
       <find>named</find>
       <find>namedt</find>
       <find>==</find>
+      <find>isEmpty</find>
+      <find>stack_with</find>
       <find>size</find>
+      <find>solution</find>
+      <find>cutoff</find>
+      <find>iddfs</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,9 +135,9 @@
         <option value="$PROJECT_DIR$/ai_lab1/FibonacciHeap.py" />
         <option value="$PROJECT_DIR$/ai_lab1/AStar.py" />
         <option value="$PROJECT_DIR$/ai_lab1/GameState.py" />
-        <option value="$PROJECT_DIR$/ai_lab1/main.py" />
         <option value="$PROJECT_DIR$/ai_lab1/Stack.py" />
         <option value="$PROJECT_DIR$/ai_lab1/IDDFS.py" />
+        <option value="$PROJECT_DIR$/ai_lab1/main.py" />
       </list>
     </option>
   </component>
@@ -223,19 +243,38 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.2054054" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2111293" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3797054" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36824876" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3797054" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.15875614" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.15875614" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.13616072" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.2054054" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2111293" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3797054" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.15875614" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -256,9 +295,19 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ai_lab1/main.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="16" />
+          <url>file://$PROJECT_DIR$/ai_lab1/IDDFS.py</url>
+          <line>62</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ai_lab1/IDDFS.py</url>
+          <line>67</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ai_lab1/IDDFS.py</url>
+          <line>91</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -282,13 +331,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/LinkedList.py" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/rh_input.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -327,34 +369,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/Stack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="36" column="72" selection-start-line="36" selection-start-column="72" selection-end-line="36" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="183" column="4" selection-start-line="183" selection-start-column="4" selection-end-line="183" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="1134" selection-start-line="1134" selection-end-line="1134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        <state relative-caret-position="301">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/Stack.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="149" column="29" lean-forward="true" selection-start-line="149" selection-start-column="29" selection-end-line="149" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/IDDFS.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="94" column="90" selection-start-line="94" selection-start-column="90" selection-end-line="94" selection-end-column="90" />
+        <state relative-caret-position="101">
+          <caret line="91" column="41" selection-start-line="91" selection-start-column="41" selection-end-line="91" selection-end-column="41" />
           <folding>
             <element signature="e#368#391#0" expanded="true" />
           </folding>

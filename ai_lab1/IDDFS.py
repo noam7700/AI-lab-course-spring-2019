@@ -85,7 +85,9 @@ def dls(start_game_state, cutoff, f_func, start_time, max_time_solution):
 
     # declare stats
     num_searched = 1
-    new_cutoff =  f_func(start_node)
+    # new cutoff will be the minimum f_func() between all nodes that were stopped because f_func() >= cutoff
+    # (i.e. the smallest "step")
+    new_cutoff =  float('inf')
 
     while not open_list.isEmpty():
         current_node = open_list.pop()
@@ -109,11 +111,11 @@ def dls(start_game_state, cutoff, f_func, start_time, max_time_solution):
             son_node = Node(sons_game_states[i], current_node, sons_created_move[i], son_key)
 
             # update new_cutoff if needed
-            if f_func(son_node) > new_cutoff:
+            if cutoff < f_func(son_node) < new_cutoff:  # exceeds cutoff, but smaller than current new_cutoff
                 new_cutoff = f_func(son_node)
 
             # because the way dfs works, we know we shouldn't touch existing node in open.
-            if current_node.depth < cutoff and son_key not in open_list:
+            if f_func(son_node) <= cutoff and son_key not in open_list:
                 useless_son = False
                 if son_key in closed_list and current_node.depth + 1 >= closed_list[son_key].depth:
                     useless_son = True

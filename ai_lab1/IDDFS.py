@@ -61,7 +61,8 @@ def iddfs(start_game_state, max_time_solution):
     cutoff = 0
     while time() - start_time < max_time_solution:  # loop cutoff from 1 to inf
         cutoff += 1
-        solution = dls(start_game_state, cutoff, start_time, max_time_solution)
+        # getDepth because we cut based on depths...
+        [new_cutoff, solution] = dls(start_game_state, cutoff, getDepth, start_time, max_time_solution)
         if solution.solution_node is not None:
             break
     # found solution! (or it got to max_time, but who cares! :P - it still returns some data...)
@@ -69,7 +70,9 @@ def iddfs(start_game_state, max_time_solution):
 
 
 # implementing dls w/o recursion, but just with stack...
-def dls(start_game_state, cutoff, start_time, max_time_solution):
+# returns Solution Object & new_cutoff (new_cutoff = cutoff + 1 for uninformed)
+# f_func for calculating the new_cutoff
+def dls(start_game_state, cutoff, f_func, start_time, max_time_solution):
 
     Solution = namedtuple("Solution",
                           ["solution_node", "num_searched", "permit", "exec_time", "ebf", "d"])
@@ -82,27 +85,34 @@ def dls(start_game_state, cutoff, start_time, max_time_solution):
 
     # declare stats
     num_searched = 1
-    d = cutoff  # it's always cutoff, because we would have found it before, with cutoff-1
-
+    new_cutoff =  f_func(start_node)
 
     while not open_list.isEmpty():
         current_node = open_list.pop()
 
+        d = current_node.depth
+
         # check if time is finished, and if not, check if current is winning state
         if time() - start_time >= max_time_solution:
-            return Solution(None, num_searched, d/num_searched, time() - start_time, pow(num_searched, 1/d), d)
+            return [new_cutoff, Solution(None, num_searched, d/num_searched, time() - start_time, pow(num_searched, 1/d), d)]
 
         elif current_node.game_state.board[2][GameState.GameState.dimX - 1] is 'X':
             solution = Solution(current_node, num_searched, d/num_searched, time() - start_time, pow(num_searched, 1/d), d)
-            return solution
+            return [new_cutoff, solution]
 
         closed_list[current_node.key] = current_node
 
         [sons_game_states, sons_created_move] = current_node.game_state.create_all_possible_sons()
         for i in range(len(sons_game_states)):
 
-            # because the way dfs works, we know we shouldn't touch existing node in open.
             son_key = sons_game_states[i].unique_id_str()
+            son_node = Node(sons_game_states[i], current_node, sons_created_move[i], son_key)
+
+            # update new_cutoff if needed
+            if f_func(son_node) > new_cutoff:
+                new_cutoff = f_func(son_node)
+
+            # because the way dfs works, we know we shouldn't touch existing node in open.
             if current_node.depth < cutoff and son_key not in open_list:
                 useless_son = False
                 if son_key in closed_list and current_node.depth + 1 >= closed_list[son_key].depth:
@@ -111,17 +121,14 @@ def dls(start_game_state, cutoff, start_time, max_time_solution):
                     del closed_list[son_key]  # now he'll be in open_list
 
                 if useless_son is False:
-                    son_node = Node(sons_game_states[i], current_node, sons_created_move[i], son_key)
                     open_list.push(son_node)
                     num_searched += 1
 
-
     solution = Solution(None, num_searched, d / num_searched, time() - start_time, pow(num_searched, 1 / d), d)
-    return solution
+    return [new_cutoff, solution]
 
-
-
-
+def getDepth(node):
+    return node.depth
 
 
 

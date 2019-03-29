@@ -3,12 +3,25 @@ from AStar import Node
 from time import time
 from collections import namedtuple
 
+"""
+Bi Directional A*:
+------------------
+we do A* algorithm starting from init-state (forward A*), and finish-state (backward A*) simultaneously.
+when they meet up in some node v we check the following:
+g-forward(v) + g-backward(v) <= max(kf, kb)
+
+if the condition checks out 
+
+"""
 
 
-def bi_directional_a_star(start_game_state, end_game_state, h_func, g_func, max_time_solution):
+
+
+
+def bi_directional_a_star(start_game_state, end_game_state, h_func_forward, h_func_backward, g_func, max_time_solution):
 
     Solution = namedtuple("Solution",
-                          ["solution_node_forward", "solution_node_forward", "num_searched", "permit", "exec_time", "avg_h", "ebf", "min_d", "max_d",
+                          ["solution_node_forward", "solution_node_backward", "num_searched", "permit", "exec_time", "avg_h", "ebf", "min_d", "max_d",
                            "avg_d"])
 
     if not bool(start_game_state):
@@ -22,12 +35,12 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func, g_func, max_
     # attributes that are not set with constructor
     # set start_node's attris
     start_g = g_func(start_node)
-    start_h = h_func(start_node)
+    start_h = h_func_forward(start_node)
     start_node.cost_to_root = start_g
     start_node.score = start_g + start_h
     # set end_node's attris
     end_g = g_func(end_node)
-    end_h = h_func(end_node)
+    end_h = h_func_backward(end_node)
     end_node.cost_to_root = end_g
     end_node.score = end_g + end_h
 
@@ -60,7 +73,11 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func, g_func, max_
 
         if not OPENf.isEmpty():
             bestf = OPENf.extract_min()
-
+            # DEBUG
+            if bestf.key == "PAA...P.....P...XXB..Q.OBCCQ.ORRRQ.O":
+                print("CMON MAN")
+            elif bestf.key == "AA...OP..Q.OPXXQ.OP..Q..B...CCB.RRR.":
+                print(("Started searching..."))
             # update statistics of min/max/sum depth
             if prev_best_forward is not start_node and bestf.father_node is not prev_best_forward:  # it's a cutoff!
                 min_depth = min(min_depth, prev_depth_forward)
@@ -99,7 +116,7 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func, g_func, max_
                 son_key = sons_game_states[i].unique_id_str()
                 if son_key not in CLOSEf:
                     son_node = Node(sons_game_states[i], bestf, sons_created_move[i], son_key)
-                    son_h = h_func(son_node)
+                    son_h = h_func_forward(son_node)
                     son_g = g_func(son_node)
                     son_node.cost_to_root = son_g
                     son_node.score = son_h + son_g
@@ -111,7 +128,7 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func, g_func, max_
                     elif whatChanged is 0:  # updated existing node (decreased value)
                         sum_h = sum_h - (
                                     old_value.score - float(old_value.cost_to_root)) + son_h  # sum_h - (old_h) + son_h
-        if not OPENf.isEmpty():
+        if not OPENb.isEmpty():
             bestb = OPENb.extract_min()
             # update statistics of min/max/sum depth
             if prev_best_backward is not end_node and bestb.father_node is not prev_best_backward:  # it's a cutoff!
@@ -148,7 +165,7 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func, g_func, max_
                 son_key = sons_game_states[i].unique_id_str()
                 if son_key not in CLOSEb:
                     son_node = Node(sons_game_states[i], bestb, sons_created_move[i], son_key)
-                    son_h = h_func(son_node)
+                    son_h = h_func_backward(son_node)
                     son_g = g_func(son_node)
                     son_node.cost_to_root = son_g
                     son_node.score = son_h + son_g
@@ -165,7 +182,7 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func, g_func, max_
     search_time = time() - start_time
 
     max_d = max(bestf.cost_to_root, bestb.cost_to_root)
-    return Solution(None,
+    return Solution(None, None,
                     N,
                     max_d / N,  # d will be last best's depth
                     search_time,
@@ -175,3 +192,6 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func, g_func, max_
                     max_depth,
                     sum_depth / num_cutoffs)
 
+
+def heuristic_backward(node):
+    return 0  # underestimates :(

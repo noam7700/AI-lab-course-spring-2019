@@ -52,6 +52,8 @@ class FibonacciHeapWithHashTable:
     def isEmpty(self):
         return self.fibonacciHeap.size == 0
 
+    def peek(self):
+        return self.fibonacciHeap.peek()
 
 """
 Description: Searches an optimal solution using A-Star algorithm

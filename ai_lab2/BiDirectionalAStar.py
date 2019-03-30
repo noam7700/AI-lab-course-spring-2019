@@ -7,11 +7,12 @@ from collections import namedtuple
 Bi Directional A*:
 ------------------
 we do A* algorithm starting from init-state (forward A*), and finish-state (backward A*) simultaneously.
-when they meet up in some node v we check the following:
-g-forward(v) + g-backward(v) <= max(kf, kb)
+when they meet up in some node v we check the following: (as stated in class)
+f-forward(v) + f-backward(v) <= max(kf, kb)
+where kf = min {f-forward(u) | u is in OPENf}, kb = min {f-backward(u) | u is in OPENb}
 
-if the condition checks out 
-
+therefore, we set meu = 'inf'. and each time, we find a new v that meet up we update meu = min{meu, f-forward(v) + f-backward(v)}
+and everytime we extract min from one of the heaps, we check if u < min(kf, kb) (because kf/kb got bigger...)
 """
 
 
@@ -28,6 +29,12 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func_forward, h_fu
         return Solution(None, 0, 0, 0, 0, 0, 0, 0, 0)
 
     start_time = time()
+
+    # meu - as described above - each time we find a new v that meet up we update meu = min{meu, f-forward(v) + f-backward(v)}
+    # meu is the minimal between all v-nodes that where meet up in both A* directions
+    meu = float('inf')
+    meu_solf = None
+    meu_solb = None
 
     start_node = Node(start_game_state, None, None, start_game_state.unique_id_str())
     end_node = Node(end_game_state, None, None, end_game_state.unique_id_str())
@@ -73,11 +80,7 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func_forward, h_fu
 
         if not OPENf.isEmpty():
             bestf = OPENf.extract_min()
-            # DEBUG
-            if bestf.key == "PAA...P.....P...XXB..Q.OBCCQ.ORRRQ.O":
-                print("CMON MAN")
-            elif bestf.key == "AA...OP..Q.OPXXQ.OP..Q..B...CCB.RRR.":
-                print(("Started searching..."))
+
             # update statistics of min/max/sum depth
             if prev_best_forward is not start_node and bestf.father_node is not prev_best_forward:  # it's a cutoff!
                 min_depth = min(min_depth, prev_depth_forward)
@@ -91,20 +94,34 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func_forward, h_fu
 
             # check if finished
             if bestf.key in CLOSEb:  # means the two search trees met in node bestf
-                search_time = time() - start_time
+                # update meu
+                meu = min(meu, bestf.cost_to_root + CLOSEb[bestf.key].cost_to_root)
+                meu_solf = bestf
+                meu_solb = CLOSEb[bestf.key]
+
+            # check if the second condition checks out
+            kf = float('inf')
+            if OPENf.peek() is not None:
+                kf = OPENf.peek().cost_to_root
+            kb = float('inf')
+            if OPENb.peek() is not None:
+                kb = OPENb.peek().cost_to_root
+            if meu < kf + kb:
+                search_time = time() - start_time  # finished!!
 
                 # the larger deepening between the two search-trees (hopefully will be ~d/2 of AStar)
-                max_d = max(bestf.cost_to_root, CLOSEb[bestf.key].cost_to_root)
+                bigger_d = max(meu_solf.cost_to_root, meu_solb.cost_to_root)
+                return Solution(meu_solf, meu_solb,
+                                N,
+                                bigger_d / N,  # d/N
+                                search_time,
+                                sum_h / N,  # average h
+                                pow(N, (1 / float(bigger_d))),  # N^(1/d)
+                                min_depth,
+                                max_depth,
+                                sum_depth / num_cutoffs)
 
-                return Solution(bestf, CLOSEb[bestf.key],
-                            N,
-                            max_d/N,  # d/N
-                            search_time,
-                            sum_h/N,  # average h
-                            pow(N, (1/float(max_d))),  # N^(1/d)
-                            min_depth,
-                            max_depth,
-                            sum_depth/num_cutoffs)
+
             # else, open bestf
             # add to close
             CLOSEf[bestf.key] = bestf
@@ -142,20 +159,34 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func_forward, h_fu
             prev_best_backward = bestb  # update prev to current for next iteration
 
             if bestb.key in CLOSEf:  # means the two search trees met in node bestf
-                search_time = time() - start_time
+                # update meu
+                meu = min(meu, bestb.cost_to_root + CLOSEf[bestb.key].cost_to_root)
+                meu_solf = CLOSEf[bestb.key]
+                meu_solb = bestb
+
+            # check if the second condition checks out
+            kf = float('inf')
+            if OPENf.peek() is not None:
+                kf = OPENf.peek().cost_to_root
+            kb = float('inf')
+            if OPENb.peek() is not None:
+                kb = OPENb.peek().cost_to_root
+            if meu < kf + kb:
+                search_time = time() - start_time  # finished!!
 
                 # the larger deepening between the two search-trees (hopefully will be ~d/2 of AStar)
-                max_d = max(bestb.cost_to_root, CLOSEf[bestb.key].cost_to_root)
-                return Solution(bestb, CLOSEf[bestb.key],
+                bigger_d = max(meu_solf.cost_to_root, meu_solb.cost_to_root)
+                return Solution(meu_solf, meu_solb,
                                 N,
-                                max_d / N,  # d/N
+                                bigger_d / N,  # d/N
                                 search_time,
                                 sum_h / N,  # average h
-                                pow(N, (1 / float(max_d))),  # N^(1/d)
+                                pow(N, (1 / float(bigger_d))),  # N^(1/d)
                                 min_depth,
                                 max_depth,
                                 sum_depth / num_cutoffs)
-            # else, open bestf
+
+            # else, open bestb
             # add to close
             CLOSEb[bestb.key] = bestb
             [sons_game_states, sons_created_move] = bestb.game_state.create_all_possible_sons()

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="426f9590-8f80-49c3-9611-4db8fa35203a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ai_lab1/AStar.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/AStar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ai_lab1/FibonacciHeap.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/FibonacciHeap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/solutions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/solutions.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ai_lab2/BiDirectionalAStar.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab2/BiDirectionalAStar.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ai_lab2/BiDirectionalAStar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+            <state relative-caret-position="121">
+              <caret line="113" column="22" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="22" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
@@ -26,27 +28,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ai_lab1/FibonacciHeap.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="313" column="28" selection-start-line="313" selection-start-column="28" selection-end-line="313" selection-end-column="28" />
+            <state relative-caret-position="329">
+              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
               <folding>
-                <element signature="e#1927#2780#0" />
-                <element signature="e#2871#10161#0" />
-                <element signature="e#10273#10565#0" />
-                <element signature="e#10671#12660#0" />
-                <element signature="e#12700#14175#0" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="201">
+              <caret line="55" column="40" lean-forward="true" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
               <folding>
                 <element signature="e#934#1520#0" />
                 <element signature="e#1557#1693#0" />
@@ -56,37 +54,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ai_lab2/IDA_star.py">
+        <entry file="file://$PROJECT_DIR$/ai_lab1/FibonacciHeap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+            <state relative-caret-position="91">
+              <caret line="311" lean-forward="true" selection-start-line="311" selection-end-line="311" />
               <folding>
-                <element signature="e#0#22#0" expanded="true" />
+                <element signature="e#1927#2780#0" />
+                <element signature="e#2871#10161#0" />
+                <element signature="e#10273#10565#0" />
+                <element signature="e#10671#12660#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ai_lab1/IDDFS.py">
+        <entry file="file://$PROJECT_DIR$/ai_lab2/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-256">
-              <caret line="100" column="23" lean-forward="true" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
-              <folding>
-                <element signature="e#368#391#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="96" />
             </state>
           </provider>
         </entry>
@@ -102,13 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>size</find>
-      <find>solution</find>
-      <find>cutoff</find>
-      <find>iddfs</find>
-      <find>namedtuple</find>
-      <find>Node</find>
-      <find>f_func</find>
       <find>f</find>
       <find>class Node</find>
       <find>FAILED</find>
@@ -121,7 +100,6 @@
       <find>prev_depth</find>
       <find>bestf</find>
       <find>forward</find>
-      <find>max_d</find>
       <find>class</find>
       <find>hea</find>
       <find>Solution</find>
@@ -132,6 +110,14 @@
       <find>CLOSEb</find>
       <find>each time</find>
       <find>FIBO</find>
+      <find>solution_node_forward</find>
+      <find>if meu &lt;</find>
+      <find>peek</find>
+      <find>max_d</find>
+      <find>meu</find>
+      <find>return</find>
+      <find>if sol</find>
+      <find>for</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,10 +139,10 @@
         <option value="$PROJECT_DIR$/ai_lab1/IDDFS.py" />
         <option value="$PROJECT_DIR$/ai_lab2/main.py" />
         <option value="$PROJECT_DIR$/ai_lab2/IDA_star.py" />
-        <option value="$PROJECT_DIR$/ai_lab1/main.py" />
-        <option value="$PROJECT_DIR$/ai_lab1/FibonacciHeap.py" />
         <option value="$PROJECT_DIR$/ai_lab1/AStar.py" />
+        <option value="$PROJECT_DIR$/ai_lab1/FibonacciHeap.py" />
         <option value="$PROJECT_DIR$/ai_lab2/BiDirectionalAStar.py" />
+        <option value="$PROJECT_DIR$/ai_lab1/main.py" />
       </list>
     </option>
   </component>
@@ -271,13 +257,13 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13616072" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13616072" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2054054" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28150573" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.40425533" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.13420622" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -336,6 +322,11 @@
           <url>file://$PROJECT_DIR$/ai_lab1/IDDFS.py</url>
           <line>129</line>
           <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ai_lab1/main.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -414,13 +405,6 @@
     <entry file="file://$PROJECT_DIR$/ai_lab1/solutions.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab2/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab2/IDA_star.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -441,10 +425,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab2/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/FibonacciHeap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="311" lean-forward="true" selection-start-line="311" selection-end-line="311" />
+          <folding>
+            <element signature="e#1927#2780#0" />
+            <element signature="e#2871#10161#0" />
+            <element signature="e#10273#10565#0" />
+            <element signature="e#10671#12660#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="55" column="40" lean-forward="true" selection-start-line="55" selection-start-column="40" selection-end-line="55" selection-end-column="40" />
+          <folding>
+            <element signature="e#934#1520#0" />
+            <element signature="e#1557#1693#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab2/BiDirectionalAStar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+        <state relative-caret-position="121">
+          <caret line="113" column="22" selection-start-line="113" selection-start-column="16" selection-end-line="113" selection-end-column="22" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
@@ -453,35 +468,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        <state relative-caret-position="329">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/FibonacciHeap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="313" column="28" selection-start-line="313" selection-start-column="28" selection-end-line="313" selection-end-column="28" />
-          <folding>
-            <element signature="e#1927#2780#0" />
-            <element signature="e#2871#10161#0" />
-            <element signature="e#10273#10565#0" />
-            <element signature="e#10671#12660#0" />
-            <element signature="e#12700#14175#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-          <folding>
-            <element signature="e#934#1520#0" />
-            <element signature="e#1557#1693#0" />
           </folding>
         </state>
       </provider>

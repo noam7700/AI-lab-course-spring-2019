@@ -311,7 +311,10 @@ class FibonacciHeap:
             current.marked = True
 
     def peek(self):
-        return self.min_node
+        if self.min_node is not None:
+            return self.min_node.value
+        else:
+            return None
 
     def checkforbugs(self):
         if self.min_node is None:

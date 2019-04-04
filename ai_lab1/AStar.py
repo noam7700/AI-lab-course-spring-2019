@@ -43,7 +43,7 @@ class FibonacciHeapWithHashTable:
     def extract_min(self):
         value = self.fibonacciHeap.extract_min()
         if value is not None:
-            self.hashTable[value.key] = None
+            del self.hashTable[value.key]
         return value
 
     def __contains__(self, key):
@@ -140,12 +140,14 @@ def a_star(start_game_state, h_func, g_func, max_time_solution):
             # if he is in one of them, then we found longer path, dont re-add it!
             # **needs to check if he's in open_list as well.
             son_key = sons_game_states[i].unique_id_str()
+
+            son_node = Node(sons_game_states[i], best, sons_created_move[i], son_key)
+            son_h = h_func(son_node)
+            son_g = g_func(son_node)
+            son_node.cost_to_root = son_g
+            son_node.score = son_h + son_g
+
             if son_key not in closed_list:
-                son_node = Node(sons_game_states[i], best, sons_created_move[i], son_key)
-                son_h = h_func(son_node)
-                son_g = g_func(son_node)
-                son_node.cost_to_root = son_g
-                son_node.score = son_h + son_g
                 [whatChanged, old_value] = open_list.insert(son_node)
 
                 if whatChanged is 1:  # inserted as new node
@@ -153,6 +155,12 @@ def a_star(start_game_state, h_func, g_func, max_time_solution):
                     sum_h = sum_h + son_h
                 elif whatChanged is 0:  # updated existing node (decreased value)
                     sum_h = sum_h - (old_value.score - float(old_value.cost_to_root)) + son_h  # sum_h - (old_h) + son_h
+            else:  # maybe not admissibly function
+                # check if we can improve
+                if son_node.score < closed_list[son_key].score:
+                    # delete from close and put in open
+                    del closed_list[son_key]
+                    open_list.insert(son_node)
 
 
 

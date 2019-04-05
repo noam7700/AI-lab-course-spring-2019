@@ -1,7 +1,5 @@
-import sys
-sys.path.insert(0, "C:/Users/nir blagovsky/PycharmProjects/ai_lab/ai_lab1")  # lab2 extends lab1
+from ai_lab1 import GameState
 
-import GameState
 
 def sum_distances_of_blocking_cars(node):
     x_row = 2

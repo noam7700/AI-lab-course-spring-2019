@@ -3,6 +3,10 @@ from AStar import Node
 from time import time
 from collections import namedtuple
 
+# for testing
+import GameState
+import AStar
+
 """
 Bi Directional A*:
 ------------------
@@ -226,3 +230,66 @@ def bi_directional_a_star(start_game_state, end_game_state, h_func_forward, h_fu
 
 def heuristic_backward(node):
     return 0  # underestimates :(
+
+# used to test bi directional A*
+def runBiDirectionalAStar(path_to_input, max_time):
+    # used to read all problems
+    # should be path_to_input = "begin_end_states.txt". contains 40x2 lines, init line + end line
+    rh_input_file = open(path_to_input, 'r')
+    solutions_file = open("./solutions.txt", 'w')
+
+    for i in range(40):
+        print(i+1)
+        solutions_file.write(
+            "----------------------------- Board " + str(i + 1) + ": ----------------------------------\n")
+        init_state_line = rh_input_file.readline(GameState.GameState.dimX * GameState.GameState.dimY)
+        rh_input_file.readline(1)  # read '\n'
+        end_state_line = rh_input_file.readline(GameState.GameState.dimX * GameState.GameState.dimY)
+        rh_input_file.readline(1)  # read '\n'
+
+        init_game_state = GameState.GameState(None, None, init_state_line)
+        end_game_state = GameState.GameState(None, None, end_state_line)
+
+        result2 = bi_directional_a_star(init_game_state, end_game_state, AStar.heuristic2, heuristic_backward, AStar.cost_to_root, float(max_time))
+
+        if result2.solution_node_forward is None:
+            solutions_file.write("Heuristic - " + "\n" +
+                                 "  Number of cars block the path to exit + " + "\n" +
+                                 "  Normalized Manhattan's distance (Admissible)" + "\n" +
+                                 "Solution - " + "\n   " +
+                                 "  FAILED" + "\n" +
+                                 "Statistics - " + "\n" +
+                                 "  Number of searched nodes: " + str("%.4f" % result2.num_searched) + "\n" +
+                                 "  Permittivity: " + str("%.4f" % result2.permit) + "\n" +
+                                 "  Searching Time: " + str("%.4f" % result2.exec_time) + "\n" +
+                                 "  Average heuristic score: " + str("%.4f" % result2.avg_h) + "\n" +
+                                 "  EBF: " + str("%.4f" % result2.ebf) + "\n" +
+                                 "  Minimum depth: " + str("%.4f" % result2.min_d) + "\n" +
+                                 "  Maximum depth: " + str("%.4f" % result2.max_d) + "\n" +
+                                 "  Average depth: " + str("%.4f" % result2.avg_d) + "\n" +
+                                 "\n")
+        else:
+            movesf = AStar.restore_solution_moves(result2.solution_node_forward)
+            movesb = AStar.restore_solution_moves(result2.solution_node_backward)
+            movesb.reverse()
+            moves = movesf + movesb
+
+            solutions_file.write("Heuristic - " + "\n" +
+                                 "  Number of cars block the path to exit + " + "\n" +
+                                 "  Normalized Manhattan's distance (Admissible)" + "\n" +
+                                 "Solution - " + "\n    " +
+                                 ' '.join(moves) + "\n" +
+                                 "Statistics - " + "\n" +
+                                 "  Number of searched nodes: " + str("%.4f" % result2.num_searched) + "\n" +
+                                 "  Permittivity: " + str("%.4f" % result2.permit) + "\n" +
+                                 "  Searching Time: " + str("%.4f" % result2.exec_time) + "\n" +
+                                 "  Average heuristic score: " + str("%.4f" % result2.avg_h) + "\n" +
+                                 "  EBF: " + str("%.4f" % result2.ebf) + "\n" +
+                                 "  Minimum depth: " + str("%.4f" % result2.min_d) + "\n" +
+                                 "  Maximum depth: " + str("%.4f" % result2.max_d) + "\n" +
+                                 "  Average depth: " + str("%.4f" % result2.avg_d) + "\n" +
+                                 "\n")
+
+    solutions_file.write("-------------------------------------------------------------------------------\n")
+    solutions_file.close()
+    return 0

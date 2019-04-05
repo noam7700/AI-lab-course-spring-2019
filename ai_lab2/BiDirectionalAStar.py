@@ -239,7 +239,6 @@ def runBiDirectionalAStar(path_to_input, max_time):
     solutions_file = open("./solutions.txt", 'w')
 
     for i in range(40):
-        print(i+1)
         solutions_file.write(
             "----------------------------- Board " + str(i + 1) + ": ----------------------------------\n")
         init_state_line = rh_input_file.readline(GameState.GameState.dimX * GameState.GameState.dimY)

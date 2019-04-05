@@ -5,6 +5,9 @@ from AStar import heuristic2
 from collections import namedtuple
 from time import time
 
+import GameState  # for testing
+import AStar
+
 # Iterative Deepening of A*
 # iterate on dls with cutoff = new_cutoff. where new_cutoff starts as f(init_node), and each time updates to last max_f
 
@@ -45,3 +48,49 @@ def f_func(node):
     # heuristic2 assumes node.game_state.board
     return heuristic2(node) + node.depth
 
+
+def runIDAStar(path_to_input, max_time):
+
+    rh_input_file = open(path_to_input, 'r')
+    solutions_file = open("./solutions.txt", 'w')
+
+    for i in range(40):
+        solutions_file.write(
+            "----------------------------- Board " + str(i + 1) + ": ----------------------------------\n")
+        init_state_line = rh_input_file.readline(GameState.GameState.dimX * GameState.GameState.dimY)
+        rh_input_file.readline(1)  # read '\n'
+
+        init_game_state = GameState.GameState(None, None, init_state_line)
+
+        result2 = ida_star(init_game_state, f_func, float(max_time))
+
+        if result2.solution_node is None:
+            solutions_file.write("Heuristic - " + "\n" +
+                                 "  Number of cars block the path to exit + " + "\n" +
+                                 "  Normalized Manhattan's distance (Admissible)" + "\n" +
+                                 "Solution - " + "\n   " +
+                                 "  FAILED" + "\n" +
+                                 "Statistics - " + "\n" +
+                                 "  Number of searched nodes: " + str("%.4f" % result2.num_searched) + "\n" +
+                                 "  Permittivity: " + str("%.4f" % result2.permit) + "\n" +
+                                 "  Searching Time: " + str("%.4f" % result2.exec_time) + "\n" +
+                                 "  EBF: " + str("%.4f" % result2.ebf) + "\n" +
+                                 "\n")
+        else:
+            moves = AStar.restore_solution_moves(result2.solution_node)
+
+            solutions_file.write("Heuristic - " + "\n" +
+                                 "  Number of cars block the path to exit + " + "\n" +
+                                 "  Normalized Manhattan's distance (Admissible)" + "\n" +
+                                 "Solution - " + "\n    " +
+                                 ' '.join(moves) + "\n" +
+                                 "Statistics - " + "\n" +
+                                 "  Number of searched nodes: " + str("%.4f" % result2.num_searched) + "\n" +
+                                 "  Permittivity: " + str("%.4f" % result2.permit) + "\n" +
+                                 "  Searching Time: " + str("%.4f" % result2.exec_time) + "\n" +
+                                 "  EBF: " + str("%.4f" % result2.ebf) + "\n" +
+                                 "\n")
+
+    solutions_file.write("-------------------------------------------------------------------------------\n")
+    solutions_file.close()
+    return 0

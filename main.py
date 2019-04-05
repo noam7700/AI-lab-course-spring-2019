@@ -1,6 +1,8 @@
 import sys
 import os
 from ai_lab1 import RunBasicHeuristics as run_basic
+from ai_lab2 import RunPerceptron as run_perc
+
 
 if __name__ == '__main__':
     sys.path.insert(0, os.path.abspath("ai_lab1"))
@@ -9,5 +11,5 @@ if __name__ == '__main__':
     path_to_rh = sys.argv[1]  # pathname for rh.txt
     max_time_solution = sys.argv[2]  # if exceeds max_time_solution mark as failed
 
-    run_basic.RunBasicHeuristics(path_to_input=path_to_rh, max_time=max_time_solution)
-
+   # run_basic.RunBasicHeuristics(path_to_input=path_to_rh, max_time=max_time_solution)
+    run_perc.RunPerceptron(path_to_input=path_to_rh, max_time=max_time_solution)

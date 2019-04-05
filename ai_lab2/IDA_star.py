@@ -10,6 +10,9 @@ from time import time
 
 def ida_star(start_game_state, f_func, max_time_solution):
 
+    # as mentioned in class. we prefer much better exec-time over knowing that solution length will be
+    # at most OPT + constant
+    constant = 4
 
     # N = num_searched* - sum of num_searched in every iteration
     # permit - d/N
@@ -34,7 +37,7 @@ def ida_star(start_game_state, f_func, max_time_solution):
 
         if solution.solution_node is not None:
             break
-        cutoff = new_cutoff
+        cutoff = new_cutoff + constant  # as mentioned in class
     # found solution! (or it got to max_time, but who cares! :P - it still returns some data...)
     return Solution(solution.solution_node, N, solution.d / N, solution.exec_time, pow(N, 1/solution.d), solution.d)
 

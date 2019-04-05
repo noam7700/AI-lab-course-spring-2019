@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="426f9590-8f80-49c3-9611-4db8fa35203a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ai_lab2/NewHeuristics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai_lab1/AStar.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/AStar.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ai_lab1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ai_lab1/solutions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/solutions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab2/NewHeuristics.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab2/NewHeuristics.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,21 +16,24 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
+        <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+            <state relative-caret-position="680">
+              <caret line="46" column="64" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
+        <entry file="file://$PROJECT_DIR$/ai_lab2/NewHeuristics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="58" selection-start-line="58" selection-end-line="58" />
+            <state relative-caret-position="1088">
+              <caret line="116" column="60" selection-start-line="116" selection-start-column="60" selection-end-line="116" selection-end-column="60" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#173#2357#0" />
               </folding>
             </state>
           </provider>
@@ -40,17 +42,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ai_lab1/solutions.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+            <state relative-caret-position="447">
+              <caret line="39" column="6" selection-end-line="39" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ai_lab2/NewHeuristics.py">
+        <entry file="file://$PROJECT_DIR$/ai_lab1/GameState.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="55" column="62" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
+            <state relative-caret-position="3655">
+              <caret line="217" column="13" selection-start-line="217" selection-start-column="8" selection-end-line="217" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,10 +71,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>start_node</find>
-      <find>prev_depth</find>
-      <find>bestf</find>
-      <find>forward</find>
       <find>hea</find>
       <find>Solution</find>
       <find>S</find>
@@ -93,9 +94,13 @@
       <find>class</find>
       <find>Node(</find>
       <find>FibonacciHeapWithHashTable</find>
-      <find>print</find>
       <find>= nONE</find>
       <find>import sys</find>
+      <find>board 25</find>
+      <find>heuristic2</find>
+      <find>print</find>
+      <find>board 38</find>
+      <find>board 6</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,6 +143,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -159,7 +165,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -235,13 +240,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13616072" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2054054" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27168575" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33224222" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.049099836" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -345,16 +351,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/GameState.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="36" column="59" selection-start-line="36" selection-start-column="59" selection-end-line="36" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab2/IDA_star.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -416,20 +412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab2/NewHeuristics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="55" column="62" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/IDDFS.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -440,10 +422,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="242" lean-forward="true" selection-start-line="242" selection-end-line="242" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        <state relative-caret-position="680">
+          <caret line="46" column="64" selection-start-line="46" selection-start-column="64" selection-end-line="46" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab2/NewHeuristics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="116" column="60" selection-start-line="116" selection-start-column="60" selection-end-line="116" selection-end-column="60" />
+          <folding>
+            <element signature="e#173#2357#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/GameState.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3655">
+          <caret line="217" column="13" selection-start-line="217" selection-start-column="8" selection-end-line="217" selection-end-column="13" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -452,8 +461,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/solutions.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        <state relative-caret-position="447">
+          <caret line="39" column="6" selection-end-line="39" selection-end-column="6" />
         </state>
       </provider>
     </entry>

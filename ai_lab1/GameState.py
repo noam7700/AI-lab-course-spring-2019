@@ -1,5 +1,5 @@
-import Car
-from Direction import Direction
+from ai_lab1 import Car
+from ai_lab1.Direction import Direction
 import copy
 
 """""

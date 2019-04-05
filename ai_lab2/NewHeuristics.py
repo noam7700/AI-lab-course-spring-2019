@@ -1,5 +1,4 @@
-import sys
-sys.path.insert(0, "C:/Users/nir blagovsky/PycharmProjects/ai_lab/ai_lab1")  # lab2 extends lab1
+from ai_lab1 import GameState
 
 import GameState  # for testing + some implementations
 import AStar  # for testing

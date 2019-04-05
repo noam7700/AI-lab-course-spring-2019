@@ -1,7 +1,7 @@
-import GameState
+from ai_lab1 import GameState
 from time import time
 from collections import namedtuple
-from FibonacciHeap import FibonacciHeap
+from ai_lab1.FibonacciHeap import FibonacciHeap
 
 
 class Node:
@@ -73,14 +73,17 @@ Returns: a tuple of form   (solution node,
 
 def a_star(start_game_state, h_func, g_func, max_time_solution):
 
-    Solution = namedtuple("Solution", ["solution_node", "num_searched", "permit", "exec_time", "avg_h", "ebf", "min_d", "max_d", "avg_d"])
+    Solution = namedtuple("Solution", ["solution_node", "num_searched", "permit", "exec_time", "avg_h", "ebf", "min_d", "max_d", "avg_d", "search_path"])
 
     if not bool(start_game_state):
-        return Solution(None, 0, 0, 0, 0, 0, 0, 0, 0)
+        return Solution(None, 0, 0, 0, 0, 0, 0, 0, 0, [])
 
     start_time = time()
 
-    start_node = Node(start_game_state, None, None, start_game_state.unique_id_str())
+    start_node = Node(game_state=start_game_state,
+                      father_node=None,
+                      created_move='',
+                      key=start_game_state.unique_id_str())
 
     # open list contain for each cell x: key=x.key, value=(h(x)+g(x), x)
     start_g = g_func(start_node)
@@ -88,7 +91,7 @@ def a_star(start_game_state, h_func, g_func, max_time_solution):
     start_node.cost_to_root = start_g
     start_node.score = start_g + start_h
     sum_h = start_h
-
+    sum_branches = 0
     open_list = FibonacciHeapWithHashTable()
     open_list.insert(start_node)
     closed_list = {}
@@ -100,9 +103,10 @@ def a_star(start_game_state, h_func, g_func, max_time_solution):
     N = 1
     prev_best = start_node
     prev_depth = 0
+    searching_path = [start_node]
     while not open_list.isEmpty():
         best = open_list.extract_min()
-
+        searching_path.append(best)
         search_time = time() - start_time
         if search_time >= max_time_solution:
             break
@@ -131,7 +135,8 @@ def a_star(start_game_state, h_func, g_func, max_time_solution):
                             pow(N, (1/float(best.cost_to_root))),  # N^(1/d)
                             min_depth,
                             max_depth,
-                            sum_depth/num_cutoffs)
+                            sum_depth/num_cutoffs,
+                            searching_path)
 
         # add best to close_list, and add all best's sons to open_list
         closed_list[best.key] = best
@@ -173,7 +178,8 @@ def a_star(start_game_state, h_func, g_func, max_time_solution):
                     pow(N, (1/float(best.cost_to_root))),  # N^(1/d)
                     min_depth,
                     max_depth,
-                    sum_depth/num_cutoffs)
+                    sum_depth/num_cutoffs,
+		    searching_path)
 
 
 def restore_solution_path(final_node):
@@ -202,7 +208,7 @@ def restore_solution_moves(final_node):
 # used as h_func
 def heuristic(node):
     x_row = 2
-    x_end_column = 0;
+    x_end_column = 0
 
     # searching for X_car's end_pos because we are no longer keeping Car objects in game_state
     for j in range(GameState.GameState.dimX - 1, -1, -1):  # from dimX - 1 to 0
@@ -252,3 +258,4 @@ def cost_to_root(node):
     if node.father_node is None:  # means we're the root
         return 0
     return node.father_node.cost_to_root + 1
+

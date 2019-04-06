@@ -1,5 +1,3 @@
-from ai_lab1 import GameState
-
 import GameState  # for testing + some implementations
 import AStar  # for testing
 
@@ -327,8 +325,7 @@ def runBasicAStar(path_to_input, max_time, heuristic):
     rh_input_file = open(path_to_input, 'r')
     solutions_file = open("./solutions.txt", 'w')
 
-    for i in range(5):
-        print(i+1)
+    for i in range(40):
         solutions_file.write(
             "----------------------------- Board " + str(i + 1) + ": ----------------------------------\n")
         init_state_line = rh_input_file.readline(GameState.GameState.dimX * GameState.GameState.dimY)
@@ -339,10 +336,7 @@ def runBasicAStar(path_to_input, max_time, heuristic):
         result2 = AStar.a_star(init_game_state, heuristic, AStar.cost_to_root, float(max_time))
 
         if result2.solution_node is None:
-            solutions_file.write("Heuristic - " + "\n" +
-                                 "  Number of cars block the path to exit + " + "\n" +
-                                 "  Normalized Manhattan's distance (Admissible)" + "\n" +
-                                 "Solution - " + "\n   " +
+            solutions_file.write("Solution - " + "\n   " +
                                  "  FAILED" + "\n" +
                                  "Statistics - " + "\n" +
                                  "  Number of searched nodes: " + str("%.4f" % result2.num_searched) + "\n" +

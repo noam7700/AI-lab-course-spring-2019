@@ -65,10 +65,7 @@ def runIDAStar(path_to_input, max_time):
         result2 = ida_star(init_game_state, f_func, float(max_time))
 
         if result2.solution_node is None:
-            solutions_file.write("Heuristic - " + "\n" +
-                                 "  Number of cars block the path to exit + " + "\n" +
-                                 "  Normalized Manhattan's distance (Admissible)" + "\n" +
-                                 "Solution - " + "\n   " +
+            solutions_file.write("Solution - " + "\n   " +
                                  "  FAILED" + "\n" +
                                  "Statistics - " + "\n" +
                                  "  Number of searched nodes: " + str("%.4f" % result2.num_searched) + "\n" +

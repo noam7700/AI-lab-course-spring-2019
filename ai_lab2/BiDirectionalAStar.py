@@ -252,10 +252,7 @@ def runBiDirectionalAStar(path_to_input, max_time):
         result2 = bi_directional_a_star(init_game_state, end_game_state, AStar.heuristic2, heuristic_backward, AStar.cost_to_root, float(max_time))
 
         if result2.solution_node_forward is None:
-            solutions_file.write("Heuristic - " + "\n" +
-                                 "  Number of cars block the path to exit + " + "\n" +
-                                 "  Normalized Manhattan's distance (Admissible)" + "\n" +
-                                 "Solution - " + "\n   " +
+            solutions_file.write("Solution - " + "\n   " +
                                  "  FAILED" + "\n" +
                                  "Statistics - " + "\n" +
                                  "  Number of searched nodes: " + str("%.4f" % result2.num_searched) + "\n" +

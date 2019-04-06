@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="426f9590-8f80-49c3-9611-4db8fa35203a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ai_lab1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ai_lab1/solutions.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/solutions.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/AStar.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/AStar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/Car.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/Car.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/GameState.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/GameState.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab1/RunBasicHeuristics.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab1/RunBasicHeuristics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab2/BiDirectionalAStar.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab2/BiDirectionalAStar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab2/IDA_star.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab2/IDA_star.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ai_lab2/NewHeuristics.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab2/NewHeuristics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ai_lab2/RunPerceptron.py" beforeDir="false" afterPath="$PROJECT_DIR$/ai_lab2/RunPerceptron.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,50 +21,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ai_lab2/RunPerceptron.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="192">
+              <caret line="194" column="8" selection-start-line="194" selection-start-column="8" selection-end-line="194" selection-end-column="8" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ai_lab2/NewHeuristics.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="150" column="7" lean-forward="true" selection-start-line="150" selection-start-column="7" selection-end-line="150" selection-end-column="7" />
-              <folding>
-                <element signature="e#173#2357#0" />
-                <element signature="e#2393#6115#0" />
-                <element signature="e#6377#15638#0" />
-                <element signature="e#16438#19800#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ai_lab1/solutions.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5778">
-              <caret line="397" lean-forward="true" selection-start-line="397" selection-end-line="397" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ai_lab2/BiDirectionalAStar.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="234" column="51" lean-forward="true" selection-start-line="234" selection-start-column="26" selection-end-line="234" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
-                <element signature="e#904#10238#0" />
               </folding>
             </state>
           </provider>
@@ -74,14 +44,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>peek</find>
-      <find>max_d</find>
-      <find>meu</find>
-      <find>return</find>
-      <find>if sol</find>
-      <find>for</find>
-      <find>board 14</find>
-      <find>board 1</find>
       <find>heuristic</find>
       <find>class</find>
       <find>Node(</find>
@@ -102,8 +64,16 @@
       <find>board</find>
       <find>614</find>
       <find>board 37</find>
-      <find>run</find>
       <find>def run</find>
+      <find>runBasic</find>
+      <find>for i in range(5</find>
+      <find>binaryheap</find>
+      <find>runBi</find>
+      <find>run</find>
+      <find>ai_lab1</find>
+      <find>import</find>
+      <find>COST_TO_ROOT</find>
+      <find>golden_test_model.solution_node.cost_to_root - q_test_model.solution_node.cost_to_root</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -117,21 +87,24 @@
         <option value="$PROJECT_DIR$/ai_lab1/Heap.py" />
         <option value="$PROJECT_DIR$/ai_lab1/HashTable.py" />
         <option value="$PROJECT_DIR$/ai_lab1/Direction.py" />
-        <option value="$PROJECT_DIR$/ai_lab1/Car.py" />
         <option value="$PROJECT_DIR$/ai_lab1/BinaryHeap.py" />
         <option value="$PROJECT_DIR$/ai_lab1/LinkedList.py" />
-        <option value="$PROJECT_DIR$/ai_lab1/GameState.py" />
         <option value="$PROJECT_DIR$/ai_lab1/Stack.py" />
         <option value="$PROJECT_DIR$/ai_lab2/main.py" />
         <option value="$PROJECT_DIR$/ai_lab1/FibonacciHeap.py" />
-        <option value="$PROJECT_DIR$/ai_lab1/AStar.py" />
         <option value="$PROJECT_DIR$/ai_lab1/solutions.txt" />
         <option value="$PROJECT_DIR$/ai_lab1/IDDFS.py" />
         <option value="$PROJECT_DIR$/ai_lab2/tests.py" />
-        <option value="$PROJECT_DIR$/ai_lab2/IDA_star.py" />
-        <option value="$PROJECT_DIR$/ai_lab2/BiDirectionalAStar.py" />
-        <option value="$PROJECT_DIR$/ai_lab2/NewHeuristics.py" />
         <option value="$PROJECT_DIR$/ai_lab1/main.py" />
+        <option value="$PROJECT_DIR$/ai_lab2/NewHeuristics.py" />
+        <option value="$PROJECT_DIR$/ai_lab2/BiDirectionalAStar.py" />
+        <option value="$PROJECT_DIR$/ai_lab2/IDA_star.py" />
+        <option value="$PROJECT_DIR$/ai_lab1/RunBasicHeuristics.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/ai_lab1/AStar.py" />
+        <option value="$PROJECT_DIR$/ai_lab1/Car.py" />
+        <option value="$PROJECT_DIR$/ai_lab1/GameState.py" />
+        <option value="$PROJECT_DIR$/ai_lab2/RunPerceptron.py" />
       </list>
     </option>
   </component>
@@ -176,6 +149,9 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nir blagovsky\PycharmProjects\ai_lab" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nir blagovsky\PycharmProjects\ai_lab\ai_lab1" />
     </key>
@@ -192,7 +168,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main (1)">
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ai_lab" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="&quot;ai_lab1/rh_input.txt&quot; 100 8" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ai_lab" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -214,8 +211,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.main (1)" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -250,8 +252,8 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.2054054" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3453355" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.41243863" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30769232" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.38297874" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -265,20 +267,20 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.13616072" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13616072" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.2054054" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2111293" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3797054" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.41243863" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24222586" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38297874" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.15875614" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3764321" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -329,52 +331,11 @@
     <entry file="file://$PROJECT_DIR$/ai_lab1/__init__.py" />
     <entry file="file://$PROJECT_DIR$/ai_lab1/Heap.py" />
     <entry file="file://$PROJECT_DIR$/ai_lab1/HashTable.py" />
-    <entry file="file://$PROJECT_DIR$/ai_lab1/Direction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/BinaryHeap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="47" column="31" lean-forward="true" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab1/LinkedList.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/collections/__init__.pyi">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
           <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/Car.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/Stack.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="72" selection-start-line="36" selection-start-column="72" selection-end-line="36" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/FibonacciHeap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="311" selection-start-line="311" selection-end-line="311" />
-          <folding>
-            <element signature="e#1927#2780#0" />
-            <element signature="e#2871#10161#0" />
-            <element signature="e#10273#10565#0" />
-            <element signature="e#10671#12660#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -400,59 +361,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/GameState.py">
+    <entry file="file://$PROJECT_DIR$/ai_lab2/tests.py" />
+    <entry file="file://$PROJECT_DIR$/ai_lab1/solutions.txt" />
+    <entry file="file://$PROJECT_DIR$/ai_lab1/main.py" />
+    <entry file="file://$PROJECT_DIR$/solutions.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab2/NewHeuristics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2601">
-          <caret line="153" column="20" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
+    <entry file="file://$PROJECT_DIR$/ai_lab2/QLearning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="215" column="37" lean-forward="true" selection-start-line="215" selection-start-column="37" selection-end-line="215" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/IDDFS.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-          <folding>
-            <element signature="e#368#391#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab2/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab2/IDA_star.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-            <element signature="e#384#1594#0" />
-            <element signature="e#1749#5111#0" />
-          </folding>
+        <state relative-caret-position="110">
+          <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ai_lab2/BiDirectionalAStar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="234" column="51" lean-forward="true" selection-start-line="234" selection-start-column="26" selection-end-line="234" selection-end-column="51" />
+        <state relative-caret-position="179">
+          <caret line="254" column="33" selection-start-line="254" selection-start-column="33" selection-end-line="254" selection-end-column="33" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
             <element signature="e#904#10238#0" />
@@ -460,32 +392,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/solutions.txt">
+    <entry file="file://$PROJECT_DIR$/ai_lab2/IDA_star.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5778">
-          <caret line="397" lean-forward="true" selection-start-line="397" selection-end-line="397" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab1/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="145">
+          <caret line="67" column="33" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ai_lab2/NewHeuristics.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/AStar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/BinaryHeap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/Car.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/Direction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="12" lean-forward="true" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/FibonacciHeap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-end-column="6" />
+          <folding>
+            <element signature="e#1927#2780#0" />
+            <element signature="e#2871#10161#0" />
+            <element signature="e#10273#10565#0" />
+            <element signature="e#10671#12660#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/GameState.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="150" column="7" lean-forward="true" selection-start-line="150" selection-start-column="7" selection-end-line="150" selection-end-column="7" />
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/IDDFS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
           <folding>
-            <element signature="e#173#2357#0" />
-            <element signature="e#2393#6115#0" />
-            <element signature="e#6377#15638#0" />
-            <element signature="e#16438#19800#0" />
+            <element signature="e#368#391#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/RunBasicHeuristics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="76" selection-start-line="6" selection-start-column="76" selection-end-line="6" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab1/Stack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="43" column="73" selection-start-line="43" selection-start-column="73" selection-end-line="43" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai_lab2/RunPerceptron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="194" column="8" selection-start-line="194" selection-start-column="8" selection-end-line="194" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

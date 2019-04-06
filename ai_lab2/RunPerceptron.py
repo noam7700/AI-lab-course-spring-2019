@@ -2,11 +2,11 @@ import sys
 import os
 import random
 import pickle
-from ai_lab1.GameState import GameState
-import ai_lab1.AStar as AStar
-from ai_lab2.QLearning import QLearning
-from ai_lab1.FibonacciHeap import FibonacciHeap
-from ai_lab1.BinaryHeap import BinaryHeap
+from GameState import GameState
+import AStar as AStar
+from QLearning import QLearning
+from FibonacciHeap import FibonacciHeap
+from BinaryHeap import BinaryHeap
 
 
 
@@ -43,7 +43,7 @@ def RunPerceptron(path_to_input, max_time, num_of_training_iterations = 0):
                                      "  Number of searched nodes: " + str("%.4f" % golden_train_model.num_searched) + "\n" +
                                      "  Permittivity: " + str("%.4f" % golden_train_model.permit) + "\n" +
                                      "  Searching Time: " + str("%.4f" % golden_train_model.exec_time) + "\n" +
-                                     "  Average heuristic score: " + str("%.4f" % result2.avg_h) + "\n" +
+                                     "  Average heuristic score: " + str("%.4f" % golden_train_model.avg_h) + "\n" +
                                      "  EBF: " + str("%.4f" % golden_train_model.ebf) + "\n" +
                                      "  Minimum depth: " + str("%.4f" % golden_train_model.min_d) + "\n" +
                                      "  Maximum depth: " + str("%.4f" % golden_train_model.max_d) + "\n" +

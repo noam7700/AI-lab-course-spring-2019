@@ -1,5 +1,5 @@
-from ai_lab1 import GameState
-from ai_lab1 import AStar
+import GameState
+import AStar
 
 
 def RunBasicHeuristics(path_to_input, max_time):

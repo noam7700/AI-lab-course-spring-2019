@@ -1,7 +1,7 @@
-from ai_lab1 import GameState
+import GameState
 from time import time
 from collections import namedtuple
-from ai_lab1.FibonacciHeap import FibonacciHeap
+from FibonacciHeap import FibonacciHeap
 
 
 class Node:

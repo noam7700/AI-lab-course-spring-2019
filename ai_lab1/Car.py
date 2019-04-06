@@ -1,4 +1,4 @@
-from ai_lab1.Direction import Direction
+from Direction import Direction
 
 
 class Car:

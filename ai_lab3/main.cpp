@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 #include <math.h>
 
 #include "Gene.h"
-#include "StringGene.h"
+#include "StringGeneBullsAndCows.h"
 #include "geneticAlgorithm.h"
 
 #define GA_POPSIZE		2048		// ga population size
@@ -39,6 +39,14 @@ int main()
     for(int i=0; i<GA_POPSIZE; i++){
         gene_vector[i] = new StringGene();
         buffer[i] = new StringGene();
+    }
+    GeneticAlgorithm::run_ga(gene_vector, buffer);
+
+    cout << endl;
+
+    for(int i=0; i<GA_POPSIZE; i++){
+        gene_vector[i] = new StringGeneBullsAndCows();
+        buffer[i] = new StringGeneBullsAndCows();
     }
     GeneticAlgorithm::run_ga(gene_vector, buffer);
 

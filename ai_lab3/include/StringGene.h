@@ -22,7 +22,9 @@ class StringGene : public Gene
         bool isFinished(vector<Gene*>& gene_vector, vector<Gene*>& buffer); //using fitness. (maybe fitness==0?)
         void print();
 
-    private:
+        ~StringGene() = default;
+
+    protected:
         string str;
 };
 

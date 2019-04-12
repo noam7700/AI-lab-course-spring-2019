@@ -23,6 +23,8 @@ class Gene
 
         float getFitness();
 
+        virtual ~Gene() = default;
+
     protected:
         float fitness;
 };

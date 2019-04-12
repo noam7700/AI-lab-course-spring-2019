@@ -33,6 +33,15 @@ int main(int argc, char* argv[])
 
 using namespace std;				// polluting global namespace, but hey...
 
+void clean_vector(vector<Gene*> vec)
+{
+    for(int i=0; i<GA_POPSIZE; i++)
+    {
+        delete vec[i];
+        vec[i] = NULL;
+    }
+}
+
 int main()
 {
     vector<Gene*> gene_vector(GA_POPSIZE), buffer(GA_POPSIZE);
@@ -42,6 +51,9 @@ int main()
     }
     GeneticAlgorithm::run_ga(gene_vector, buffer);
 
+    clean_vector(gene_vector);
+    clean_vector(buffer);
+
     cout << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
@@ -49,6 +61,9 @@ int main()
         buffer[i] = new StringGeneBullsAndCows();
     }
     GeneticAlgorithm::run_ga(gene_vector, buffer);
+
+    clean_vector(gene_vector);
+    clean_vector(buffer);
 
 	return 0;
 }

@@ -1,17 +1,7 @@
 #include "GeneticAlgorithm.h"
 
-#include <iostream>
-#include <algorithm>
-#include <stdlib.h> //used for rand
-
-
 using namespace std;
 
-#define GA_POPSIZE		2048		// ga population size
-#define GA_MAXITER		16384		// maximum iterations
-#define GA_ELITRATE		0.10f		// elitism rate
-#define GA_MUTATIONRATE	0.25f		// mutation rate
-#define GA_MUTATION		RAND_MAX * GA_MUTATIONRATE
 
 GeneticAlgorithm::GeneticAlgorithm()
 {
@@ -67,8 +57,35 @@ void GeneticAlgorithm::print_best(vector<Gene*>& gene_vector){
     gene_vector[0]->print();
 }
 
+void GeneticAlgorithm::mate_by_tournament(vector<Gene*>& gene_vector, vector<Gene*>& buffer, unsigned K) {
+    int esize = GA_POPSIZE * GA_ELITRATE;
+    elitism(gene_vector, buffer, esize);
+
+    // Mate the rest
+    Gene* child;
+    for(int i=esize; i < GA_POPSIZE-2; i++){
+    	if(K > gene_vector.size() - esize){
+    		K = 0;
+    	}
+    	// First winning gene
+        random_shuffle(gene_vector.begin() + esize, gene_vector.end() - K) ;
+        sort(gene_vector.begin() + esize, gene_vector.end(), compare_genes_ptr);
+        // Second winning gene
+		random_shuffle(gene_vector.begin() + esize + 1, gene_vector.end()) ;
+		sort(gene_vector.begin() + esize + 1, gene_vector.end(), compare_genes_ptr);
+
+        child = buffer[i]; //it's pointers. we need to update buffer[i]
+//        gene_vector[i+1]->print();
+//		gene_vector[i+2]->print();
+//        cout << gene_vector.size() << endl;
+        child->setMate(*gene_vector[esize+1], *gene_vector[esize+2]);
+        if(rand() < GA_MUTATION)
+            child->mutate();
+    }
+}
+
 //he receives the vectors with the proper derived objects of Gene
-void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer){
+void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer, MateType m_type /*=MT_DEFAULT*/){
     //create random genes for all population. assuming gene_vector has non-NULLs
     init_population(gene_vector);
 
@@ -79,7 +96,11 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer)
 
         if(gene_vector[0]->isFinished(gene_vector, buffer))
             break;
-        mate(gene_vector, buffer);
+        switch(m_type){
+			case MT_DEFAULT: mate(gene_vector, buffer); break;
+			case MT_TOURNAMENT: mate_by_tournament(gene_vector, buffer, GA_TOURNAMENT_SIZE ); break;
+			default: { cout << "Unknown mate type was used" << endl; return; }
+        }
         swap(gene_vector, buffer);
     }
 

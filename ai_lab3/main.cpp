@@ -13,23 +13,10 @@ int main(int argc, char* argv[])
 
 #pragma warning(disable:4786)		// disable debug warning
 
-#include <iostream>					// for cout etc.
-#include <vector>					// for vector class
-#include <string>					// for string class
-#include <algorithm>				// for sort algorithm
-#include <time.h>					// for random seed
-#include <math.h>
-
 #include "Gene.h"
 #include "StringGeneBullsAndCows.h"
 #include "geneticAlgorithm.h"
-
-#define GA_POPSIZE		2048		// ga population size
-#define GA_MAXITER		16384		// maximum iterations
-#define GA_ELITRATE		0.10f		// elitism rate
-#define GA_MUTATIONRATE	0.25f		// mutation rate
-#define GA_MUTATION		RAND_MAX * GA_MUTATIONRATE
-#define GA_TARGET		std::string("Hello world!")
+#include "Defs.h"
 
 using namespace std;				// polluting global namespace, but hey...
 
@@ -44,6 +31,7 @@ void clean_vector(vector<Gene*> vec)
 
 int main()
 {
+    cout << "Sample solution:" << endl << endl;
     vector<Gene*> gene_vector(GA_POPSIZE), buffer(GA_POPSIZE);
     for(int i=0; i<GA_POPSIZE; i++){
         gene_vector[i] = new StringGene();
@@ -54,7 +42,7 @@ int main()
     clean_vector(gene_vector);
     clean_vector(buffer);
 
-    cout << endl;
+    cout << endl << "Bulls and Cows:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
         gene_vector[i] = new StringGeneBullsAndCows();
@@ -65,5 +53,15 @@ int main()
     clean_vector(gene_vector);
     clean_vector(buffer);
 
+    cout << endl << "Tournament:" << endl << endl;
+
+    for(int i=0; i<GA_POPSIZE; i++){
+        gene_vector[i] = new StringGene();
+        buffer[i] = new StringGene();
+    }
+    GeneticAlgorithm::run_ga(gene_vector, buffer, MT_TOURNAMENT);
+
+    clean_vector(gene_vector);
+    clean_vector(buffer);
 	return 0;
 }

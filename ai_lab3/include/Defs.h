@@ -15,6 +15,7 @@
 #include <time.h>					// for random seed
 #include <stdlib.h> //used for rand
 #include <math.h>
+#include <chrono>
 
 #define GA_POPSIZE				2048		// ga population size
 #define GA_MAXITER				16384		// maximum iterations
@@ -22,7 +23,7 @@
 #define GA_MUTATIONRATE			0.25f		// mutation rate
 #define GA_MUTATION				RAND_MAX * GA_MUTATIONRATE
 #define GA_TARGET				std::string("Hello world!")
-#define GA_TOURNAMENT_SIZE 		10
+#define GA_TOURNAMENT_SIZE 		16
 
 typedef enum mate_type{
 	MT_DEFAULT = 0,

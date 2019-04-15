@@ -1,4 +1,6 @@
 #include "GeneticAlgorithm.h"
+#include <time.h>
+#include <chrono>
 
 using namespace std;
 
@@ -103,6 +105,15 @@ void GeneticAlgorithm::print_stats(vector<Gene*>& gene_vector){
 
 //he receives the vectors with the proper derived objects of Gene
 void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer, MateType m_type /*=MT_DEFAULT*/){
+    auto mini_start = chrono::high_resolution_clock::now();
+    auto mini_finish = chrono::high_resolution_clock::now();
+    auto start = chrono::high_resolution_clock::now();
+    auto finish = chrono::high_resolution_clock::now();
+    std::chrono::duration<double,milli> elapsed = mini_finish - mini_start;
+
+    clock_t cmini_start = clock(), cmini_finish, cstart = clock(), cfinish;
+    float clockticks;
+
     //create random genes for all population. assuming gene_vector has non-NULLs
     init_population(gene_vector);
 
@@ -111,6 +122,15 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
         sort(gene_vector.begin(), gene_vector.end(), compare_genes_ptr);
         print_best(gene_vector);
         print_stats(gene_vector);
+
+        mini_finish = chrono::high_resolution_clock::now();
+        elapsed = mini_finish - mini_start;
+        cmini_finish = clock();
+        clockticks = (float)(cmini_finish - cmini_start);
+
+        cmini_start = cmini_finish; //switch between finish & start for next iteration
+        mini_start = mini_finish; //same
+        cout << "Generation " << i << ": absolute time: " << elapsed.count() / 1000 << " clock ticks: " << clockticks << "\n";
         cout << "\n";
 
         if(gene_vector[0]->isFinished(gene_vector, buffer))
@@ -122,6 +142,12 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
         }
         swap(gene_vector, buffer);
     }
+
+    finish = chrono::high_resolution_clock::now();
+    elapsed = finish - start;
+    cfinish = clock();
+    clockticks = cfinish - cstart;
+    cout << "Overall: absolute time: " << elapsed.count() / 1000 << " clock ticks: " << clockticks << "\n";
 
     return;
 }

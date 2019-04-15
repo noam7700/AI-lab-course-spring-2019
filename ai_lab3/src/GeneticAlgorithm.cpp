@@ -84,6 +84,23 @@ void GeneticAlgorithm::mate_by_tournament(vector<Gene*>& gene_vector, vector<Gen
     }
 }
 
+void GeneticAlgorithm::print_stats(vector<Gene*>& gene_vector){
+    float mean = 0, variance = 0, st_deviation;
+    for(unsigned int i=0; i<gene_vector.size(); i++)
+        mean += gene_vector[i]->getFitness();
+    mean /= gene_vector.size();
+
+    float tmp;
+    for(unsigned int i=0; i<gene_vector.size(); i++)
+        tmp = pow(gene_vector[i]->getFitness() - mean, 2);
+        variance += tmp;
+    variance /= gene_vector.size();
+
+    st_deviation = sqrt(variance);
+
+    cout << "mean: " << mean << ", variance: " << variance << ", standard deviation: " << st_deviation << "\n";
+}
+
 //he receives the vectors with the proper derived objects of Gene
 void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer, MateType m_type /*=MT_DEFAULT*/){
     //create random genes for all population. assuming gene_vector has non-NULLs
@@ -93,6 +110,8 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
         calc_fitness(gene_vector); //update fitness for all genes
         sort(gene_vector.begin(), gene_vector.end(), compare_genes_ptr);
         print_best(gene_vector);
+        print_stats(gene_vector);
+        cout << "\n";
 
         if(gene_vector[0]->isFinished(gene_vector, buffer))
             break;

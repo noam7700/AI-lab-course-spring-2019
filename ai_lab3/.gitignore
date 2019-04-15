@@ -6,3 +6,4 @@ obj/
 .project
 *.xml
 *.prefs
+*.depend

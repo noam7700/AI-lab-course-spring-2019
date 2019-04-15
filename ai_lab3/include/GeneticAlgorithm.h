@@ -18,6 +18,7 @@ class GeneticAlgorithm
         static void mate_by_tournament(vector<Gene*>& gene_vector, vector<Gene*>& buffer, unsigned K);
         static bool compare_genes_ptr(Gene* lh, Gene* rh);
         static void print_best(vector<Gene*>& gene_vector);
+        static void print_stats(vector<Gene*>& gene_vector);
         static void run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer, MateType m_type = MT_DEFAULT);
 
 

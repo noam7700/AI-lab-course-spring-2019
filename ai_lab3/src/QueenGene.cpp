@@ -1,10 +1,7 @@
 #include "QueenGene.h"
-#include <stdlib.h> //used for rand
 
 QueenGene::QueenGene(int num): Gene::Gene(0){
     this->queen_rows = vector<int>(num);
-    //number of diagonals for each starting point on the top/left. the top-left corner is common to both top & left
-    this->taken_diagonal_line = vector<int>(2 * num - 1);
 }
 
 bool QueenGene::operator<(Gene& rh){
@@ -14,17 +11,10 @@ bool QueenGene::operator<(Gene& rh){
 //this gives some random vector!! we need random permutation!@$%@ (that's what shay recomended)
 void QueenGene::init(){
 
-    int diagonal_index;
-    for(unsigned int i=0; i<queen_rows.size(); i++){
-        queen_rows[i] = rand() % queen_rows.size();
+    for(unsigned int i=0; i<queen_rows.size(); i++)
+        queen_rows[i] = i; //identity permutation
 
-        //update current diagonal to be taken
-        diagonal_index = queen_rows[i] - i;
-        if(diagonal_index < 0){ //it's starting on some upper pixel (at the top, not at the left)
-
-        }
-        taken_diagonal_line[-diagonal_index + queen_rows.size()] = 1;
-    }
+    random_shuffle(queen_rows.begin(), queen_rows.end()); //shuffle the identity permutation, and get a random permutation
 }
 
 void QueenGene::calc_fitness(){

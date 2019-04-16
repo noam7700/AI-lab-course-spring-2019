@@ -2,7 +2,8 @@
 #define QUEENGENE_H
 
 #include <Gene.h>
-
+#include <stdlib.h> //used for rand
+#include <algorithm> //for random_shuffle
 
 class QueenGene : public Gene
 {
@@ -24,7 +25,6 @@ class QueenGene : public Gene
 
     protected:
         vector<int> queen_rows;
-        vector<int> taken_diagonal_line;
 };
 
 #endif // QUEENGENE_H

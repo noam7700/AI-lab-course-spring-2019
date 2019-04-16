@@ -86,6 +86,38 @@ void GeneticAlgorithm::mate_by_tournament(vector<Gene*>& gene_vector, vector<Gen
     }
 }
 
+void GeneticAlgorithm::mate_by_tournament_version2(vector<Gene*>& gene_vector, vector<Gene*>& buffer, unsigned K) {
+    int esize = GA_POPSIZE * GA_ELITRATE;
+    elitism(gene_vector, buffer, esize);
+
+    // Mate the rest
+    Gene* child;
+    vector<Gene*>::iterator p1_it, p2_it; //parents. p1 won the tournament, and p2 at second place
+    int p2_index;
+    for(int i=esize; i < GA_POPSIZE; i++){
+    	if(K > gene_vector.size() - esize){
+    		K = gene_vector.size() - esize;
+    	}
+    	random_shuffle(gene_vector.begin() + esize, gene_vector.end()); //we want to take random sub-group
+
+        // First winning gene - in range [esize, esize + K) - sub-group size should be K
+        p1_it = min_element(gene_vector.begin() + esize, gene_vector.begin() + esize + K, compare_genes_ptr);
+
+        //put p1 at gene_vector[esize] so we can find p2 easily with min_element(...)
+        swap(gene_vector[esize], *p1_it);
+        // Second winning gene
+		p2_it = min_element(gene_vector.begin() + esize + 1, gene_vector.begin() + esize + K, compare_genes_ptr);
+
+        child = buffer[i]; //it's pointers. we need to update buffer[i]
+
+        child->setMate(*gene_vector[esize], *(*p2_it));
+
+        if(rand() < GA_MUTATION)
+            child->mutate();
+    }
+}
+
+
 void GeneticAlgorithm::print_stats(vector<Gene*>& gene_vector){
     float mean = 0, variance = 0, st_deviation;
     for(unsigned int i=0; i<gene_vector.size(); i++)

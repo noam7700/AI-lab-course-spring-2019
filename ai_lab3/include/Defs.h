@@ -27,7 +27,8 @@
 
 typedef enum mate_type{
 	MT_DEFAULT = 0,
-	MT_TOURNAMENT = 1
+	MT_TOURNAMENT = 1,
+	MT_RWS = 2
 } MateType;
 
 

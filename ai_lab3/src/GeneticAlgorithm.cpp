@@ -110,6 +110,42 @@ void GeneticAlgorithm::mate_by_tournament_version2(vector<Gene*>& gene_vector, v
     }
 }
 
+int GeneticAlgorithm::selectParentRws(vector<Gene*>& gene_vector){
+    float sum = 0;
+    for(unsigned int i=0; i<gene_vector.size(); i++)
+        sum += gene_vector[i]->getFitness();
+
+    float r = (float)(rand() % (int)sum);
+    float curr_sum = 0;
+    int parent_index;
+    for(parent_index=0; parent_index<gene_vector.size() - 1; parent_index++){ //if reaches .size() - 1, just return him...
+        curr_sum += sum - gene_vector[parent_index]->getFitness(); //now smaller getFitness, is better propability
+
+        //assuming r >= prev_sum, propability of r < curr_sum: is r < curr_f.
+        //this is exacly what we need if: f is better, when he's bigger
+        if(r < curr_sum)
+            break;
+    }
+
+    return parent_index;
+}
+
+void GeneticAlgorithm::mate_rws(vector<Gene*>& gene_vector, vector<Gene*>& buffer){
+    int esize = GA_POPSIZE * GA_ELITRATE;
+    elitism(gene_vector, buffer, esize);
+
+    // Mate the rest
+    Gene* child;
+    int i1, i2;
+    for(int i=esize; i<GA_POPSIZE; i++){
+        i1 = selectParentRws(gene_vector);
+		i2 = selectParentRws(gene_vector);
+        child = buffer[i]; //it's pointers. we need to update buffer[i]
+        child->setMate(*gene_vector[i1], *gene_vector[i2]);
+        if(rand() < GA_MUTATION)
+            child->mutate();
+    }
+}
 
 void GeneticAlgorithm::print_stats(vector<Gene*>& gene_vector){
     float mean = 0, variance = 0, st_deviation;
@@ -163,6 +199,7 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
         switch(m_type){
 			case MT_DEFAULT: mate(gene_vector, buffer); break;
 			case MT_TOURNAMENT: mate_by_tournament(gene_vector, buffer, GA_TOURNAMENT_SIZE ); break;
+			case MT_RWS: mate_rws(gene_vector, buffer); break;
 			default: { cout << "Unknown mate type was used" << endl; return; }
         }
         swap(gene_vector, buffer);

@@ -15,6 +15,8 @@ int main(int argc, char* argv[])
 
 #include "Gene.h"
 #include "StringGeneBullsAndCows.h"
+#include "StringGeneScaling.h"
+#include "StringGeneAging.h"
 #include "geneticAlgorithm.h"
 #include "Defs.h"
 
@@ -37,7 +39,7 @@ int main()
         gene_vector[i] = new StringGene();
         buffer[i] = new StringGene();
     }
-    GeneticAlgorithm::run_ga(gene_vector, buffer);
+    //GeneticAlgorithm::run_ga(gene_vector, buffer);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -48,7 +50,7 @@ int main()
         gene_vector[i] = new StringGeneBullsAndCows();
         buffer[i] = new StringGeneBullsAndCows();
     }
-    GeneticAlgorithm::run_ga(gene_vector, buffer);
+    //GeneticAlgorithm::run_ga(gene_vector, buffer);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -59,9 +61,22 @@ int main()
         gene_vector[i] = new StringGene();
         buffer[i] = new StringGene();
     }
-    GeneticAlgorithm::run_ga(gene_vector, buffer, MT_TOURNAMENT);
+    //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_TOURNAMENT);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
+
+    cout << endl << "RWS + scaling:" << endl << endl;
+
+    for(int i=0; i<GA_POPSIZE; i++){
+        gene_vector[i] = new StringGeneScaling();
+        buffer[i] = new StringGeneScaling();
+    }
+    GeneticAlgorithm::run_ga(gene_vector, buffer, MT_RWS);
+
+    clean_vector(gene_vector);
+    clean_vector(buffer);
+
+
 	return 0;
 }

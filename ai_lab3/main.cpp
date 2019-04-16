@@ -77,7 +77,7 @@ int main()
     clean_vector(gene_vector);
     clean_vector(buffer);
 
-cout << endl << "Aging:" << endl << endl;
+    cout << endl << "Aging:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
         gene_vector[i] = new StringGeneAging();

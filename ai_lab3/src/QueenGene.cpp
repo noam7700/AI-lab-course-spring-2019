@@ -11,6 +11,7 @@ bool QueenGene::operator<(Gene& rh){
     return this->fitness < rh.getFitness();
 }
 
+//this gives some random vector!! we need random permutation!@$%@ (that's what shay recomended)
 void QueenGene::init(){
 
     int diagonal_index;

@@ -1,6 +1,4 @@
 #include "GeneticAlgorithm.h"
-#include <time.h>
-#include <chrono>
 
 using namespace std;
 
@@ -65,22 +63,17 @@ void GeneticAlgorithm::mate_by_tournament(vector<Gene*>& gene_vector, vector<Gen
 
     // Mate the rest
     Gene* child;
-    for(int i=esize; i < GA_POPSIZE-2; i++){
-    	if(K > gene_vector.size() - esize){
-    		K = 0;
-    	}
+    for(int i=esize; i < GA_POPSIZE; i++){
+
     	// First winning gene
-        random_shuffle(gene_vector.begin() + esize, gene_vector.end() - K) ;
-        sort(gene_vector.begin() + esize, gene_vector.end(), compare_genes_ptr);
+        random_shuffle(gene_vector.begin() + esize, gene_vector.begin() + GA_POPSIZE) ;
+        sort(gene_vector.begin() + esize, gene_vector.begin() + esize + K, compare_genes_ptr);
         // Second winning gene
-		random_shuffle(gene_vector.begin() + esize + 1, gene_vector.end()) ;
-		sort(gene_vector.begin() + esize + 1, gene_vector.end(), compare_genes_ptr);
+		random_shuffle(gene_vector.begin() + esize + 1, gene_vector.begin() + GA_POPSIZE) ;
+		sort(gene_vector.begin() + esize + 1, gene_vector.begin() + esize + K, compare_genes_ptr);
 
         child = buffer[i]; //it's pointers. we need to update buffer[i]
-//        gene_vector[i+1]->print();
-//		gene_vector[i+2]->print();
-//        cout << gene_vector.size() << endl;
-        child->setMate(*gene_vector[esize+1], *gene_vector[esize+2]);
+        child->setMate(*gene_vector[esize], *gene_vector[esize+1]);
         if(rand() < GA_MUTATION)
             child->mutate();
     }

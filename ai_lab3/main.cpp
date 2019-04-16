@@ -77,6 +77,17 @@ int main()
     clean_vector(gene_vector);
     clean_vector(buffer);
 
+cout << endl << "Aging:" << endl << endl;
+
+    for(int i=0; i<GA_POPSIZE; i++){
+        gene_vector[i] = new StringGeneAging();
+        buffer[i] = new StringGeneAging();
+    }
+
+    //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT);
+
+    clean_vector(gene_vector);
+    clean_vector(buffer);
 
 	return 0;
 }

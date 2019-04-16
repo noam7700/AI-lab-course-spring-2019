@@ -42,7 +42,7 @@ void StringGene::setMate(Gene& p1, Gene& p2){
 void StringGene::copySetter(Gene& other){ //we assume this & other are the same type
     StringGene& other_casted = static_cast<StringGene&>(other); //assuming other is StringGene
     this->str = other_casted.str;
-    this->fitness = other_casted.fitness;
+    //no need to copy the fitness. calc_fitness will do it later
 }
 
 bool StringGene::isFinished(vector<Gene*>& gene_vector, vector<Gene*>& buffer){

@@ -34,7 +34,7 @@ void StringGene::mutate(){
 }
 
 void StringGene::setMate(Gene& p1, Gene& p2){
-     StringGene& p1_casted = static_cast<StringGene&>(p1), p2_casted = static_cast<StringGene&>(p2);
+    StringGene& p1_casted = static_cast<StringGene&>(p1), p2_casted = static_cast<StringGene&>(p2);
     int cut = rand() % StringGene::target.size();
     this->str = p1_casted.str.substr(0, cut) + p2_casted.str.substr(cut, StringGene::target.size() - cut);
 }

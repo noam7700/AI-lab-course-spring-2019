@@ -5,6 +5,18 @@
 
 using namespace std;
 
+enum mutate_type{
+    MUTATE_DEFAULT = 0,
+    MUTATE_SWAP = 1,
+    MUTATE_SIM = 2, //simple inversion mutate
+};
+
+enum crossover_type{
+    CROSSOVER_DEFAULTX = 0,
+    CROSSOVER_OX = 1, //ordered crossover
+    CROSSOVER_CX = 2 //cycle crossover
+};
+
 class Gene
 {
     public:

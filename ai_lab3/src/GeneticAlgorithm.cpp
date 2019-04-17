@@ -31,7 +31,8 @@ void GeneticAlgorithm::elitism(vector<Gene*>& gene_vector, vector<Gene*>& buffer
 }
 
 //assuming gene_vector & buffer don't have NULL cells
-void GeneticAlgorithm::mate(vector<Gene*>& gene_vector, vector<Gene*>& buffer){
+void GeneticAlgorithm::mate(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
+                            Mutate_type mutate_type /*= MUTATE_DEFAULT*/, Crossover_type x_type /*= CROSSOVER_DEFAULTX*/){
     int esize = GA_POPSIZE * GA_ELITRATE;
     elitism(gene_vector, buffer, esize);
 
@@ -42,9 +43,9 @@ void GeneticAlgorithm::mate(vector<Gene*>& gene_vector, vector<Gene*>& buffer){
         i1 = rand() % (GA_POPSIZE / 2);
 		i2 = rand() % (GA_POPSIZE / 2);
         child = buffer[i]; //it's pointers. we need to update buffer[i]
-        child->setMate(*gene_vector[i1], *gene_vector[i2]);
+        child->setMate(*gene_vector[i1], *gene_vector[i2], x_type);
         if(rand() < GA_MUTATION)
-            child->mutate();
+            child->mutate(mutate_type);
     }
 }
 
@@ -57,7 +58,8 @@ void GeneticAlgorithm::print_best(vector<Gene*>& gene_vector){
     gene_vector[0]->print();
 }
 
-void GeneticAlgorithm::mate_by_tournament(vector<Gene*>& gene_vector, vector<Gene*>& buffer, unsigned K) {
+void GeneticAlgorithm::mate_by_tournament(vector<Gene*>& gene_vector, vector<Gene*>& buffer, unsigned K,
+                                          Mutate_type mutate_type /*= MUTATE_DEFAULT*/, Crossover_type x_type /*= CROSSOVER_DEFAULTX*/) {
     int esize = GA_POPSIZE * GA_ELITRATE;
     elitism(gene_vector, buffer, esize);
 
@@ -73,13 +75,14 @@ void GeneticAlgorithm::mate_by_tournament(vector<Gene*>& gene_vector, vector<Gen
 		sort(gene_vector.begin() + esize + 1, gene_vector.begin() + esize + K, compare_genes_ptr);
 
         child = buffer[i]; //it's pointers. we need to update buffer[i]
-        child->setMate(*gene_vector[esize], *gene_vector[esize+1]);
+        child->setMate(*gene_vector[esize], *gene_vector[esize+1], x_type);
         if(rand() < GA_MUTATION)
-            child->mutate();
+            child->mutate(mutate_type);
     }
 }
 
-void GeneticAlgorithm::mate_by_tournament_version2(vector<Gene*>& gene_vector, vector<Gene*>& buffer, unsigned K) {
+void GeneticAlgorithm::mate_by_tournament_version2(vector<Gene*>& gene_vector, vector<Gene*>& buffer, unsigned K,
+                                                   Mutate_type mutate_type /*= MUTATE_DEFAULT*/, Crossover_type x_type /*= CROSSOVER_DEFAULTX*/) {
     int esize = GA_POPSIZE * GA_ELITRATE;
     elitism(gene_vector, buffer, esize);
 
@@ -103,10 +106,10 @@ void GeneticAlgorithm::mate_by_tournament_version2(vector<Gene*>& gene_vector, v
 
         child = buffer[i]; //it's pointers. we need to update buffer[i]
 
-        child->setMate(*gene_vector[esize], *(*p2_it));
+        child->setMate(*gene_vector[esize], *(*p2_it), x_type);
 
         if(rand() < GA_MUTATION)
-            child->mutate();
+            child->mutate(mutate_type);
     }
 }
 
@@ -130,7 +133,8 @@ int GeneticAlgorithm::selectParentRws(vector<Gene*>& gene_vector){
     return parent_index;
 }
 
-void GeneticAlgorithm::mate_rws(vector<Gene*>& gene_vector, vector<Gene*>& buffer){
+void GeneticAlgorithm::mate_rws(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
+                                Mutate_type mutate_type /*= MUTATE_DEFAULT*/, Crossover_type x_type /*= CROSSOVER_DEFAULTX*/){
     int esize = GA_POPSIZE * GA_ELITRATE;
     elitism(gene_vector, buffer, esize);
 
@@ -141,9 +145,9 @@ void GeneticAlgorithm::mate_rws(vector<Gene*>& gene_vector, vector<Gene*>& buffe
         i1 = selectParentRws(gene_vector);
 		i2 = selectParentRws(gene_vector);
         child = buffer[i]; //it's pointers. we need to update buffer[i]
-        child->setMate(*gene_vector[i1], *gene_vector[i2]);
+        child->setMate(*gene_vector[i1], *gene_vector[i2], x_type);
         if(rand() < GA_MUTATION)
-            child->mutate();
+            child->mutate(mutate_type);
     }
 }
 
@@ -165,7 +169,8 @@ void GeneticAlgorithm::print_stats(vector<Gene*>& gene_vector){
 }
 
 //he receives the vectors with the proper derived objects of Gene
-void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer, MateType m_type /*=MT_DEFAULT*/){
+void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer, MateType m_type /*=MT_DEFAULT*/,
+                              Mutate_type mutate_type /*=MUTATE_DEFAULT*/, Crossover_type x_type /*=CROSSOVER_DEFAULT*/){
     auto mini_start = chrono::high_resolution_clock::now();
     auto mini_finish = chrono::high_resolution_clock::now();
     auto start = chrono::high_resolution_clock::now();

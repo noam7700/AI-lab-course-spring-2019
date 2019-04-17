@@ -65,7 +65,7 @@ void QueenGene::calc_fitness(){
 
 }
 
-void QueenGene::mutate(){
+void QueenGene::mutate(Mutate_type mutype /*= MUTATE_DEFAULT*/){
     this->mutateSwap();
 }
 
@@ -77,7 +77,7 @@ void QueenGene::mutateSwap(){
     swap(this->queen_rows[i], this->queen_rows[j]);
 }
 
-void QueenGene::setMate(Gene& p1, Gene& p2){
+void QueenGene::setMate(Gene& p1, Gene& p2, Crossover_type xtype /*= CROSSOVER_DEFAULTX*/){
     this->setMateCX(p1, p2);
 }
 
@@ -145,7 +145,7 @@ bool QueenGene::isFinished(vector<Gene*>& gene_vector, vector<Gene*>& buffer){
 
 void QueenGene::print(){
     /*for(unsigned int i=0; i<this->queen_rows.size(); i++)
-        cout << this->queen_rows[i];*/ //too long didn't read :P
+        cout << this->queen_rows[i];*/ //too long didn't read :P - where #Queens is 1000...
     cout << "(" << this->fitness << ")\n";
 }
 

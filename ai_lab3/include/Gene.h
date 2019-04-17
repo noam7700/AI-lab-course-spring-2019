@@ -5,13 +5,13 @@
 
 using namespace std;
 
-enum mutate_type{
+enum Mutate_type{
     MUTATE_DEFAULT = 0,
     MUTATE_SWAP = 1,
     MUTATE_SIM = 2, //simple inversion mutate
 };
 
-enum crossover_type{
+enum Crossover_type{
     CROSSOVER_DEFAULTX = 0,
     CROSSOVER_OX = 1, //ordered crossover
     CROSSOVER_CX = 2 //cycle crossover
@@ -27,8 +27,8 @@ class Gene
         //they're void because they're setters of "this". To save #allocations (saving time)
         virtual void init() = 0; //init as random gene
         virtual void calc_fitness() = 0; //update calc_fitness
-        virtual void mutate() = 0;
-        virtual void setMate(Gene& p1, Gene& p2) = 0; //set attributes as the son of p1 & p2
+        virtual void mutate(Mutate_type mutype = MUTATE_DEFAULT) = 0;
+        virtual void setMate(Gene& p1, Gene& p2, Crossover_type xtype = CROSSOVER_DEFAULTX) = 0; //set attributes as the son of p1 & p2
         virtual void copySetter(Gene& other) = 0; //we assume this & other are the same type
         virtual bool isFinished(vector<Gene*>& gene_vector, vector<Gene*>& buffer) = 0; //using fitness. (maybe fitness==0?)
         virtual void print() = 0; //for fun :P

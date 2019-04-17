@@ -22,10 +22,10 @@ class QueenGene : public Gene
 
         void init();
         void calc_fitness();
-        void mutate();
+        void mutate(Mutate_type mutype = MUTATE_DEFAULT);
         void mutateSwap(); //option to mutate - "swap mutation"
         void mutateSim(); //option to mutate - "simple inversion mutation"
-        void setMate(Gene& p1, Gene& p2);
+        void setMate(Gene& p1, Gene& p2, Crossover_type xtype = CROSSOVER_DEFAULTX); //set attributes as the son of p1 & p2
         void setMateOX(Gene& p1, Gene& p2); //option to setMate - "ordered crossover"
         void setMateCX(Gene& p1, Gene& p2); //option to setMate - "cycle crossover"
         void copySetter(Gene& other);

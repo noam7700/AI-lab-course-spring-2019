@@ -93,9 +93,9 @@ int main()
 
     cout << endl << "N Queens Problem:" << endl << endl;
 
-    for(int i=0; i<GA_POPSIZE; i++){ //1000 queens
-        gene_vector[i] = new QueenGene(1000);
-        buffer[i] = new QueenGene(1000);
+    for(int i=0; i<GA_POPSIZE; i++){ //100 queens
+        gene_vector[i] = new QueenGene(100);
+        buffer[i] = new QueenGene(100);
     }
 
     GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT);

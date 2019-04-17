@@ -27,13 +27,13 @@ void StringGene::calc_fitness(){
     }
     this->fitness = fit;
 }
-void StringGene::mutate(){
+void StringGene::mutate(Mutate_type mutype /*= MUTATE_DEFAULT*/){ //only one type, no need to check..
     int rand_index = rand() % StringGene::target.size();
     int delta = (rand() % 90) + 32;
     this->str[rand_index] = (this->str[rand_index] + delta) % 122;
 }
 
-void StringGene::setMate(Gene& p1, Gene& p2){
+void StringGene::setMate(Gene& p1, Gene& p2, Crossover_type xtype /*= CROSSOVER_DEFAULTX*/){ //only one type, no need to check..
     StringGene& p1_casted = static_cast<StringGene&>(p1), p2_casted = static_cast<StringGene&>(p2);
     int cut = rand() % StringGene::target.size();
     this->str = p1_casted.str.substr(0, cut) + p2_casted.str.substr(cut, StringGene::target.size() - cut);

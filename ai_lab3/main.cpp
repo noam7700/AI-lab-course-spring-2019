@@ -98,16 +98,16 @@ int main()
         buffer[i] = new QueenGene(100);
     }
 
-    GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT);
+    GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SIM, CROSSOVER_OX);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
 
 
     /*QueenGene* test1 = new QueenGene(10); //0-9
-    test1->queen_rows = {4, 1, 7, 6, 2, 8, 3, 9, 5, 0};
+    test1->queen_rows = {8,2,4,3,7,5,1,0,9,6};
     QueenGene* test2 = new QueenGene(10); //0-9
-    test2->queen_rows = {3,9,0,1,2,4,6,8,7,5};
+    test2->queen_rows = {4,1,7,6,2,8,3,9,5,0};
 
     cout << "perm1: (";
     for(unsigned int i=0; i<test2->queen_rows.size(); i++)
@@ -120,15 +120,11 @@ int main()
 
 
     QueenGene* spring = new QueenGene(10); //0-9
-    spring->setMate(*test1, *test2);
-    cout << "offspring: (";
+    spring->setMateOX(*test1, *test2);
+    cout << "perm3: (";
     for(unsigned int i=0; i<10; i++)
         cout << spring->queen_rows[i] << " ";
-    cout << ")\n";
-
-    spring->calc_fitness();
-    spring->print();
-    */
+    cout << ")\n";*/
 
 	return 0;
 }

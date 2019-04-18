@@ -66,7 +66,25 @@ void QueenGene::calc_fitness(){
 }
 
 void QueenGene::mutate(Mutate_type mutype /*= MUTATE_DEFAULT*/){
-    this->mutateSwap();
+    switch(mutype){
+        case MUTATE_DEFAULT:
+            //mutateSwap is the best!
+            //mutateSwap can never get stuck, because there's always a possible mutation which can improve
+            this->mutateSwap();
+            break;
+        case MUTATE_SWAP:
+            this->mutateSwap();
+            break;
+        case MUTATE_SIM:
+            //can sometimes get stuck in local max
+            this->mutateSim();
+            break;
+        default:
+            cout << "Error: No such Mutate option\n";
+            throw;
+            break;
+
+    }
 }
 
 void QueenGene::mutateSwap(){
@@ -77,8 +95,33 @@ void QueenGene::mutateSwap(){
     swap(this->queen_rows[i], this->queen_rows[j]);
 }
 
+void QueenGene::mutateSim(){
+    //mutate the vector, but keep it a permutation. simple inversion mutation
+    int window_size = 5;
+    int start_index = rand() % this->queen_rows.size();
+    int end_index = start_index + (window_size - 1);
+    end_index = min(end_index, (int)(this->queen_rows.size() - 1)); //dont exceed vector size
+
+    for(int i = start_index, j = end_index; i<j; i++, j--)
+        swap(this->queen_rows[i], this->queen_rows[j]);
+}
+
 void QueenGene::setMate(Gene& p1, Gene& p2, Crossover_type xtype /*= CROSSOVER_DEFAULTX*/){
-    this->setMateCX(p1, p2);
+    switch(xtype){
+        case CROSSOVER_DEFAULTX:
+            this->setMateCX(p1, p2);
+            break;
+        case CROSSOVER_CX:
+            this->setMateCX(p1, p2);
+            break;
+        case CROSSOVER_OX:
+            this->setMateOX(p1, p2);
+            break;
+        default:
+            cout << "Error: No such Crossover_type\n";
+            throw;
+            break;
+    }
 }
 
 void QueenGene::setMateCX(Gene& p1, Gene& p2){
@@ -91,7 +134,8 @@ void QueenGene::setMateCX(Gene& p1, Gene& p2){
     QueenGene& p1_casted = static_cast<QueenGene&>(p1);
     QueenGene& p2_casted = static_cast<QueenGene&>(p2);
 
-    const vector<int>& perm1 = p1_casted.queen_rows, perm2 = p2_casted.queen_rows; //they're const, I'm not gonna destroy them
+    //they're const, I'm not gonna destroy them. dont worry :)
+    const vector<int>& perm1 = p1_casted.queen_rows, perm2 = p2_casted.queen_rows;
 
     //step 1:
     vector<int> rev_perm1(perm1.size()), rev_perm2(perm2.size());
@@ -128,6 +172,66 @@ void QueenGene::setMateCX(Gene& p1, Gene& p2){
         else
             this->queen_rows[i] = perm2[i];
     }
+}
+
+void QueenGene::setMateOX(Gene& p1, Gene& p2){
+    //pick half values from p1, and the other half from p2 with the same order
+    /*
+    step 1 - copy perm1 to vector<pair<int,int>> so it has perm1 & his original indices
+    step 2 - scramble perm1's copy
+    step 2.5 - create counting array 0 to N-1 to which value has been added to offspring (used for step 4)
+    also, reset offspring array to -1, so we know which indices were already touched
+    step 3 - take the first half of the copied array (random sub-group of n/2 size).
+    and put them in original indices in offspring gene (while updating array of 2.5)
+    step 4 - put in the remaining values of perm2's (the values that are 0 in counting array)
+    *put them in the same order they're at perm2
+
+    */
+    QueenGene& p1_casted = static_cast<QueenGene&>(p1);
+    QueenGene& p2_casted = static_cast<QueenGene&>(p2);
+
+    //they're const, I'm not gonna destroy them. dont worry :)
+    const vector<int>& perm1 = p1_casted.queen_rows, perm2 = p2_casted.queen_rows;
+
+    //step 1
+    //for each i: (perm1[i], i). copy of perm1, but save his index
+    vector<pair<int,int>> perm1_scrambled(perm1.size());
+    for(unsigned int i=0; i<perm1.size(); i++){
+        perm1_scrambled[i].first = perm1[i];
+        perm1_scrambled[i].second = i;
+    }
+
+    //step 2
+    //when comparing pair<int,int> it compares the .first & only if they're equal it compares .second
+    random_shuffle(perm1_scrambled.begin(), perm1_scrambled.end());
+
+    //step 2.5
+    vector<int> touched_values(perm1.size(), 0); //init as 0
+    for(unsigned int i=0; i<this->queen_rows.size(); i++)
+        this->queen_rows[i] = -1; //mark as untouched
+
+    //step 3
+    for(unsigned int i=0; i < (perm1_scrambled.size() / 2); i++){
+        this->queen_rows[perm1_scrambled[i].second] = perm1_scrambled[i].first;
+        touched_values[perm1_scrambled[i].first]++; //counting array
+    }
+
+    //step 4
+    int offspring_index = 0;
+    for(unsigned int i=0; i<perm2.size(); i++) //needs to go through the order of perm2
+        if(touched_values[perm2[i]] == 0){ //untouched
+            //we found value from perm2 that needs to be put in offspring
+            while(offspring_index < this->queen_rows.size()){ //unused condition, but screw it
+                if(this->queen_rows[offspring_index] == -1){ //free slot
+                    this->queen_rows[offspring_index] = perm2[i];
+                    offspring_index++;
+                    break;
+                }
+                offspring_index++;
+            }
+            touched_values[perm2[i]]++; //I dont think it's necessary, but screw it
+        }
+    return;
 }
 
 void QueenGene::copySetter(Gene& other){

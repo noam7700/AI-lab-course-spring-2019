@@ -202,9 +202,9 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
         if(gene_vector[0]->isFinished(gene_vector, buffer))
             break;
         switch(m_type){
-			case MT_DEFAULT: mate(gene_vector, buffer); break;
-			case MT_TOURNAMENT: mate_by_tournament(gene_vector, buffer, GA_TOURNAMENT_SIZE ); break;
-			case MT_RWS: mate_rws(gene_vector, buffer); break;
+			case MT_DEFAULT: mate(gene_vector, buffer, mutate_type, x_type); break;
+			case MT_TOURNAMENT: mate_by_tournament(gene_vector, buffer, GA_TOURNAMENT_SIZE, mutate_type, x_type); break;
+			case MT_RWS: mate_rws(gene_vector, buffer, mutate_type, x_type); break;
 			default: { cout << "Unknown mate type was used" << endl; return; }
         }
         swap(gene_vector, buffer);

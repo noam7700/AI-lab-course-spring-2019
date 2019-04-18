@@ -52,7 +52,7 @@ int main()
         gene_vector[i] = new StringGeneBullsAndCows();
         buffer[i] = new StringGeneBullsAndCows();
     }
-    //GeneticAlgorithm::run_ga(gene_vector, buffer);
+    //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_DEFAULT, CROSSOVER_TWOPOINT);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -98,7 +98,7 @@ int main()
         buffer[i] = new QueenGene(100);
     }
 
-    GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SIM, CROSSOVER_OX);
+    GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SWAP, CROSSOVER_OX);
 
     clean_vector(gene_vector);
     clean_vector(buffer);

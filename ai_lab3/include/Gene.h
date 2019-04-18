@@ -13,8 +13,10 @@ enum Mutate_type{
 
 enum Crossover_type{
     CROSSOVER_DEFAULTX = 0,
-    CROSSOVER_OX = 1, //ordered crossover
-    CROSSOVER_CX = 2 //cycle crossover
+    CROSSOVER_OX = 1, //ordered crossover (explained in word file)
+    CROSSOVER_CX = 2, //cycle crossover (explained in word file)
+    CROSSOVER_UNIFORM = 3, //uniform crossover (explained in ppt/wiki)
+    CROSSOVER_TWOPOINT = 4 //two point crossover (explained in ppt/wiki)
 };
 
 class Gene

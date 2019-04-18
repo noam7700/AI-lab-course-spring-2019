@@ -165,7 +165,7 @@ void GeneticAlgorithm::print_stats(vector<Gene*>& gene_vector){
 
     st_deviation = sqrt(variance);
 
-    cout << "mean: " << mean << ", variance: " << variance << ", standard deviation: " << st_deviation << "\n";
+    cout << "mean: " << mean << ", standard deviation: " << st_deviation << "\n";
 }
 
 //he receives the vectors with the proper derived objects of Gene
@@ -182,8 +182,20 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
 
     //create random genes for all population. assuming gene_vector has non-NULLs
     init_population(gene_vector);
+    //sometimes we assume buffer already has well-defined attributes (for example strings in regular size)
+    init_population(buffer);
 
-    for(int i=0; i<GA_MAXITER; i++){
+    //code for checking if we reached to local minimum
+    int rounds_till_failing = 100; //if we reach 100 rounds after last improvement we consider it as getting stuck
+    float last_check_fit = (float)INT_MAX; //so in the first check we've definitely improved
+    float current_check_fit;
+    int didWeFail = 0, last_generation_improvement; //did we fail, and from which generation we got stuck
+
+    //so we can show him how much time did it take to reach this local minimum
+    auto last_improvement_mini_finish = chrono::high_resolution_clock::now();
+    clock_t last_improvement_cmini_finish = clock();
+
+    for(int i=0; i<GA_MAXITER; i++, rounds_till_failing--){
         calc_fitness(gene_vector); //update fitness for all genes
         sort(gene_vector.begin(), gene_vector.end(), compare_genes_ptr);
         print_best(gene_vector);
@@ -207,14 +219,36 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
 			case MT_RWS: mate_rws(gene_vector, buffer, mutate_type, x_type); break;
 			default: { cout << "Unknown mate type was used" << endl; return; }
         }
+
+        //time for checking
+        current_check_fit = gene_vector[0]->getFitness();
+        if(current_check_fit < last_check_fit){ //we imroved
+            last_improvement_mini_finish = chrono::high_resolution_clock::now(); //so if we get stuck we can show real time
+            last_improvement_cmini_finish = clock();
+            last_check_fit = current_check_fit;
+            rounds_till_failing = 100;
+        }
+        if(rounds_till_failing == 0){
+            didWeFail = 1;
+            last_generation_improvement = i - 100; //obviously..
+            break;
+        }
+
         swap(gene_vector, buffer);
     }
-
-    finish = chrono::high_resolution_clock::now();
+    if(didWeFail == 1){
+        finish = last_improvement_mini_finish;
+        cfinish = last_improvement_cmini_finish;
+    }
+    else{
+        finish = chrono::high_resolution_clock::now();
+        cfinish = clock();
+    }
     elapsed = finish - start;
-    cfinish = clock();
     clockticks = cfinish - cstart;
     cout << "Overall: absolute time: " << elapsed.count() / 1000 << " clock ticks: " << clockticks << "\n";
+    if(didWeFail == 1)
+        cout << "We failed at generation " << last_generation_improvement << "\n";
 
     return;
 }

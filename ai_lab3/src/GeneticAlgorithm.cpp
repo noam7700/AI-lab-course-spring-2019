@@ -263,7 +263,7 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
     if(didWeFail == 1)
         cout << "We failed at generation " << last_generation_improvement << "\n";
     else
-        cout << "We succeeded at generation " <<
+        cout << "We succeeded at generation " << i << "\n";
 
     return;
 }

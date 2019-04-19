@@ -115,11 +115,10 @@ void GeneticAlgorithm::mate_by_tournament_version2(vector<Gene*>& gene_vector, v
 
 int GeneticAlgorithm::selectParentRws(vector<Gene*>& gene_vector){
     //we want rws but when fi is smaller, we want bigger chance.
-    //therefore, zi=e^(-fi), and do the regular algorithm for zi.
-    //when fi is smaller, -fi is bigger, and e^(-fi) is positive, so no problem with the regular algorithm
-    //also, can use zi = e^(-delta * fi / sum). delta is to control the numbers so they wont be too dense
-    //delta1 needs to be bigger/smaller depends on "fi/sum", and the values of fi/sum depends on POP_SIZE usually,
-    //so it's easier because POP_SIZE is fixed
+    //therefore, zi=1-fi/sum, and do the regular algorithm for zi.
+    //when fi is smaller, 1-fi/sum is bigger, and 1-fi/sum is positive, so no problem with the regular algorithm
+    //we will improve this idea by taking zi=1 - delta * fi/sum, so the zi wont be so close to each other.
+    //also, we need to normalize zi to sum to 1 (or some bigger const) so we don't get everyone at 99% to be selected
     float real_sum = 0;
     float delta = 500; //seems to give average results
     for(unsigned int i=0; i<gene_vector.size(); i++)
@@ -129,7 +128,7 @@ int GeneticAlgorithm::selectParentRws(vector<Gene*>& gene_vector){
     float new_sum = 0, ratio_fit;
     for(unsigned int i=0; i<gene_vector.size(); i++){
         ratio_fit = gene_vector[i]->getFitness()/real_sum;
-        new_sum += pow(2.71, -delta * ratio_fit);
+        new_sum += 1 - delta * ratio_fit;
     }
 
     float r = (float)(rand() % 10000);
@@ -137,7 +136,7 @@ int GeneticAlgorithm::selectParentRws(vector<Gene*>& gene_vector){
     unsigned int parent_index;
     for(parent_index=0; parent_index<gene_vector.size(); parent_index++){
         ratio_fit = gene_vector[parent_index]->getFitness()/real_sum;
-        zi = pow(2.71, -delta * ratio_fit) / new_sum * 10000; //now zi is in [0,10000)
+        zi = (1 - delta * ratio_fit) / new_sum * 10000; //now zi is in [0,10000)
         curr_sum += zi;
         if(r < curr_sum)
             break;

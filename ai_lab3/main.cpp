@@ -15,8 +15,6 @@ int main(int argc, char* argv[])
 
 #include "Gene.h"
 #include "StringGeneBullsAndCows.h"
-#include "StringGeneScaling.h"
-#include "StringGeneAging.h"
 #include "geneticAlgorithm.h"
 #include "QueenGene.h"
 #include "Defs.h"
@@ -38,8 +36,8 @@ int main()
     cout << "Sample solution:" << endl << endl;
     vector<Gene*> gene_vector(GA_POPSIZE), buffer(GA_POPSIZE);
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGene();
-        buffer[i] = new StringGene();
+        gene_vector[i] = new StringGene(1.0f, 0.0f);
+        buffer[i] = new StringGene(1.0f, 0.0f);
     }
     //GeneticAlgorithm::run_ga(gene_vector, buffer);
 
@@ -49,10 +47,10 @@ int main()
     cout << endl << "Bulls and Cows:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGeneBullsAndCows();
-        buffer[i] = new StringGeneBullsAndCows();
+        gene_vector[i] = new StringGeneBullsAndCows(1.0f, 0.0f);
+        buffer[i] = new StringGeneBullsAndCows(1.0f, 0.0f);
     }
-    //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_DEFAULT, CROSSOVER_TWOPOINT);
+    //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_DEFAULT, CROSSOVER_UNIFORM);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -60,8 +58,8 @@ int main()
     cout << endl << "Tournament:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGene();
-        buffer[i] = new StringGene();
+        gene_vector[i] = new StringGene(1.0f, 0.0f);
+        buffer[i] = new StringGene(1.0f, 0.0f);
     }
     //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_TOURNAMENT);
 
@@ -71,8 +69,8 @@ int main()
     cout << endl << "RWS + scaling:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGeneScaling();
-        buffer[i] = new StringGeneScaling();
+        gene_vector[i] = new StringGene(0.2f, 0.0f);
+        buffer[i] = new StringGene(0.2f, 0.0f);
     }
     //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_RWS);
 
@@ -82,8 +80,8 @@ int main()
     cout << endl << "Aging:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGeneAging();
-        buffer[i] = new StringGeneAging();
+        gene_vector[i] = new StringGene(1.0f, 1.0f);
+        buffer[i] = new StringGene(1.0f, 1.0f);
     }
 
     //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT);
@@ -94,11 +92,11 @@ int main()
     cout << endl << "N Queens Problem:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){ //100 queens
-        gene_vector[i] = new QueenGene(100);
-        buffer[i] = new QueenGene(100);
+        gene_vector[i] = new QueenGene(1.0f, 0.0f, 100);
+        buffer[i] = new QueenGene(1.0f, 0.0f, 100);
     }
 
-    GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SWAP, CROSSOVER_OX);
+    //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SWAP, CROSSOVER_CX);
 
     clean_vector(gene_vector);
     clean_vector(buffer);

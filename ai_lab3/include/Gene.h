@@ -22,7 +22,7 @@ enum Crossover_type{
 class Gene
 {
     public:
-        Gene(float fitness);
+        Gene(float fitness, float scaling_factor, int aging_factor);
 
         virtual bool operator<(Gene& rh) = 0; //for sorting
 
@@ -41,6 +41,9 @@ class Gene
 
     protected:
         float fitness;
+        float scaling_factor; //will be 1 when not used
+        int age; //will be always 0 when not used
+        int aging_factor; //if age always grows by 3, age_factor=3 (age += age_factor in copySetter)
 };
 
 #endif // GENE_H

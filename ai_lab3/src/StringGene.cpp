@@ -3,9 +3,9 @@
 #include <stdlib.h> //used for rand
 #include "StringGene.h"
 
-string StringGene::target = "Hello sir, I'm Noam Blagovsky and this is partner, Yuri khvoles";
+string StringGene::target = "hello world";
 
-StringGene::StringGene(): Gene(0){
+StringGene::StringGene(float scaling_factor, int aging_factor): Gene(0, scaling_factor, aging_factor){
 
 }
 
@@ -18,6 +18,7 @@ void StringGene::init(){
     for(unsigned int i=0; i<StringGene::target.size(); i++){
         this->str += (rand() % 90) + 32; //add random char. just like shay's code
     }
+    this->age = 0; //even if we're not using aging, it still should be 0
 }
 
 void StringGene::calc_fitness(){
@@ -25,7 +26,7 @@ void StringGene::calc_fitness(){
     for(unsigned int i=0; i<StringGene::target.size(); i++){
         fit += abs(this->str[i] - StringGene::target[i]);
     }
-    this->fitness = fit;
+    this->fitness = this->scaling_factor * fit + this->age; //will be 1 & 0 if not used
 }
 void StringGene::mutate(Mutate_type mutype /*= MUTATE_DEFAULT*/){ //only one type, no need to check..
     int rand_index = rand() % StringGene::target.size();
@@ -37,9 +38,11 @@ void StringGene::setMate(Gene& p1, Gene& p2, Crossover_type xtype /*= CROSSOVER_
     StringGene& p1_casted = static_cast<StringGene&>(p1), p2_casted = static_cast<StringGene&>(p2);
     int cut = rand() % StringGene::target.size();
     this->str = p1_casted.str.substr(0, cut) + p2_casted.str.substr(cut, StringGene::target.size() - cut);
+    this->age = 0;
 }
 
 void StringGene::copySetter(Gene& other){ //we assume this & other are the same type
+    Gene::copySetter(other); //will update age if needed
     StringGene& other_casted = static_cast<StringGene&>(other); //assuming other is StringGene
     this->str = other_casted.str;
     //no need to copy the fitness. calc_fitness will do it later

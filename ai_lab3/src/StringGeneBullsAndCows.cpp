@@ -7,7 +7,8 @@
 
 #include "StringGeneBullsAndCows.h"
 
-StringGeneBullsAndCows::StringGeneBullsAndCows():StringGene() {
+StringGeneBullsAndCows::StringGeneBullsAndCows(float scaling_factor, int aging_factor):
+    StringGene(scaling_factor, aging_factor) {
 	// TODO Auto-generated constructor stub
 
 }
@@ -24,7 +25,7 @@ void StringGeneBullsAndCows::calc_fitness() {
 	        	fit += 1;
 	        }
 	    }
-	    this->fitness = fit;
+	    this->fitness = this->scaling_factor * fit + this->age;
 }
 
 void StringGeneBullsAndCows::setMate(Gene& p1, Gene& p2, Crossover_type xtype /*= CROSSOVER_DEFAULTX*/){
@@ -43,6 +44,7 @@ void StringGeneBullsAndCows::setMate(Gene& p1, Gene& p2, Crossover_type xtype /*
             throw;
             break;
     }
+    this->age = 0; //reset
 }
 void StringGeneBullsAndCows::setMateUniform(Gene& p1, Gene& p2){
     //for each offspring[i] choose randomly or from p1 or from p2

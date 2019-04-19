@@ -9,7 +9,7 @@
 class QueenGene : public Gene
 {
     public:
-        QueenGene(int num);
+        QueenGene(float scaling_factor, int aging_factor, int num);
 
         /*
         Each time we want to calculate diagonal intersections, we need this kind of array (of size 2*num - 1).

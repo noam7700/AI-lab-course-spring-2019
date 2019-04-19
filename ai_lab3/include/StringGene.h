@@ -9,7 +9,7 @@ using namespace std;
 class StringGene : public Gene
 {
     public:
-        StringGene(); //init will set str to random
+        StringGene(float scaling_factor, int aging_factor); //init will set str to random
 
         static string target;
 

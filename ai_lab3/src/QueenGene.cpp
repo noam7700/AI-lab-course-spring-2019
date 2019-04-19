@@ -2,7 +2,8 @@
 
 vector<int> QueenGene::taken_diagonals;
 
-QueenGene::QueenGene(int num): Gene::Gene(0){
+QueenGene::QueenGene(float scaling_factor, int aging_factor, int num):
+    Gene::Gene(0, scaling_factor, aging_factor){
     this->queen_rows = vector<int>(num);
 
     //only allocate his memory once. doesn't work in multi-thread
@@ -24,6 +25,7 @@ void QueenGene::init(){
         queen_rows[i] = i; //identity permutation
 
     random_shuffle(queen_rows.begin(), queen_rows.end()); //shuffle the identity permutation, and get a random permutation
+    this->age = 0; //even if we're not using aging, it still should be 0
 }
 
 void QueenGene::calc_fitness(){
@@ -61,7 +63,7 @@ void QueenGene::calc_fitness(){
         fit += QueenGene::taken_diagonals[i] * (QueenGene::taken_diagonals[i] - 1) / 2.0f;
 
     //dont forget to set the attribute itself
-    this->fitness = fit;
+    this->fitness = this->scaling_factor * fit + this->age; //even if it's not in use
 
 }
 
@@ -122,6 +124,8 @@ void QueenGene::setMate(Gene& p1, Gene& p2, Crossover_type xtype /*= CROSSOVER_D
             throw;
             break;
     }
+
+    this->age = 0;
 }
 
 void QueenGene::setMateCX(Gene& p1, Gene& p2){
@@ -235,10 +239,13 @@ void QueenGene::setMateOX(Gene& p1, Gene& p2){
 }
 
 void QueenGene::copySetter(Gene& other){
+    Gene::copySetter(other); //update age if needs to
     QueenGene& other_casted = static_cast<QueenGene&>(other); //assuming other is QueenGene
     //deep copy w/o allocations (I don't trust operator= of vectors because they might re-allocate the memory)
     for(unsigned int i=0; i<this->queen_rows.size(); i++)
         this->queen_rows[i] = other_casted.queen_rows[i];
+
+
 }
 
 bool QueenGene::isFinished(vector<Gene*>& gene_vector, vector<Gene*>& buffer){

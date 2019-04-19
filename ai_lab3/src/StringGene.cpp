@@ -3,7 +3,7 @@
 #include <stdlib.h> //used for rand
 #include "StringGene.h"
 
-string StringGene::target = "hello world";
+string StringGene::target = "Hello sir, I'm Noam Blagovsky and this is partner, Yuri khvoles";
 
 StringGene::StringGene(): Gene(0){
 

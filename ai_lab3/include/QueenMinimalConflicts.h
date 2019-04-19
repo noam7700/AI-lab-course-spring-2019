@@ -1,19 +1,24 @@
 #ifndef QUEENMINIMALCONFLICTS_H
 #define QUEENMINIMALCONFLICTS_H
 
+#include <iostream>
 #include <vector>
 #include <algorithm>
+#include "Defs.h"
+
 using namespace std;
 
 class QueenMinimalConflicts
 {
     public:
         QueenMinimalConflicts(int num);
-        void step(); //do the greedy step (minimum conflicts)
+        void solve(int MAX_IT); //do loop of steps
+        int step(); //do the greedy step (minimum conflicts)
+        void print();
 
         virtual ~QueenMinimalConflicts() = default;
 
-    protected:
+    //protected:
         vector<int> queen_rows; //just like in QueenGene
 };
 

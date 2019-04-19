@@ -17,6 +17,7 @@ int main(int argc, char* argv[])
 #include "StringGeneBullsAndCows.h"
 #include "geneticAlgorithm.h"
 #include "QueenGene.h"
+#include "QueenMinimalConflicts.h"
 #include "Defs.h"
 
 using namespace std;				// polluting global namespace, but hey...
@@ -123,6 +124,11 @@ int main()
     for(unsigned int i=0; i<10; i++)
         cout << spring->queen_rows[i] << " ";
     cout << ")\n";*/
+
+    cout << endl << "N Queens Minimal conflicts:" << endl << endl;
+
+    QueenMinimalConflicts qmc(100); //creates his random permutation board on the way.
+    qmc.solve(1000); //MAX_IT=1000
 
 	return 0;
 }

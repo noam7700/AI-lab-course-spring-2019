@@ -114,22 +114,34 @@ void GeneticAlgorithm::mate_by_tournament_version2(vector<Gene*>& gene_vector, v
 }
 
 int GeneticAlgorithm::selectParentRws(vector<Gene*>& gene_vector){
-    float sum = 0;
+    //we want rws but when fi is smaller, we want bigger chance.
+    //therefore, zi=e^(-fi), and do the regular algorithm for zi.
+    //when fi is smaller, -fi is bigger, and e^(-fi) is positive, so no problem with the regular algorithm
+    //also, can use zi = e^(-delta * fi / sum). delta is to control the numbers so they wont be too dense
+    //delta1 needs to be bigger/smaller depends on "fi/sum", and the values of fi/sum depends on POP_SIZE usually,
+    //so it's easier because POP_SIZE is fixed
+    float real_sum = 0;
+    float delta = 500; //seems to give average results
     for(unsigned int i=0; i<gene_vector.size(); i++)
-        sum += gene_vector[i]->getFitness();
+        real_sum += gene_vector[i]->getFitness();
 
-    float r = (float)(rand() % (int)sum);
-    float curr_sum = 0;
-    int parent_index;
-    for(parent_index=0; parent_index<gene_vector.size() - 1; parent_index++){ //if reaches .size() - 1, just return him...
-        curr_sum += sum - gene_vector[parent_index]->getFitness(); //now smaller getFitness, is better propability
+    //we need new_sum so we can normalize fi's to sum to 10,000 (not 1, because we want to use rand())
+    float new_sum = 0, ratio_fit;
+    for(unsigned int i=0; i<gene_vector.size(); i++){
+        ratio_fit = gene_vector[i]->getFitness()/real_sum;
+        new_sum += pow(2.71, -delta * ratio_fit);
+    }
 
-        //assuming r >= prev_sum, propability of r < curr_sum: is r < curr_f.
-        //this is exacly what we need if: f is better, when he's bigger
+    float r = (float)(rand() % 10000);
+    float zi, curr_sum = 0;
+    unsigned int parent_index;
+    for(parent_index=0; parent_index<gene_vector.size(); parent_index++){
+        ratio_fit = gene_vector[parent_index]->getFitness()/real_sum;
+        zi = pow(2.71, -delta * ratio_fit) / new_sum * 10000; //now zi is in [0,10000)
+        curr_sum += zi;
         if(r < curr_sum)
             break;
     }
-
     return parent_index;
 }
 
@@ -195,7 +207,8 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
     auto last_improvement_mini_finish = chrono::high_resolution_clock::now();
     clock_t last_improvement_cmini_finish = clock();
 
-    for(int i=0; i<GA_MAXITER; i++, rounds_till_failing--){
+    int i;
+    for(i=0; i<GA_MAXITER; i++, rounds_till_failing--){
         calc_fitness(gene_vector); //update fitness for all genes
         sort(gene_vector.begin(), gene_vector.end(), compare_genes_ptr);
         print_best(gene_vector);
@@ -249,6 +262,8 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
     cout << "Overall: absolute time: " << elapsed.count() / 1000 << " clock ticks: " << clockticks << "\n";
     if(didWeFail == 1)
         cout << "We failed at generation " << last_generation_improvement << "\n";
+    else
+        cout << "We succeeded at generation " <<
 
     return;
 }

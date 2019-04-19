@@ -31,16 +31,35 @@ void clean_vector(vector<Gene*> vec)
     }
 }
 
-int main()
+void endProcedure(){
+    while(1){
+        cout << "Press 'f' to finish (w/o '')\n";
+        string input;
+        cin >> input;
+        if(input == "f")
+            break;
+    }
+
+}
+
+int main(int argc, char *argv[])
 {
     srand(time(0)); //seed the rand only once (according to https://www.geeksforgeeks.org/rand-and-srand-in-ccpp/)
+
+    //get option
+    string first_arg = argv[1];
+
+
+
     cout << "Sample solution:" << endl << endl;
+
     vector<Gene*> gene_vector(GA_POPSIZE), buffer(GA_POPSIZE);
     for(int i=0; i<GA_POPSIZE; i++){
         gene_vector[i] = new StringGene(1.0f, 0.0f);
         buffer[i] = new StringGene(1.0f, 0.0f);
     }
-    //GeneticAlgorithm::run_ga(gene_vector, buffer);
+    if(first_arg == "0")
+        GeneticAlgorithm::run_ga(gene_vector, buffer);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -51,7 +70,8 @@ int main()
         gene_vector[i] = new StringGeneBullsAndCows(1.0f, 0.0f);
         buffer[i] = new StringGeneBullsAndCows(1.0f, 0.0f);
     }
-    //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_DEFAULT, CROSSOVER_UNIFORM);
+    if(first_arg == "1")
+        GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_DEFAULT, CROSSOVER_UNIFORM);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -62,7 +82,8 @@ int main()
         gene_vector[i] = new StringGene(1.0f, 0.0f);
         buffer[i] = new StringGene(1.0f, 0.0f);
     }
-    //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_TOURNAMENT);
+    if(first_arg == "2")
+        GeneticAlgorithm::run_ga(gene_vector, buffer, MT_TOURNAMENT);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -73,7 +94,8 @@ int main()
         gene_vector[i] = new StringGene(0.2f, 0.0f);
         buffer[i] = new StringGene(0.2f, 0.0f);
     }
-    //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_RWS);
+    if(first_arg == "3")
+        GeneticAlgorithm::run_ga(gene_vector, buffer, MT_RWS);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -85,7 +107,8 @@ int main()
         buffer[i] = new StringGene(1.0f, 1.0f);
     }
 
-    //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT);
+    if(first_arg == "4")
+        GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -97,38 +120,20 @@ int main()
         buffer[i] = new QueenGene(1.0f, 0.0f, 100);
     }
 
-    //GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SWAP, CROSSOVER_CX);
+    if(first_arg == "5")
+        GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SWAP, CROSSOVER_CX);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
 
 
-    /*QueenGene* test1 = new QueenGene(10); //0-9
-    test1->queen_rows = {8,2,4,3,7,5,1,0,9,6};
-    QueenGene* test2 = new QueenGene(10); //0-9
-    test2->queen_rows = {4,1,7,6,2,8,3,9,5,0};
-
-    cout << "perm1: (";
-    for(unsigned int i=0; i<test2->queen_rows.size(); i++)
-        cout << test1->queen_rows[i] << " ";
-    cout << ")\n";
-    cout << "perm2: (";
-    for(unsigned int i=0; i<test2->queen_rows.size(); i++)
-        cout << test2->queen_rows[i] << " ";
-    cout << ")\n";
-
-
-    QueenGene* spring = new QueenGene(10); //0-9
-    spring->setMateOX(*test1, *test2);
-    cout << "perm3: (";
-    for(unsigned int i=0; i<10; i++)
-        cout << spring->queen_rows[i] << " ";
-    cout << ")\n";*/
-
     cout << endl << "N Queens Minimal conflicts:" << endl << endl;
 
     QueenMinimalConflicts qmc(100); //creates his random permutation board on the way.
-    qmc.solve(1000); //MAX_IT=1000
 
+    if(first_arg == "6")
+        qmc.solve(1000); //MAX_IT=1000
+
+    endProcedure();
 	return 0;
 }

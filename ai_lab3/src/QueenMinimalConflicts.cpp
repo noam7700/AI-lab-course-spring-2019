@@ -38,7 +38,7 @@ void QueenMinimalConflicts::solve(int MAX_IT){
 
 
     int i;
-    for(int i=0; i<MAX_IT; i++){
+    for(i=0; i<MAX_IT; i++){
         current_check_fit = this->step();
         if(current_check_fit == 0)
             break;

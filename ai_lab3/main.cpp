@@ -47,9 +47,15 @@ int main(int argc, char *argv[])
     srand(time(0)); //seed the rand only once (according to https://www.geeksforgeeks.org/rand-and-srand-in-ccpp/)
 
     //get option
-    string first_arg = argv[1];
+    string option_algorithm = argv[1];
+    string option_selection = argv[2]; //also known as m_type in our code. can be everything
+    string option_mute = argv[3]; //if N Queens can be 0/1/2. otherwise 0
+    string option_crossover = argv[4]; //if Bulls & Cows, can be 0/3/4. if N Queens, can be 0/1/2. otherwise 0
 
-
+    int option_algorithm_int = atoi(option_algorithm.c_str());
+    int option_selection_int = atoi(option_selection.c_str());
+    int option_mute_int = atoi(option_mute.c_str());
+    int option_crossover_int = atoi(option_crossover.c_str());
 
     cout << "Sample solution:" << endl << endl;
 
@@ -58,8 +64,11 @@ int main(int argc, char *argv[])
         gene_vector[i] = new StringGene(1.0f, 0.0f);
         buffer[i] = new StringGene(1.0f, 0.0f);
     }
-    if(first_arg == "0")
-        GeneticAlgorithm::run_ga(gene_vector, buffer);
+    if(option_algorithm == "0"){
+
+        MateType mt = static_cast<MateType>(option_selection_int);
+        GeneticAlgorithm::run_ga(gene_vector, buffer, mt);
+    }
 
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -70,8 +79,12 @@ int main(int argc, char *argv[])
         gene_vector[i] = new StringGeneBullsAndCows(1.0f, 0.0f);
         buffer[i] = new StringGeneBullsAndCows(1.0f, 0.0f);
     }
-    if(first_arg == "1")
-        GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_DEFAULT, CROSSOVER_UNIFORM);
+
+    if(option_algorithm == "1"){
+        MateType mt = static_cast<MateType>(option_selection_int);
+        Crossover_type ct = static_cast<Crossover_type>(option_crossover_int);
+        GeneticAlgorithm::run_ga(gene_vector, buffer, mt, MUTATE_DEFAULT, ct);
+    }
 
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -82,9 +95,9 @@ int main(int argc, char *argv[])
         gene_vector[i] = new StringGene(1.0f, 0.0f);
         buffer[i] = new StringGene(1.0f, 0.0f);
     }
-    if(first_arg == "2")
+    if(option_algorithm == "2"){
         GeneticAlgorithm::run_ga(gene_vector, buffer, MT_TOURNAMENT);
-
+    }
     clean_vector(gene_vector);
     clean_vector(buffer);
 
@@ -94,9 +107,9 @@ int main(int argc, char *argv[])
         gene_vector[i] = new StringGene(0.2f, 0.0f);
         buffer[i] = new StringGene(0.2f, 0.0f);
     }
-    if(first_arg == "3")
+    if(option_algorithm == "3"){
         GeneticAlgorithm::run_ga(gene_vector, buffer, MT_RWS);
-
+    }
     clean_vector(gene_vector);
     clean_vector(buffer);
 
@@ -107,9 +120,10 @@ int main(int argc, char *argv[])
         buffer[i] = new StringGene(1.0f, 1.0f);
     }
 
-    if(first_arg == "4")
-        GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT);
-
+    if(option_algorithm == "4"){
+        MateType mt = static_cast<MateType>(option_selection_int);
+        GeneticAlgorithm::run_ga(gene_vector, buffer, mt);
+    }
     clean_vector(gene_vector);
     clean_vector(buffer);
 
@@ -120,9 +134,12 @@ int main(int argc, char *argv[])
         buffer[i] = new QueenGene(1.0f, 0.0f, 100);
     }
 
-    if(first_arg == "5")
-        GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SWAP, CROSSOVER_CX);
-
+    if(option_algorithm == "5"){
+        MateType mt = static_cast<MateType>(option_selection_int);
+        Mutate_type mutet = static_cast<Mutate_type>(option_mute_int);
+        Crossover_type ct = static_cast<Crossover_type>(option_crossover_int);
+        GeneticAlgorithm::run_ga(gene_vector, buffer, mt, mutet, ct);
+    }
     clean_vector(gene_vector);
     clean_vector(buffer);
 
@@ -131,7 +148,7 @@ int main(int argc, char *argv[])
 
     QueenMinimalConflicts qmc(100); //creates his random permutation board on the way.
 
-    if(first_arg == "6")
+    if(option_algorithm == "6")
         qmc.solve(1000); //MAX_IT=1000
 
     endProcedure();

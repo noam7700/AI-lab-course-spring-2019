@@ -56,4 +56,19 @@ bool StringGene::operator<(Gene& rh){
     return this->fitness < rh.getFitness();
 }
 
+float StringGene::dist(Gene& rh){
+    StringGene& rh_casted = static_cast<StringGene&>(rh); //assuming rh is StringGene
+
+    string& str1 = this->str;
+    string& str2 = rh_casted.str;
+
+    //not hamming distance! if the characters are not close, the distance should be bigger.
+    //for example, <aaa,bbb> are more closer than <aaa,zzz>.
+    float sum = 0;
+    for(unsigned int i = 0; i < str1.size(); i++)
+            sum += abs((int)str1[i] - (int)str2[i]);
+    return sum;
+
+}
+
 

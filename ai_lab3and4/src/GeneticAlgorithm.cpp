@@ -206,6 +206,10 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
     auto last_improvement_mini_finish = chrono::high_resolution_clock::now();
     clock_t last_improvement_cmini_finish = clock();
 
+    //local optima signal & combat
+    bool local_optima_signal = false;
+    float signal_threshold = 5.0f;
+
     int i;
     for(i=0; i<GA_MAXITER; i++, rounds_till_failing--){
         calc_fitness(gene_vector); //update fitness for all genes
@@ -225,6 +229,12 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
 
         if(gene_vector[0]->isFinished(gene_vector, buffer))
             break;
+
+        //now create new generation
+
+        //check for 'local optima signal'. if do, combat local optima!
+        local_optima_signal = gene_vector[0]->local_optima_variance_signal(gene_vector, signal_threshold);
+
         switch(m_type){
 			case MT_DEFAULT: mate(gene_vector, buffer, mutate_type, x_type); break;
 			case MT_TOURNAMENT: mate_by_tournament(gene_vector, buffer, GA_TOURNAMENT_SIZE, mutate_type, x_type); break;

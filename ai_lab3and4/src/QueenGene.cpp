@@ -260,6 +260,19 @@ void QueenGene::print(){
     cout << "(" << this->fitness << ")\n";
 }
 
+float QueenGene::dist(Gene& rh){
+    QueenGene& rh_casted = static_cast<QueenGene&>(rh); //assuming rh is QueenGene
+
+    vector<int>& queen_rows1 = this->queen_rows;
+    vector<int>& queen_rows2 = rh_casted.queen_rows;
+
+    //hamming distance
+    float sum = 0;
+    for(unsigned int i = 0; i < queen_rows1.size(); i++)
+        if(queen_rows1[i] != queen_rows2[i])
+            sum += 1.0f;
+    return sum;
+}
 
 
 

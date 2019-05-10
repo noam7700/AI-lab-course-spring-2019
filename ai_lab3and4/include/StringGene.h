@@ -21,6 +21,7 @@ class StringGene : public Gene
         void copySetter(Gene& other); //we assume this & other are the same type
         bool isFinished(vector<Gene*>& gene_vector, vector<Gene*>& buffer); //using fitness. (maybe fitness==0?)
         void print();
+        float dist(Gene& rh);
 
         ~StringGene() = default;
 

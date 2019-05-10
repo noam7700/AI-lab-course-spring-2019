@@ -31,6 +31,7 @@ class QueenGene : public Gene
         void copySetter(Gene& other);
         bool isFinished(vector<Gene*>& gene_vector, vector<Gene*>& buffer);
         void print();
+        float dist(Gene& rh);
 
 
         virtual ~QueenGene() = default;

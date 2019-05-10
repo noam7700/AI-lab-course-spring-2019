@@ -58,7 +58,7 @@ void GeneticAlgorithm::print_best(vector<Gene*>& gene_vector){
     gene_vector[0]->print();
 }
 
-void GeneticAlgorithm::mate_by_tournament(vector<Gene*>& gene_vector, vector<Gene*>& buffer, unsigned K,
+void GeneticAlgorithm::mate_by_tournament(vector<Gene*>& gene_vector, vector<Gene*>& buffer, unsigned K /*= GA_TOURNAMENT_SIZE*/,
                                           Mutate_type mutate_type /*= MUTATE_DEFAULT*/, Crossover_type x_type /*= CROSSOVER_DEFAULTX*/) {
     int esize = GA_POPSIZE * GA_ELITRATE;
     elitism(gene_vector, buffer, esize);
@@ -144,6 +144,21 @@ int GeneticAlgorithm::selectParentRws(vector<Gene*>& gene_vector){
     return parent_index;
 }
 
+//re-arrange gene_vector and puts the parents in esize, esize+1. therefore, returns pair<int,int>(esize,esize+1)
+pair<int,int> GeneticAlgorithm::selectParentTournament(vector<Gene*>& gene_vector, unsigned K){
+    int esize = GA_POPSIZE * GA_ELITRATE;
+
+
+    random_shuffle(gene_vector.begin() + esize, gene_vector.begin() + GA_POPSIZE); //shuffle[esize,end)
+    sort(gene_vector.begin() + esize, gene_vector.begin() + esize + K, compare_genes_ptr); //sort[esize, esize+K]
+
+    return pair<int,int>(esize, esize+1);
+}
+
+int GeneticAlgorithm::selectParentShay(vector<Gene*>& gene_vector){
+    return rand() % (GA_POPSIZE / 2);
+}
+
 void GeneticAlgorithm::mate_rws(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
                                 Mutate_type mutate_type /*= MUTATE_DEFAULT*/, Crossover_type x_type /*= CROSSOVER_DEFAULTX*/){
     int esize = GA_POPSIZE * GA_ELITRATE;
@@ -155,6 +170,50 @@ void GeneticAlgorithm::mate_rws(vector<Gene*>& gene_vector, vector<Gene*>& buffe
     for(int i=esize; i<GA_POPSIZE; i++){
         i1 = selectParentRws(gene_vector);
 		i2 = selectParentRws(gene_vector);
+        child = buffer[i]; //it's pointers. we need to update buffer[i]
+        child->setMate(*gene_vector[i1], *gene_vector[i2], x_type);
+        if(rand() < GA_MUTATION)
+            child->mutate(mutate_type);
+    }
+}
+
+pair<int,int> GeneticAlgorithm::selectParent(vector<Gene*>& gene_vector, MateType m_type /*= MT_DEFAULT*/, unsigned K /*= 0*/){
+    int i1, i2;
+    pair<int,int> tmp;
+    switch(m_type){
+			case MT_DEFAULT:
+			    i1 = selectParentShay(gene_vector);
+			    i2 = selectParentShay(gene_vector);
+			    break;
+			case MT_TOURNAMENT:
+                tmp = selectParentTournament(gene_vector, K);
+                i1 = tmp.first;
+                i2 = tmp.second;
+			    break;
+			case MT_RWS:
+                i1 = selectParentRws(gene_vector);
+                i2 = selectParentRws(gene_vector);
+			    break;
+			default: { cout << "Unknown mate type was used" << endl; throw; }
+    }
+    return pair<int,int>(i1, i2);
+}
+
+void GeneticAlgorithm::generic_mate(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
+                         Mutate_type mutate_type /*= MUTATE_DEFAULT*/,
+                         Crossover_type x_type /*= CROSSOVER_DEFAULTX*/, MateType m_type /*= MT_DEFAULT*/, unsigned K /*= GA_TOURNAMENT_SIZE*/){
+
+    int esize = GA_POPSIZE * GA_ELITRATE;
+    elitism(gene_vector, buffer, esize);
+
+    // Mate the rest
+    Gene* child;
+    int i1, i2;
+    pair<int, int> tmp;
+    for(int i=esize; i<GA_POPSIZE; i++){
+        tmp = selectParent(gene_vector, m_type); //can change order of gene in vector (tournament does)
+        i1 = tmp.first;
+		i2 = tmp.second;
         child = buffer[i]; //it's pointers. we need to update buffer[i]
         child->setMate(*gene_vector[i1], *gene_vector[i2], x_type);
         if(rand() < GA_MUTATION)
@@ -235,12 +294,7 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
         //check for 'local optima signal'. if do, combat local optima!
         local_optima_signal = gene_vector[0]->local_optima_variance_signal(gene_vector, signal_threshold);
 
-        switch(m_type){
-			case MT_DEFAULT: mate(gene_vector, buffer, mutate_type, x_type); break;
-			case MT_TOURNAMENT: mate_by_tournament(gene_vector, buffer, GA_TOURNAMENT_SIZE, mutate_type, x_type); break;
-			case MT_RWS: mate_rws(gene_vector, buffer, mutate_type, x_type); break;
-			default: { cout << "Unknown mate type was used" << endl; return; }
-        }
+        generic_mate(gene_vector, buffer, mutate_type, x_type, m_type);
 
         //time for checking
         current_check_fit = gene_vector[0]->getFitness();

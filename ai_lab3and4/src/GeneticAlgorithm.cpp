@@ -30,25 +30,6 @@ void GeneticAlgorithm::elitism(vector<Gene*>& gene_vector, vector<Gene*>& buffer
     }
 }
 
-//assuming gene_vector & buffer don't have NULL cells
-void GeneticAlgorithm::mate(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
-                            Mutate_type mutate_type /*= MUTATE_DEFAULT*/, Crossover_type x_type /*= CROSSOVER_DEFAULTX*/){
-    int esize = GA_POPSIZE * GA_ELITRATE;
-    elitism(gene_vector, buffer, esize);
-
-    // Mate the rest
-    Gene* child;
-    int i1, i2;
-    for(int i=esize; i<GA_POPSIZE; i++){
-        i1 = rand() % (GA_POPSIZE / 2);
-		i2 = rand() % (GA_POPSIZE / 2);
-        child = buffer[i]; //it's pointers. we need to update buffer[i]
-        child->setMate(*gene_vector[i1], *gene_vector[i2], x_type);
-        if(rand() < GA_MUTATION)
-            child->mutate(mutate_type);
-    }
-}
-
 bool GeneticAlgorithm::compare_genes_ptr(Gene* lh, Gene* rh){
     return (*lh < *rh);
 }
@@ -56,61 +37,6 @@ bool GeneticAlgorithm::compare_genes_ptr(Gene* lh, Gene* rh){
 void GeneticAlgorithm::print_best(vector<Gene*>& gene_vector){
     //assuming gene_vector is sorted
     gene_vector[0]->print();
-}
-
-void GeneticAlgorithm::mate_by_tournament(vector<Gene*>& gene_vector, vector<Gene*>& buffer, unsigned K /*= GA_TOURNAMENT_SIZE*/,
-                                          Mutate_type mutate_type /*= MUTATE_DEFAULT*/, Crossover_type x_type /*= CROSSOVER_DEFAULTX*/) {
-    int esize = GA_POPSIZE * GA_ELITRATE;
-    elitism(gene_vector, buffer, esize);
-
-    // Mate the rest
-    Gene* child;
-    for(int i=esize; i < GA_POPSIZE; i++){
-
-    	// First winning gene
-        random_shuffle(gene_vector.begin() + esize, gene_vector.begin() + GA_POPSIZE) ;
-        sort(gene_vector.begin() + esize, gene_vector.begin() + esize + K, compare_genes_ptr);
-        // Second winning gene
-		random_shuffle(gene_vector.begin() + esize + 1, gene_vector.begin() + GA_POPSIZE) ;
-		sort(gene_vector.begin() + esize + 1, gene_vector.begin() + esize + K, compare_genes_ptr);
-
-        child = buffer[i]; //it's pointers. we need to update buffer[i]
-        child->setMate(*gene_vector[esize], *gene_vector[esize+1], x_type);
-        if(rand() < GA_MUTATION)
-            child->mutate(mutate_type);
-    }
-}
-
-void GeneticAlgorithm::mate_by_tournament_version2(vector<Gene*>& gene_vector, vector<Gene*>& buffer, unsigned K,
-                                                   Mutate_type mutate_type /*= MUTATE_DEFAULT*/, Crossover_type x_type /*= CROSSOVER_DEFAULTX*/) {
-    int esize = GA_POPSIZE * GA_ELITRATE;
-    elitism(gene_vector, buffer, esize);
-
-    // Mate the rest
-    Gene* child;
-    vector<Gene*>::iterator p1_it, p2_it; //parents. p1 won the tournament, and p2 at second place
-    int p2_index;
-    for(int i=esize; i < GA_POPSIZE; i++){
-    	if(K > gene_vector.size() - esize){
-    		K = gene_vector.size() - esize;
-    	}
-    	random_shuffle(gene_vector.begin() + esize, gene_vector.end()); //we want to take random sub-group
-
-        // First winning gene - in range [esize, esize + K) - sub-group size should be K
-        p1_it = min_element(gene_vector.begin() + esize, gene_vector.begin() + esize + K, compare_genes_ptr);
-
-        //put p1 at gene_vector[esize] so we can find p2 easily with min_element(...)
-        swap(gene_vector[esize], *p1_it);
-        // Second winning gene
-		p2_it = min_element(gene_vector.begin() + esize + 1, gene_vector.begin() + esize + K, compare_genes_ptr);
-
-        child = buffer[i]; //it's pointers. we need to update buffer[i]
-
-        child->setMate(*gene_vector[esize], *(*p2_it), x_type);
-
-        if(rand() < GA_MUTATION)
-            child->mutate(mutate_type);
-    }
 }
 
 int GeneticAlgorithm::selectParentRws(vector<Gene*>& gene_vector){
@@ -145,7 +71,8 @@ int GeneticAlgorithm::selectParentRws(vector<Gene*>& gene_vector){
 }
 
 //re-arrange gene_vector and puts the parents in esize, esize+1. therefore, returns pair<int,int>(esize,esize+1)
-pair<int,int> GeneticAlgorithm::selectParentTournament(vector<Gene*>& gene_vector, unsigned K){
+pair<int,int> GeneticAlgorithm::selectParentTournament(vector<Gene*>& gene_vector,
+                                                       unsigned K/*= GA_TOURNAMENT_SIZE*/){
     int esize = GA_POPSIZE * GA_ELITRATE;
 
 
@@ -155,26 +82,27 @@ pair<int,int> GeneticAlgorithm::selectParentTournament(vector<Gene*>& gene_vecto
     return pair<int,int>(esize, esize+1);
 }
 
-int GeneticAlgorithm::selectParentShay(vector<Gene*>& gene_vector){
-    return rand() % (GA_POPSIZE / 2);
+pair<int,int> GeneticAlgorithm::selectParentTournament_version2(vector<Gene*>& gene_vector,
+                                                                unsigned K /*= GA_TOURNAMENT_SIZE*/){
+
+    int esize = GA_POPSIZE * GA_ELITRATE;
+
+    vector<Gene*>::iterator p1_it, p2_it;
+    p1_it = min_element(gene_vector.begin() + esize, gene_vector.begin() + esize + K, compare_genes_ptr);
+
+    //put p1 at gene_vector[esize] so we can find p2 easily with min_element(...)
+    swap(gene_vector[esize], *p1_it);
+
+    // Second winning gene
+    p2_it = min_element(gene_vector.begin() + esize + 1, gene_vector.begin() + esize + K, compare_genes_ptr);
+    //put p2 at gene_vector[esize+1] just because it's nicer
+    swap(gene_vector[esize+1], *p2_it);
+
+    return pair<int,int>(esize, esize+1);
 }
 
-void GeneticAlgorithm::mate_rws(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
-                                Mutate_type mutate_type /*= MUTATE_DEFAULT*/, Crossover_type x_type /*= CROSSOVER_DEFAULTX*/){
-    int esize = GA_POPSIZE * GA_ELITRATE;
-    elitism(gene_vector, buffer, esize);
-
-    // Mate the rest
-    Gene* child;
-    int i1, i2;
-    for(int i=esize; i<GA_POPSIZE; i++){
-        i1 = selectParentRws(gene_vector);
-		i2 = selectParentRws(gene_vector);
-        child = buffer[i]; //it's pointers. we need to update buffer[i]
-        child->setMate(*gene_vector[i1], *gene_vector[i2], x_type);
-        if(rand() < GA_MUTATION)
-            child->mutate(mutate_type);
-    }
+int GeneticAlgorithm::selectParentShay(vector<Gene*>& gene_vector){
+    return rand() % (GA_POPSIZE / 2);
 }
 
 pair<int,int> GeneticAlgorithm::selectParent(vector<Gene*>& gene_vector, MateType m_type /*= MT_DEFAULT*/, unsigned K /*= 0*/){

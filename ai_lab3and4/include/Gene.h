@@ -35,8 +35,8 @@ class Gene
         virtual bool isFinished(vector<Gene*>& gene_vector, vector<Gene*>& buffer) = 0; //using fitness. (maybe fitness==0?)
         virtual void print() = 0; //for fun :P
         virtual float dist(Gene& rh) = 0;
-        virtual bool local_optima_variance_signal(vector<Gene*>& gene_vector, float threshold);
-        virtual bool local_optima_gene_similar(vector<Gene*>& gene_vector, float threshold);
+        virtual bool local_optima_variance_signal(vector<Gene*>& gene_vector);
+        virtual bool local_optima_gene_similar(vector<Gene*>& gene_vector);
         virtual float sharing_function(Gene& rh);
         virtual float sharing_fitness(float raw_fitness, vector<Gene*>& gene_vector);
 

@@ -195,7 +195,6 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
 
     //local optima signal & combat
     bool local_optima_signal = false;
-    float signal_threshold = 5.0f;
 
     int i;
     for(i=0; i<GA_MAXITER; i++, rounds_till_failing--){
@@ -220,7 +219,11 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
         //now create new generation
 
         //check for 'local optima signal'. if do, combat local optima!
-        local_optima_signal = gene_vector[0]->local_optima_variance_signal(gene_vector, signal_threshold);
+        local_optima_signal = gene_vector[0]->local_optima_gene_similar(gene_vector);
+        if(!local_optima_signal)
+            cout << "ehhh\n";
+        else
+            cout << "nice!\n";
 
         generic_mate(gene_vector, buffer, mutate_type, x_type, m_type);
 

@@ -45,7 +45,7 @@ bool Gene::local_optima_variance_signal(vector<Gene*>& gene_vector){
     else
         counter = max(0, counter - 1);
 
-    cout << "counter=" << counter << "\n";
+    cout << "counter=" << counter << "\n"; //debug
 
     last_variance = variance; //for next time
 
@@ -84,6 +84,8 @@ bool Gene::local_optima_gene_similar(vector<Gene*>& gene_vector){
         counter = min(10, counter + 2);
     else
         counter = max(0, counter - 1);
+
+    cout << "counter=" << counter << "\n"; //debug
 
     last_average_estimation = average_estimation; //for next time
     return counter >= counter_limit;

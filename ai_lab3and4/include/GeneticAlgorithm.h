@@ -18,7 +18,8 @@ class GeneticAlgorithm
         static void generic_mate(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
                          Mutate_type mutate_type = MUTATE_DEFAULT,
                          Crossover_type x_type = CROSSOVER_DEFAULTX, MateType m_type = MT_DEFAULT,
-                         unsigned K = GA_TOURNAMENT_SIZE);
+                         unsigned K = GA_TOURNAMENT_SIZE, bool local_optima_signal = false,
+                         LocalOptimaCombat_type loc_type = LocalOptimaCombat_superMutations);
         static pair<int,int> selectParent(vector<Gene*>& gene_vector, MateType m_type = MT_DEFAULT, unsigned K = GA_TOURNAMENT_SIZE);
         static int selectParentRws(vector<Gene*>& gene_vector);
         //must return both parents at once (pair<int,int> instaed of just int)
@@ -29,7 +30,9 @@ class GeneticAlgorithm
         static void print_best(vector<Gene*>& gene_vector);
         static void print_stats(vector<Gene*>& gene_vector);
         static void run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer, MateType m_type = MT_DEFAULT,
-                           Mutate_type mutate_type = MUTATE_DEFAULT, Crossover_type x_type = CROSSOVER_DEFAULTX);
+                           Mutate_type mutate_type = MUTATE_DEFAULT, Crossover_type x_type = CROSSOVER_DEFAULTX,
+                           SignalMethod sm = SignalMethod_variance,
+                           LocalOptimaCombat_type loc_type = LocalOptimaCombat_superMutations);
 
 
     protected:

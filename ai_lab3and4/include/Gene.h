@@ -19,6 +19,17 @@ enum Crossover_type{
     CROSSOVER_TWOPOINT = 4 //two point crossover (explained in ppt/wiki)
 };
 
+enum LocalOptimaCombat_type{
+    LocalOptimaCombat_superMutations = 0, //double the rate of mutations
+    LocalOptimaCombat_immigrantion = 1, //add immigrants to replace native genes
+    LocalOptimaCombat_niching = 2 //niching!
+};
+
+enum SignalMethod{
+    SignalMethod_variance = 0,
+    SignalMethod_similiar = 1
+};
+
 class Gene
 {
     public:

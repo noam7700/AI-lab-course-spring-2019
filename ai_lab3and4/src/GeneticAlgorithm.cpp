@@ -129,7 +129,9 @@ pair<int,int> GeneticAlgorithm::selectParent(vector<Gene*>& gene_vector, MateTyp
 
 void GeneticAlgorithm::generic_mate(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
                          Mutate_type mutate_type /*= MUTATE_DEFAULT*/,
-                         Crossover_type x_type /*= CROSSOVER_DEFAULTX*/, MateType m_type /*= MT_DEFAULT*/, unsigned K /*= GA_TOURNAMENT_SIZE*/){
+                         Crossover_type x_type /*= CROSSOVER_DEFAULTX*/, MateType m_type /*= MT_DEFAULT*/,
+                         unsigned K /*= GA_TOURNAMENT_SIZE*/, bool local_optima_signal /*= false*/,
+                         LocalOptimaCombat_type loc_type /*= LocalOptimaCombat_superMutations*/){
 
     int esize = GA_POPSIZE * GA_ELITRATE;
     elitism(gene_vector, buffer, esize);
@@ -144,7 +146,11 @@ void GeneticAlgorithm::generic_mate(vector<Gene*>& gene_vector, vector<Gene*>& b
 		i2 = tmp.second;
         child = buffer[i]; //it's pointers. we need to update buffer[i]
         child->setMate(*gene_vector[i1], *gene_vector[i2], x_type);
-        if(rand() < GA_MUTATION)
+        if(local_optima_signal && loc_type == LocalOptimaCombat_superMutations){
+            if(rand() < 2 * GA_MUTATION) //double the chances
+                child->mutate(mutate_type);
+        }
+        else if(rand() < GA_MUTATION) //act normal
             child->mutate(mutate_type);
     }
 }
@@ -168,7 +174,9 @@ void GeneticAlgorithm::print_stats(vector<Gene*>& gene_vector){
 
 //he receives the vectors with the proper derived objects of Gene
 void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer, MateType m_type /*=MT_DEFAULT*/,
-                              Mutate_type mutate_type /*=MUTATE_DEFAULT*/, Crossover_type x_type /*=CROSSOVER_DEFAULT*/){
+                              Mutate_type mutate_type /*=MUTATE_DEFAULT*/, Crossover_type x_type /*=CROSSOVER_DEFAULT*/,
+                              SignalMethod sm /*= SignalMethod_variance*/,
+                              LocalOptimaCombat_type loc_type /*= LocalOptimaCombat_superMutations*/){
     auto mini_start = chrono::high_resolution_clock::now();
     auto mini_finish = chrono::high_resolution_clock::now();
     auto start = chrono::high_resolution_clock::now();
@@ -219,11 +227,10 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
         //now create new generation
 
         //check for 'local optima signal'. if do, combat local optima!
-        local_optima_signal = gene_vector[0]->local_optima_gene_similar(gene_vector);
-        if(!local_optima_signal)
-            cout << "ehhh\n";
+        if(sm == SignalMethod_variance)
+            local_optima_signal = gene_vector[0]->local_optima_variance_signal(gene_vector);
         else
-            cout << "nice!\n";
+            local_optima_signal = gene_vector[0]->local_optima_gene_similar(gene_vector);
 
         generic_mate(gene_vector, buffer, mutate_type, x_type, m_type);
 

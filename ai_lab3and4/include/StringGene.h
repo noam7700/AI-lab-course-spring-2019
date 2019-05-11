@@ -9,13 +9,14 @@ using namespace std;
 class StringGene : public Gene
 {
     public:
-        StringGene(float scaling_factor, int aging_factor); //init will set str to random
+        //init will set str to random
+        StringGene(float scaling_factor, int aging_factor, bool isUsingNiching, float sigma_share);
 
         static string target;
 
         bool operator<(Gene& rh); //for sorting
         void init(); //init as random gene
-        void calc_fitness(); //update calc_fitness
+        void calc_fitness(vector<Gene*>& gene_vector); //update calc_fitness
         void mutate(Mutate_type mutype = MUTATE_DEFAULT);
         void setMate(Gene& p1, Gene& p2, Crossover_type xtype = CROSSOVER_DEFAULTX); //set attributes as the son of p1 & p2
         void copySetter(Gene& other); //we assume this & other are the same type

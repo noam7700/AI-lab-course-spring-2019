@@ -19,7 +19,7 @@ void GeneticAlgorithm::init_population(vector<Gene*>& gene_vector){
 //assuming gene_vector doesn't have NULL cells
 void GeneticAlgorithm::calc_fitness(vector<Gene*>& gene_vector){
     for(unsigned int i=0; i<gene_vector.size(); i++){
-        gene_vector[i]->calc_fitness();
+        gene_vector[i]->calc_fitness(gene_vector);
     }
 }
 

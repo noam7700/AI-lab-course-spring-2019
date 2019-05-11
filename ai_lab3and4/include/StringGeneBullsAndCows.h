@@ -13,7 +13,7 @@
 
 class StringGeneBullsAndCows: public StringGene {
 public:
-	StringGeneBullsAndCows(float scaling_factor, int aging_factor);
+	StringGeneBullsAndCows(float scaling_factor, int aging_factor, bool isUsingNiching, float sigma_share);
     void calc_fitness(); //update calc_fitness
     void setMate(Gene& p1, Gene& p2, Crossover_type xtype = CROSSOVER_DEFAULTX); //set attributes as the son of p1 & p2
     void setMateUniform(Gene& p1, Gene& p2); //option to setMate - "uniform crossover"

@@ -22,13 +22,13 @@ enum Crossover_type{
 class Gene
 {
     public:
-        Gene(float fitness, float scaling_factor, int aging_factor);
+        Gene(float fitness, float scaling_factor, int aging_factor, bool isUsingNiching, float sigma_share);
 
         virtual bool operator<(Gene& rh) = 0; //for sorting
 
         //they're void because they're setters of "this". To save #allocations (saving time)
         virtual void init() = 0; //init as random gene
-        virtual void calc_fitness() = 0; //update calc_fitness
+        virtual void calc_fitness(vector<Gene*>& gene_vector) = 0; //update calc_fitness
         virtual void mutate(Mutate_type mutype = MUTATE_DEFAULT) = 0;
         virtual void setMate(Gene& p1, Gene& p2, Crossover_type xtype = CROSSOVER_DEFAULTX) = 0; //set attributes as the son of p1 & p2
         virtual void copySetter(Gene& other) = 0; //we assume this & other are the same type
@@ -37,6 +37,8 @@ class Gene
         virtual float dist(Gene& rh) = 0;
         virtual bool local_optima_variance_signal(vector<Gene*>& gene_vector, float threshold);
         virtual bool local_optima_gene_similar(vector<Gene*>& gene_vector, float threshold);
+        virtual float sharing_function(Gene& rh);
+        virtual float sharing_fitness(float raw_fitness, vector<Gene*>& gene_vector);
 
         float getFitness();
 
@@ -47,6 +49,8 @@ class Gene
         float scaling_factor; //will be 1 when not used
         int age; //will be always 0 when not used
         int aging_factor; //if age always grows by 3, age_factor=3 (age += age_factor in copySetter)
+        bool isUsingNiching;
+        float sigma_share;
 };
 
 #endif // GENE_H

@@ -61,8 +61,8 @@ int main(int argc, char *argv[])
 
     vector<Gene*> gene_vector(GA_POPSIZE), buffer(GA_POPSIZE);
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGene(1.0f, 0.0f);
-        buffer[i] = new StringGene(1.0f, 0.0f);
+        gene_vector[i] = new StringGene(1.0f, 0.0f, false, 1.0f);
+        buffer[i] = new StringGene(1.0f, 0.0f, false, 1.0f);
     }
     if(option_algorithm == "0"){
 
@@ -76,8 +76,8 @@ int main(int argc, char *argv[])
     cout << endl << "Bulls and Cows:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGeneBullsAndCows(1.0f, 0.0f);
-        buffer[i] = new StringGeneBullsAndCows(1.0f, 0.0f);
+        gene_vector[i] = new StringGeneBullsAndCows(1.0f, 0.0f, false, 1.0f);
+        buffer[i] = new StringGeneBullsAndCows(1.0f, 0.0f, false, 1.0f);
     }
 
     if(option_algorithm == "1"){
@@ -92,8 +92,8 @@ int main(int argc, char *argv[])
     cout << endl << "Tournament:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGene(1.0f, 0.0f);
-        buffer[i] = new StringGene(1.0f, 0.0f);
+        gene_vector[i] = new StringGene(1.0f, 0.0f, false, 1.0f);
+        buffer[i] = new StringGene(1.0f, 0.0f, false, 1.0f);
     }
     if(option_algorithm == "2"){
         GeneticAlgorithm::run_ga(gene_vector, buffer, MT_TOURNAMENT);
@@ -104,8 +104,8 @@ int main(int argc, char *argv[])
     cout << endl << "RWS + scaling:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGene(0.2f, 0.0f);
-        buffer[i] = new StringGene(0.2f, 0.0f);
+        gene_vector[i] = new StringGene(0.2f, 0.0f, false, 1.0f);
+        buffer[i] = new StringGene(0.2f, 0.0f, false, 1.0f);
     }
     if(option_algorithm == "3"){
         GeneticAlgorithm::run_ga(gene_vector, buffer, MT_RWS);
@@ -116,8 +116,8 @@ int main(int argc, char *argv[])
     cout << endl << "Aging:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGene(1.0f, 1.0f);
-        buffer[i] = new StringGene(1.0f, 1.0f);
+        gene_vector[i] = new StringGene(1.0f, 1.0f, false, 1.0f);
+        buffer[i] = new StringGene(1.0f, 1.0f, false, 1.0f);
     }
 
     if(option_algorithm == "4"){
@@ -130,8 +130,8 @@ int main(int argc, char *argv[])
     cout << endl << "N Queens Problem:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){ //100 queens
-        gene_vector[i] = new QueenGene(1.0f, 0.0f, 100);
-        buffer[i] = new QueenGene(1.0f, 0.0f, 100);
+        gene_vector[i] = new QueenGene(1.0f, 0.0f, 100, false, 1.0f);
+        buffer[i] = new QueenGene(1.0f, 0.0f, 100, false, 1.0f);
     }
 
     if(option_algorithm == "5"){

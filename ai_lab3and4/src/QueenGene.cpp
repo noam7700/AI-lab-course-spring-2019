@@ -2,8 +2,8 @@
 
 vector<int> QueenGene::taken_diagonals;
 
-QueenGene::QueenGene(float scaling_factor, int aging_factor, int num):
-    Gene::Gene(0, scaling_factor, aging_factor){
+QueenGene::QueenGene(float scaling_factor, int aging_factor, int num, bool isUsingNiching, float sigma_share):
+    Gene::Gene(0, scaling_factor, aging_factor, isUsingNiching, sigma_share){
     this->queen_rows = vector<int>(num);
 
     //only allocate his memory once. doesn't work in multi-thread
@@ -28,7 +28,7 @@ void QueenGene::init(){
     this->age = 0; //even if we're not using aging, it still should be 0
 }
 
-void QueenGene::calc_fitness(){
+void QueenGene::calc_fitness(vector<Gene*>& gene_vector){
     float fit = 0;
 
     //Descending: update taken_diagonals to number of queens in each diagonal
@@ -64,6 +64,7 @@ void QueenGene::calc_fitness(){
 
     //dont forget to set the attribute itself
     this->fitness = this->scaling_factor * fit + this->age; //even if it's not in use
+    this->fitness = this->sharing_fitness(this->fitness, gene_vector); //niching
 
 }
 

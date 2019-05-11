@@ -9,7 +9,7 @@
 class QueenGene : public Gene
 {
     public:
-        QueenGene(float scaling_factor, int aging_factor, int num);
+        QueenGene(float scaling_factor, int aging_factor, int num, bool isUsingNiching, float sigma_share);
 
         /*
         Each time we want to calculate diagonal intersections, we need this kind of array (of size 2*num - 1).
@@ -21,7 +21,7 @@ class QueenGene : public Gene
         bool operator<(Gene& rh);
 
         void init();
-        void calc_fitness();
+        void calc_fitness(vector<Gene*>& gene_vector);
         void mutate(Mutate_type mutype = MUTATE_DEFAULT);
         void mutateSwap(); //option to mutate - "swap mutation"
         void mutateSim(); //option to mutate - "simple inversion mutation"

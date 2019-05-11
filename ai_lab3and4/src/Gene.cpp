@@ -1,11 +1,13 @@
 #include "Gene.h"
 #include <math.h>
 
-Gene::Gene(float fitness, float scaling_factor, int aging_factor){
+Gene::Gene(float fitness, float scaling_factor, int aging_factor, bool isUsingNiching, float sigma_share){
     this->fitness = fitness;
     this->age = 0;
     this->scaling_factor = scaling_factor;
     this->aging_factor = aging_factor;
+    this->isUsingNiching = isUsingNiching;
+    this->sigma_share = sigma_share;
 }
 
 void Gene::copySetter(Gene& other){
@@ -64,4 +66,24 @@ bool Gene::local_optima_gene_similar(vector<Gene*>& gene_vector, float threshold
         counter--;
 
     return counter >= counter_limit;
+}
+
+float Gene::sharing_function(Gene& rh){
+    float dij = this->dist(rh);
+    if(dij < Gene::sigma_share)
+        return 1.0f - dij / Gene::sigma_share; //to the power of 1 - fuck it
+    else
+        return 0.0f;
+}
+
+float Gene::sharing_fitness(float raw_fitness, vector<Gene*>& gene_vector){
+    if(!Gene::isUsingNiching)
+        return raw_fitness;
+    else{
+        float sum;
+        for(unsigned int i = 0; i < gene_vector.size(); i++){
+            sum += this->sharing_function(*gene_vector[i]);
+        }
+        return raw_fitness / sum;
+    }
 }

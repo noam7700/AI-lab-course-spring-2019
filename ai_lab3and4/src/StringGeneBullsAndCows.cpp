@@ -7,8 +7,8 @@
 
 #include "StringGeneBullsAndCows.h"
 
-StringGeneBullsAndCows::StringGeneBullsAndCows(float scaling_factor, int aging_factor):
-    StringGene(scaling_factor, aging_factor) {
+StringGeneBullsAndCows::StringGeneBullsAndCows(float scaling_factor, int aging_factor, bool isUsingNiching, float sigma_share):
+    StringGene(scaling_factor, aging_factor, isUsingNiching, sigma_share) {
 	// TODO Auto-generated constructor stub
 
 }

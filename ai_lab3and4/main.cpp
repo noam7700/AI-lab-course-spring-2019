@@ -151,6 +151,25 @@ int main(int argc, char *argv[])
     if(option_algorithm == "6")
         qmc.solve(1000); //MAX_IT=1000
 
+
+    cout << endl << "N Queens Problem WITH NICHING!!!:" << endl << endl;
+
+    float sigma = 30.0f;//because when dij>30, <i,j> are not worth punishing (they can benifit from each other)
+    for(int i=0; i<GA_POPSIZE; i++){ //100 queens
+        gene_vector[i] = new QueenGene(1.0f, 0.0f, 100, true, sigma);
+        buffer[i] = new QueenGene(1.0f, 0.0f, 100, true, sigma);
+    }
+
+    if(option_algorithm == "7"){
+        MateType mt = static_cast<MateType>(option_selection_int);
+        Mutate_type mutet = static_cast<Mutate_type>(option_mute_int);
+        Crossover_type ct = static_cast<Crossover_type>(option_crossover_int);
+        GeneticAlgorithm::run_ga(gene_vector, buffer, mt, mutet, ct);
+    }
+    clean_vector(gene_vector);
+    clean_vector(buffer);
+
+
     endProcedure();
 	return 0;
 }

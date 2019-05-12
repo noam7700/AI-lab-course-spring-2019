@@ -19,7 +19,7 @@ void GeneticAlgorithm::init_population(vector<Gene*>& gene_vector){
 //assuming gene_vector doesn't have NULL cells
 void GeneticAlgorithm::calc_fitness(vector<Gene*>& gene_vector){
     for(unsigned int i=0; i<gene_vector.size(); i++){
-        gene_vector[i]->calc_fitness(gene_vector);
+        gene_vector[i]->calc_fitness();
     }
 }
 
@@ -153,6 +153,13 @@ void GeneticAlgorithm::generic_mate(vector<Gene*>& gene_vector, vector<Gene*>& b
         else if(rand() < GA_MUTATION) //act normal
             child->mutate(mutate_type);
     }
+
+    //random immigration, if needed
+    if(local_optima_signal && loc_type == LocalOptimaCombat_immigrantion){
+        for(int i=0; i<esize/5; i++){ //fifth of the elitism pop' replaced with immigrants (2% overall)
+            buffer[i]->calc_fitness(); //replace him with random immigrant
+        }
+    }
 }
 
 void GeneticAlgorithm::print_stats(vector<Gene*>& gene_vector){
@@ -232,7 +239,11 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
         else
             local_optima_signal = gene_vector[0]->local_optima_gene_similar(gene_vector);
 
-        generic_mate(gene_vector, buffer, mutate_type, x_type, m_type);
+        //niching is just changing the fitnesses values.
+        if(local_optima_signal == true && loc_type == LocalOptimaCombat_niching)
+            gene_vector[0]->add_niching_to_fitness(gene_vector);
+
+        generic_mate(gene_vector, buffer, mutate_type, x_type, m_type, GA_TOURNAMENT_SIZE, local_optima_signal, loc_type);
 
         //time for checking
         current_check_fit = gene_vector[0]->getFitness();

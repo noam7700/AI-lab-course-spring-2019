@@ -28,7 +28,7 @@ void QueenGene::init(){
     this->age = 0; //even if we're not using aging, it still should be 0
 }
 
-void QueenGene::calc_fitness(vector<Gene*>& gene_vector){
+void QueenGene::calc_fitness(){
     float fit = 0;
 
     //Descending: update taken_diagonals to number of queens in each diagonal
@@ -64,8 +64,6 @@ void QueenGene::calc_fitness(vector<Gene*>& gene_vector){
 
     //dont forget to set the attribute itself
     this->fitness = this->scaling_factor * fit + this->age; //even if it's not in use
-    this->fitness = this->sharing_fitness(this->fitness, gene_vector); //niching
-
 }
 
 void QueenGene::mutate(Mutate_type mutype /*= MUTATE_DEFAULT*/){

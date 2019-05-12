@@ -21,7 +21,7 @@ class QueenGene : public Gene
         bool operator<(Gene& rh);
 
         void init();
-        void calc_fitness(vector<Gene*>& gene_vector);
+        void calc_fitness();
         void mutate(Mutate_type mutype = MUTATE_DEFAULT);
         void mutateSwap(); //option to mutate - "swap mutation"
         void mutateSim(); //option to mutate - "simple inversion mutation"

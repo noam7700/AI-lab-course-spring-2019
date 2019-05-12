@@ -22,13 +22,12 @@ void StringGene::init(){
     this->age = 0; //even if we're not using aging, it still should be 0
 }
 
-void StringGene::calc_fitness(vector<Gene*>& gene_vector){
+void StringGene::calc_fitness(){
     int fit = 0;
     for(unsigned int i=0; i<StringGene::target.size(); i++){
         fit += abs(this->str[i] - StringGene::target[i]);
     }
     this->fitness = this->scaling_factor * fit + this->age; //will be 1 & 0 if not used
-    this->fitness = this->sharing_fitness(this->fitness, gene_vector); //niching
 }
 void StringGene::mutate(Mutate_type mutype /*= MUTATE_DEFAULT*/){ //only one type, no need to check..
     int rand_index = rand() % StringGene::target.size();

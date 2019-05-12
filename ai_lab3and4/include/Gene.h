@@ -39,7 +39,7 @@ class Gene
 
         //they're void because they're setters of "this". To save #allocations (saving time)
         virtual void init() = 0; //init as random gene
-        virtual void calc_fitness(vector<Gene*>& gene_vector) = 0; //update calc_fitness
+        virtual void calc_fitness() = 0; //update calc_fitness
         virtual void mutate(Mutate_type mutype = MUTATE_DEFAULT) = 0;
         virtual void setMate(Gene& p1, Gene& p2, Crossover_type xtype = CROSSOVER_DEFAULTX) = 0; //set attributes as the son of p1 & p2
         virtual void copySetter(Gene& other) = 0; //we assume this & other are the same type
@@ -50,6 +50,7 @@ class Gene
         virtual bool local_optima_gene_similar(vector<Gene*>& gene_vector);
         virtual float sharing_function(Gene& rh);
         virtual float sharing_fitness(float raw_fitness, vector<Gene*>& gene_vector);
+        virtual void add_niching_to_fitness(vector<Gene*>& gene_vector);
 
         float getFitness();
 

@@ -45,8 +45,6 @@ bool Gene::local_optima_variance_signal(vector<Gene*>& gene_vector){
     else
         counter = max(0, counter - 1);
 
-    cout << "counter=" << counter << "\n"; //debug
-
     last_variance = variance; //for next time
 
     return counter >= counter_limit;
@@ -85,8 +83,6 @@ bool Gene::local_optima_gene_similar(vector<Gene*>& gene_vector){
     else
         counter = max(0, counter - 1);
 
-    cout << "counter=" << counter << "\n"; //debug
-
     last_average_estimation = average_estimation; //for next time
     return counter >= counter_limit;
 }
@@ -108,5 +104,11 @@ float Gene::sharing_fitness(float raw_fitness, vector<Gene*>& gene_vector){
             sum += this->sharing_function(*gene_vector[i]);
         }
         return raw_fitness / sum;
+    }
+}
+
+void Gene::add_niching_to_fitness(vector<Gene*>& gene_vector){
+    for(unsigned int i = 0; i < gene_vector.size(); i++){
+        this->fitness = this->sharing_fitness(this->fitness, gene_vector); //"make it niched" ;P
     }
 }

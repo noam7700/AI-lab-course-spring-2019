@@ -122,7 +122,7 @@ pair<int,int> GeneticAlgorithm::selectParent(vector<Gene*>& gene_vector, MateTyp
                 i1 = selectParentRws(gene_vector);
                 i2 = selectParentRws(gene_vector);
 			    break;
-			default: { cout << "Unknown mate type was used" << endl; throw; }
+			default: { cout << "Error: Unknown mate type was used" << endl; throw; }
     }
     return pair<int,int>(i1, i2);
 }

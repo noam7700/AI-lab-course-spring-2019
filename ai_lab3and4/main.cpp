@@ -48,14 +48,24 @@ int main(int argc, char *argv[])
 
     //get option
     string option_algorithm = argv[1];
-    string option_selection = argv[2]; //also known as m_type in our code. can be everything
+    string option_selection = argv[2]; //can be 0/1/2
     string option_mute = argv[3]; //if N Queens can be 0/1/2. otherwise 0
     string option_crossover = argv[4]; //if Bulls & Cows, can be 0/3/4. if N Queens, can be 0/1/2. otherwise 0
+    string option_signalmethod = argv[5]; //can be 0/1
+    string option_localcombat = argv[6]; //can be 0/1/2
 
-    int option_algorithm_int = atoi(option_algorithm.c_str());
+    //get option as int (for enums...)
     int option_selection_int = atoi(option_selection.c_str());
     int option_mute_int = atoi(option_mute.c_str());
     int option_crossover_int = atoi(option_crossover.c_str());
+    int option_signalmethod_int = atoi(option_signalmethod.c_str());
+    int option_localcombat_int = atoi(option_signalmethod.c_str());
+
+    MateType mt = static_cast<MateType>(option_selection_int);
+    Mutate_type mutet = static_cast<Mutate_type>(option_mute_int);
+    Crossover_type ct = static_cast<Crossover_type>(option_crossover_int);
+    SignalMethod sigm = static_cast<SignalMethod>(option_signalmethod_int);
+    LocalOptimaCombat_type loc_type = static_cast<LocalOptimaCombat_type>(option_localcombat_int);
 
     cout << "Sample solution:" << endl << endl;
 
@@ -66,8 +76,7 @@ int main(int argc, char *argv[])
     }
     if(option_algorithm == "0"){
 
-        MateType mt = static_cast<MateType>(option_selection_int);
-        GeneticAlgorithm::run_ga(gene_vector, buffer, mt);
+        GeneticAlgorithm::run_ga(gene_vector, buffer, mt, mutet, ct, sigm, loc_type);
     }
 
     clean_vector(gene_vector);
@@ -81,39 +90,13 @@ int main(int argc, char *argv[])
     }
 
     if(option_algorithm == "1"){
-        MateType mt = static_cast<MateType>(option_selection_int);
-        Crossover_type ct = static_cast<Crossover_type>(option_crossover_int);
-        GeneticAlgorithm::run_ga(gene_vector, buffer, mt, MUTATE_DEFAULT, ct);
+        GeneticAlgorithm::run_ga(gene_vector, buffer, mt, mutet, ct, sigm, loc_type);
     }
 
     clean_vector(gene_vector);
     clean_vector(buffer);
 
-    cout << endl << "Tournament:" << endl << endl;
-
-    for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGene(1.0f, 0.0f, false, 1.0f);
-        buffer[i] = new StringGene(1.0f, 0.0f, false, 1.0f);
-    }
-    if(option_algorithm == "2"){
-        GeneticAlgorithm::run_ga(gene_vector, buffer, MT_TOURNAMENT);
-    }
-    clean_vector(gene_vector);
-    clean_vector(buffer);
-
-    cout << endl << "RWS + scaling:" << endl << endl;
-
-    for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGene(0.2f, 0.0f, false, 1.0f);
-        buffer[i] = new StringGene(0.2f, 0.0f, false, 1.0f);
-    }
-    if(option_algorithm == "3"){
-        GeneticAlgorithm::run_ga(gene_vector, buffer, MT_RWS);
-    }
-    clean_vector(gene_vector);
-    clean_vector(buffer);
-
-    cout << endl << "Aging:" << endl << endl;
+    cout << endl << "Aging with strings:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
         gene_vector[i] = new StringGene(1.0f, 1.0f, false, 1.0f);
@@ -121,8 +104,7 @@ int main(int argc, char *argv[])
     }
 
     if(option_algorithm == "4"){
-        MateType mt = static_cast<MateType>(option_selection_int);
-        GeneticAlgorithm::run_ga(gene_vector, buffer, mt);
+        GeneticAlgorithm::run_ga(gene_vector, buffer, mt, mutet, ct, sigm, loc_type);
     }
     clean_vector(gene_vector);
     clean_vector(buffer);
@@ -161,9 +143,6 @@ int main(int argc, char *argv[])
     }
 
     if(option_algorithm == "7"){
-        MateType mt = static_cast<MateType>(option_selection_int);
-        Mutate_type mutet = static_cast<Mutate_type>(option_mute_int);
-        Crossover_type ct = static_cast<Crossover_type>(option_crossover_int);
         GeneticAlgorithm::run_ga(gene_vector, buffer, mt, mutet, ct);
     }
     clean_vector(gene_vector);

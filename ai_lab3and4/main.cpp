@@ -67,12 +67,19 @@ int main(int argc, char *argv[])
     SignalMethod sigm = static_cast<SignalMethod>(option_signalmethod_int);
     LocalOptimaCombat_type loc_type = static_cast<LocalOptimaCombat_type>(option_localcombat_int);
 
+
+    bool isUsingNiching = (loc_type == LocalOptimaCombat_niching);
+    //sigma for each problem is not decided by the user.
+    float sigma_QueenGene100 = 30.0f;//because when dij>30, <i,j> are not worth punishing (they can benifit from each other)
+    int helloworld_size = 11;
+    float sigma_StringGeneHELLOWORLD = helloworld_size * 3.0f; //in avg, each index(letter) is dist=3
+
     cout << "Sample solution:" << endl << endl;
 
     vector<Gene*> gene_vector(GA_POPSIZE), buffer(GA_POPSIZE);
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGene(1.0f, 0.0f, false, 1.0f);
-        buffer[i] = new StringGene(1.0f, 0.0f, false, 1.0f);
+        gene_vector[i] = new StringGene(1.0f, 0.0f, isUsingNiching, sigma_StringGeneHELLOWORLD);
+        buffer[i] = new StringGene(1.0f, 0.0f, isUsingNiching, sigma_StringGeneHELLOWORLD);
     }
     if(option_algorithm == "0"){
 
@@ -85,8 +92,8 @@ int main(int argc, char *argv[])
     cout << endl << "Bulls and Cows:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGeneBullsAndCows(1.0f, 0.0f, false, 1.0f);
-        buffer[i] = new StringGeneBullsAndCows(1.0f, 0.0f, false, 1.0f);
+        gene_vector[i] = new StringGeneBullsAndCows(1.0f, 0.0f, isUsingNiching, sigma_StringGeneHELLOWORLD);
+        buffer[i] = new StringGeneBullsAndCows(1.0f, 0.0f, isUsingNiching, sigma_StringGeneHELLOWORLD);
     }
 
     if(option_algorithm == "1"){
@@ -99,11 +106,11 @@ int main(int argc, char *argv[])
     cout << endl << "Aging with strings:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){
-        gene_vector[i] = new StringGene(1.0f, 1.0f, false, 1.0f);
-        buffer[i] = new StringGene(1.0f, 1.0f, false, 1.0f);
+        gene_vector[i] = new StringGene(1.0f, 1.0f, isUsingNiching, sigma_StringGeneHELLOWORLD);
+        buffer[i] = new StringGene(1.0f, 1.0f, isUsingNiching, sigma_StringGeneHELLOWORLD);
     }
 
-    if(option_algorithm == "4"){
+    if(option_algorithm == "2"){
         GeneticAlgorithm::run_ga(gene_vector, buffer, mt, mutet, ct, sigm, loc_type);
     }
     clean_vector(gene_vector);
@@ -112,14 +119,11 @@ int main(int argc, char *argv[])
     cout << endl << "N Queens Problem:" << endl << endl;
 
     for(int i=0; i<GA_POPSIZE; i++){ //100 queens
-        gene_vector[i] = new QueenGene(1.0f, 0.0f, 100, false, 1.0f);
-        buffer[i] = new QueenGene(1.0f, 0.0f, 100, false, 1.0f);
+        gene_vector[i] = new QueenGene(1.0f, 0.0f, 100, isUsingNiching, sigma_QueenGene100);
+        buffer[i] = new QueenGene(1.0f, 0.0f, 100, isUsingNiching, sigma_QueenGene100);
     }
 
-    if(option_algorithm == "5"){
-        MateType mt = static_cast<MateType>(option_selection_int);
-        Mutate_type mutet = static_cast<Mutate_type>(option_mute_int);
-        Crossover_type ct = static_cast<Crossover_type>(option_crossover_int);
+    if(option_algorithm == "3"){
         GeneticAlgorithm::run_ga(gene_vector, buffer, mt, mutet, ct);
     }
     clean_vector(gene_vector);
@@ -130,23 +134,8 @@ int main(int argc, char *argv[])
 
     QueenMinimalConflicts qmc(100); //creates his random permutation board on the way.
 
-    if(option_algorithm == "6")
+    if(option_algorithm == "4")
         qmc.solve(1000); //MAX_IT=1000
-
-
-    cout << endl << "N Queens Problem WITH NICHING!!!:" << endl << endl;
-
-    float sigma = 30.0f;//because when dij>30, <i,j> are not worth punishing (they can benifit from each other)
-    for(int i=0; i<GA_POPSIZE; i++){ //100 queens
-        gene_vector[i] = new QueenGene(1.0f, 0.0f, 100, true, sigma);
-        buffer[i] = new QueenGene(1.0f, 0.0f, 100, true, sigma);
-    }
-
-    if(option_algorithm == "7"){
-        GeneticAlgorithm::run_ga(gene_vector, buffer, mt, mutet, ct);
-    }
-    clean_vector(gene_vector);
-    clean_vector(buffer);
 
 
     endProcedure();

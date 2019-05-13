@@ -1,7 +1,5 @@
 #include "Gene.h"
 #include <math.h>
-#include <iostream>
-using namespace std;
 
 Gene::Gene(float fitness, float scaling_factor, int aging_factor, bool isUsingNiching, float sigma_share){
     this->fitness = fitness;

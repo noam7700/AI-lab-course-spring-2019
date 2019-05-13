@@ -3,7 +3,7 @@
 #include <stdlib.h> //used for rand
 #include "StringGene.h"
 
-string StringGene::target = "hello world";
+string StringGene::target = "Hello sir, I'm Noam Blagovsky and this is partner, Yuri khvoles";
 
 StringGene::StringGene(float scaling_factor, int aging_factor, bool isUsingNiching, float sigma_share):
     Gene(0, scaling_factor, aging_factor, isUsingNiching, sigma_share){

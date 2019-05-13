@@ -236,8 +236,12 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
         //check for 'local optima signal'. if do, combat local optima!
         if(sm == SignalMethod_variance)
             local_optima_signal = gene_vector[0]->local_optima_variance_signal(gene_vector);
-        else
+        else if(sm == SignalMethod_similiar)
             local_optima_signal = gene_vector[0]->local_optima_gene_similar(gene_vector);
+        else{
+            cout << "Error: no such local optima signal.\n";
+            throw;
+        }
 
         //niching is just changing the fitnesses values.
         if(local_optima_signal == true && loc_type == LocalOptimaCombat_niching)

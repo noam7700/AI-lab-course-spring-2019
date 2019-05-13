@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
     int option_mute_int = atoi(option_mute.c_str());
     int option_crossover_int = atoi(option_crossover.c_str());
     int option_signalmethod_int = atoi(option_signalmethod.c_str());
-    int option_localcombat_int = atoi(option_signalmethod.c_str());
+    int option_localcombat_int = atoi(option_localcombat.c_str());
 
     MateType mt = static_cast<MateType>(option_selection_int);
     Mutate_type mutet = static_cast<Mutate_type>(option_mute_int);
@@ -67,12 +67,11 @@ int main(int argc, char *argv[])
     SignalMethod sigm = static_cast<SignalMethod>(option_signalmethod_int);
     LocalOptimaCombat_type loc_type = static_cast<LocalOptimaCombat_type>(option_localcombat_int);
 
-
     bool isUsingNiching = (loc_type == LocalOptimaCombat_niching);
     //sigma for each problem is not decided by the user.
     float sigma_QueenGene100 = 30.0f;//because when dij>30, <i,j> are not worth punishing (they can benifit from each other)
-    int helloworld_size = 11;
-    float sigma_StringGeneHELLOWORLD = helloworld_size * 3.0f; //in avg, each index(letter) is dist=3
+    string target = "Hello sir, I'm Noam Blagovsky and this is partner, Yuri khvoles";
+    float sigma_StringGeneHELLOWORLD = target.size() * 0.5f; //in avg, each index(letter) is dist=1
 
     cout << "Sample solution:" << endl << endl;
 

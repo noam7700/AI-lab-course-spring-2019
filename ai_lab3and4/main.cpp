@@ -17,8 +17,9 @@ int main(int argc, char* argv[])
 #include "StringGeneBullsAndCows.h"
 #include "StringGeneScaling.h"
 #include "StringGeneAging.h"
-#include "geneticAlgorithm.h"
+#include "GeneticAlgorithm.h"
 #include "QueenGene.h"
+#include "KnapsackGene.h"
 #include "Defs.h"
 
 using namespace std;				// polluting global namespace, but hey...
@@ -98,11 +99,23 @@ int main()
         buffer[i] = new QueenGene(100);
     }
 
-    GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SWAP, CROSSOVER_OX);
+//    GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SWAP, CROSSOVER_OX);
 
     clean_vector(gene_vector);
     clean_vector(buffer);
 
+    cout << endl << "Knapsack Problem:" << endl << endl;
+
+    for(int i=0; i<GA_POPSIZE; i++){ //param is max weight of knapsack
+        gene_vector[i] = new KnapsackGene(20);
+        buffer[i] = new KnapsackGene(20);
+    }
+
+    KnapsackGene::items = {{1,1},{1,2},{2,2},{2,1},{3,5},{4,1},{3,3},{11,34},{5,5},{50,5},{1,2},{2,2},{2,1},{3,5},{4,1},{3,3},{11,34},{5,5},{50,5}};
+    GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SWAP, CROSSOVER_OX);
+
+    clean_vector(gene_vector);
+    clean_vector(buffer);
 
     /*QueenGene* test1 = new QueenGene(10); //0-9
     test1->queen_rows = {8,2,4,3,7,5,1,0,9,6};

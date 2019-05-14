@@ -1,10 +1,3 @@
-/*
- * Defs.h
- *
- *  Created on: 14 ????? 2019
- *      Author: KY
- */
-
 #ifndef INCLUDE_DEFS_H_
 #define INCLUDE_DEFS_H_
 
@@ -16,6 +9,8 @@
 #include <stdlib.h> //used for rand
 #include <math.h>
 #include <chrono>
+#include <climits>
+
 
 #define GA_POPSIZE				2048		// ga population size
 #define GA_MAXITER				16384		// maximum iterations

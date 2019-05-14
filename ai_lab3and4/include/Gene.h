@@ -1,7 +1,8 @@
 #ifndef GENE_H
 #define GENE_H
 
-#include <vector>
+#include "Defs.h"
+
 
 using namespace std;
 

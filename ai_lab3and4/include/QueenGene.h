@@ -1,10 +1,8 @@
 #ifndef QUEENGENE_H
 #define QUEENGENE_H
 
-#include <iostream>
+
 #include <Gene.h>
-#include <stdlib.h> //used for rand
-#include <algorithm> //for random_shuffle
 
 class QueenGene : public Gene
 {

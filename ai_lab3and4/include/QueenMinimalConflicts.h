@@ -1,9 +1,6 @@
 #ifndef QUEENMINIMALCONFLICTS_H
 #define QUEENMINIMALCONFLICTS_H
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
 #include "Defs.h"
 
 using namespace std;

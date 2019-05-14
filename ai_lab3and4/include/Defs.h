@@ -25,6 +25,8 @@
 #define GA_TARGET				std::string("Hello world!")
 #define GA_TOURNAMENT_SIZE 		16
 
+using namespace std;
+
 typedef enum mate_type{
 	MT_DEFAULT = 0,
 	MT_TOURNAMENT = 1,

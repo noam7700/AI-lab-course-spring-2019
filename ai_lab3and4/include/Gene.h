@@ -1,9 +1,7 @@
 #ifndef GENE_H
 #define GENE_H
 
-#include <vector>
-
-using namespace std;
+#include "Defs.h"
 
 enum Mutate_type{
     MUTATE_DEFAULT = 0,

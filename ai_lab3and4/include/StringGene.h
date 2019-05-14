@@ -1,7 +1,6 @@
 #ifndef STRINGGENE_H
 #define STRINGGENE_H
 
-#include <string>
 #include <Gene.h>
 
 using namespace std;

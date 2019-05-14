@@ -8,7 +8,6 @@
 #ifndef INCLUDE_STRINGGENEBULLSANDCOWS_H_
 #define INCLUDE_STRINGGENEBULLSANDCOWS_H_
 
-#include <iostream>
 #include <StringGene.h>
 
 class StringGeneBullsAndCows: public StringGene {

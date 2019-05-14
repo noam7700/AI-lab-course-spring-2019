@@ -18,6 +18,7 @@ int main(int argc, char* argv[])
 #include "geneticAlgorithm.h"
 #include "QueenGene.h"
 #include "QueenMinimalConflicts.h"
+#include "KnapsackGene.h"
 #include "Defs.h"
 
 using namespace std;				// polluting global namespace, but hey...
@@ -72,6 +73,7 @@ int main(int argc, char *argv[])
     float sigma_QueenGene200 = 30.0f;//because when dij>30, <i,j> are not worth punishing (they can benifit from each other)
     string target = "Hello sir, I'm Noam Blagovsky and this is partner, Yuri khvoles";
     float sigma_StringGeneHELLOWORLD = target.size() * 4.0f; //in avg, each index(letter) is dist=50
+    float sigma_knapsack = 0.0f; //will be reset later
 
     cout << "Sample solution:" << endl << endl;
 
@@ -136,6 +138,23 @@ int main(int argc, char *argv[])
     if(option_algorithm == "4")
         qmc.solve(1000); //MAX_IT=1000
 
+    cout << endl << "Knapsack Problem:" << endl << endl;
+
+    KnapsackGene::items = {{1,1},{1,2},{2,2},{2,1},{3,5},{4,1},{3,3},{11,34},{5,5},{50,5},{1,2},{2,2},{2,1},{3,5},{4,1},{3,3},{11,34},{5,5},{50,5}};
+
+    sigma_knapsack = KnapsackGene::items.size() * 0.1f;
+
+
+    for(int i=0; i<GA_POPSIZE; i++){ //param is max weight of knapsack
+        gene_vector[i] = new KnapsackGene(20, isUsingNiching, sigma_knapsack);
+        buffer[i] = new KnapsackGene(20, isUsingNiching, sigma_knapsack);
+    }
+
+    if(option_algorithm == "4")
+        GeneticAlgorithm::run_ga(gene_vector, buffer, MT_DEFAULT, MUTATE_SWAP, CROSSOVER_OX);
+
+    clean_vector(gene_vector);
+    clean_vector(buffer);
 
     endProcedure();
 	return 0;

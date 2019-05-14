@@ -107,6 +107,6 @@ float Gene::sharing_fitness(float raw_fitness, vector<Gene*>& gene_vector){
 
 void Gene::add_niching_to_fitness(vector<Gene*>& gene_vector){
     for(unsigned int i = 0; i < gene_vector.size(); i++){
-        this->fitness = this->sharing_fitness(this->fitness, gene_vector); //"make it niched" ;P
+        gene_vector[i]->fitness = gene_vector[i]->sharing_fitness(gene_vector[i]->fitness, gene_vector); //"make it niched" ;P
     }
 }

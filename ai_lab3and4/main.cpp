@@ -69,9 +69,9 @@ int main(int argc, char *argv[])
 
     bool isUsingNiching = (loc_type == LocalOptimaCombat_niching);
     //sigma for each problem is not decided by the user.
-    float sigma_QueenGene100 = 30.0f;//because when dij>30, <i,j> are not worth punishing (they can benifit from each other)
+    float sigma_QueenGene200 = 30.0f;//because when dij>30, <i,j> are not worth punishing (they can benifit from each other)
     string target = "Hello sir, I'm Noam Blagovsky and this is partner, Yuri khvoles";
-    float sigma_StringGeneHELLOWORLD = target.size() * 0.5f; //in avg, each index(letter) is dist=1
+    float sigma_StringGeneHELLOWORLD = target.size() * 4.0f; //in avg, each index(letter) is dist=50
 
     cout << "Sample solution:" << endl << endl;
 
@@ -117,9 +117,9 @@ int main(int argc, char *argv[])
 
     cout << endl << "N Queens Problem:" << endl << endl;
 
-    for(int i=0; i<GA_POPSIZE; i++){ //100 queens
-        gene_vector[i] = new QueenGene(1.0f, 0.0f, 100, isUsingNiching, sigma_QueenGene100);
-        buffer[i] = new QueenGene(1.0f, 0.0f, 100, isUsingNiching, sigma_QueenGene100);
+    for(int i=0; i<GA_POPSIZE; i++){ //200 queens
+        gene_vector[i] = new QueenGene(1.0f, 0.0f, 200, isUsingNiching, sigma_QueenGene200);
+        buffer[i] = new QueenGene(1.0f, 0.0f, 200, isUsingNiching, sigma_QueenGene200);
     }
 
     if(option_algorithm == "3"){
@@ -131,7 +131,7 @@ int main(int argc, char *argv[])
 
     cout << endl << "N Queens Minimal conflicts:" << endl << endl;
 
-    QueenMinimalConflicts qmc(100); //creates his random permutation board on the way.
+    QueenMinimalConflicts qmc(1000); //creates his random permutation board on the way.
 
     if(option_algorithm == "4")
         qmc.solve(1000); //MAX_IT=1000

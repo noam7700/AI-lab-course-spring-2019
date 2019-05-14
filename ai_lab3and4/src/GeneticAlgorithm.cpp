@@ -176,7 +176,8 @@ void GeneticAlgorithm::print_stats(vector<Gene*>& gene_vector){
 
     st_deviation = sqrt(variance);
 
-    cout << "mean: " << mean << ", standard deviation: " << st_deviation << "\n";
+    //cout << "mean: " << mean << ", standard deviation: " << st_deviation << "\n";
+    cout << variance << "\n";
 }
 
 //he receives the vectors with the proper derived objects of Gene
@@ -211,11 +212,12 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
     //local optima signal & combat
     bool local_optima_signal = false;
 
-    int i;
+    int i; float debug;
     for(i=0; i<GA_MAXITER; i++, rounds_till_failing--){
         calc_fitness(gene_vector); //update fitness for all genes
         sort(gene_vector.begin(), gene_vector.end(), compare_genes_ptr);
         print_best(gene_vector);
+        debug = gene_vector[0]->getFitness();
         print_stats(gene_vector);
 
         mini_finish = chrono::high_resolution_clock::now();
@@ -244,8 +246,13 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
         }
 
         //niching is just changing the fitnesses values.
-        if(local_optima_signal == true && loc_type == LocalOptimaCombat_niching)
-            gene_vector[0]->add_niching_to_fitness(gene_vector);
+        if(local_optima_signal == true && loc_type == LocalOptimaCombat_niching){
+            static int chill_down = 0;
+            if(chill_down % 6 == 0 || chill_down % 6 == 1){ //do two niches, then take 4 rounds break
+                gene_vector[0]->add_niching_to_fitness(gene_vector);
+            }
+            chill_down++;
+        }
 
         generic_mate(gene_vector, buffer, mutate_type, x_type, m_type, GA_TOURNAMENT_SIZE, local_optima_signal, loc_type);
 
@@ -276,6 +283,7 @@ void GeneticAlgorithm::run_ga(vector<Gene*>& gene_vector, vector<Gene*>& buffer,
     elapsed = finish - start;
     clockticks = cfinish - cstart;
     cout << "Overall: absolute time: " << elapsed.count() / 1000 << " clock ticks: " << clockticks << "\n";
+    cout << "last_check_fitness = " << debug << "\n";
     if(didWeFail == 1)
         cout << "We failed at generation " << last_generation_improvement << "\n";
     else
